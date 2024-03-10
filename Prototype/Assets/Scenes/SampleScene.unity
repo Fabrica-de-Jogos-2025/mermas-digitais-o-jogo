@@ -14681,6 +14681,8 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+ dev
+
 --- !u!1 &666463881
 GameObject:
   m_ObjectHideFlags: 0
@@ -14886,6 +14888,7 @@ Transform:
   - {fileID: 666463882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+ main
 --- !u!1 &1049960276
 GameObject:
   m_ObjectHideFlags: 0
@@ -15426,7 +15429,11 @@ Transform:
   m_GameObject: {fileID: 1515446342}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+ dev
+  m_LocalPosition: {x: -11.56, y: -6.87, z: -4.3641844}
+=======
   m_LocalPosition: {x: -17.81, y: -6.87, z: -4.3641844}
+ main
   m_LocalScale: {x: 0.04954685, y: 0.04954685, z: 0.04954685}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17795,4 +17802,7 @@ SceneRoots:
   - {fileID: 621289712}
   - {fileID: 1515446345}
   - {fileID: 23756386}
+ dev
+
   - {fileID: 982303173}
+ main
