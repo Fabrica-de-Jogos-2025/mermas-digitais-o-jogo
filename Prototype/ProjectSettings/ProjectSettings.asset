@@ -792,19 +792,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-dev
-  cloudProjectId: 
-  framebufferDepthMemorylessMode: 0
-  qualitySettingsNames: []
-  projectName: 
-  organizationId: 
-
   cloudProjectId: b0b95f47-01ad-4199-960d-7a59c2854bc1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Prototype 2024-03-10_02-44-11
   organizationId: jrmadara
- main
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
