@@ -14724,7 +14724,7 @@ GameObject:
   - component: {fileID: 982303172}
   - component: {fileID: 982303171}
   - component: {fileID: 982303170}
-  - component: {fileID: 982303169}
+  - component: {fileID: 982303174}
   m_Layer: 0
   m_Name: Robo
   m_TagString: Untagged
@@ -14732,20 +14732,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &982303169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982303168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a068565ede16ea41bc8947edb86ed10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 7
-  StoppingDistance: 2
 --- !u!50 &982303170
 Rigidbody2D:
   serializedVersion: 4
@@ -14886,6 +14872,20 @@ Transform:
   - {fileID: 666463882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &982303174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982303168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d0d28704ba2ab4db0850b7e35591c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  StoppingDistance: 2
 --- !u!1 &1049960276
 GameObject:
   m_ObjectHideFlags: 0
