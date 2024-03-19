@@ -7,11 +7,14 @@ public class Robo : MonoBehaviour
     public float Speed;
     public float StoppingDistance;
     private Transform Target;
+    public Animator anim;
+    // private PlayerItems powerUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();        
+        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

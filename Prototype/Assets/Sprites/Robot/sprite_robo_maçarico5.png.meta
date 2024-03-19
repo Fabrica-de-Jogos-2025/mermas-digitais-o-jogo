@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df422ead293971c4399a7691fa3b952f
+guid: 2b80db64f737df447a9fc6b547edd0be
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,91 +147,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: blowtorch-bgremoved_0
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 90
-        width: 334
-        height: 330
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b509203fec722f343b8bbf9ae2e5f966
-      internalID: -513974792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blowtorch-bgremoved_1
-      rect:
-        serializedVersion: 2
-        x: 371
-        y: 404
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2b4247fba567ef479f16be60d6ab3cf
-      internalID: -424255783
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blowtorch-bgremoved_2
-      rect:
-        serializedVersion: 2
-        x: 417
-        y: 363
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55ab4bddcdcc7db4ba4a215d55bd76e8
-      internalID: -1762174513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blowtorch-bgremoved_3
-      rect:
-        serializedVersion: 2
-        x: 417
-        y: 312
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a9956f089e750d4eb55e4eda6b896e2
-      internalID: 1114415786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -242,11 +158,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      blowtorch-bgremoved_0: -513974792
-      blowtorch-bgremoved_1: -424255783
-      blowtorch-bgremoved_2: -1762174513
-      blowtorch-bgremoved_3: 1114415786
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
