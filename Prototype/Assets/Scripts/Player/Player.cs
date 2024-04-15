@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
 
     private Robo robot;
     private Rigidbody2D rig;
+    private GroundCheck groundChecked;
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         robot = FindObjectOfType<Robo>();
+        groundChecked = GetComponentInChildren<GroundCheck>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
         OnMove();
         Jumping();
+        CheckInGrounded();
     }
 
     void OnMove()
@@ -54,4 +57,10 @@ public class Player : MonoBehaviour
             rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
+
+    void CheckInGrounded ()
+    {
+        isJumping = !groundChecked.IsGrounded();
+    } 
+
 }

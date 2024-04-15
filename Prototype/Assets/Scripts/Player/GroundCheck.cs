@@ -5,12 +5,13 @@ using UnityEngine.TextCore.Text;
 
 public class GroundCheck : MonoBehaviour
 {
-    Player player;
+    public LayerMask groundLayer;
+    // Player player;
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         player = gameObject.transform.parent.gameObject.GetComponent<Player>();
-    }
+    }*/
 
     // Update is called once per frame
     /*void Update()
@@ -18,7 +19,7 @@ public class GroundCheck : MonoBehaviour
         
     }*/
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
@@ -28,9 +29,23 @@ public class GroundCheck : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer != 3)
         {
             player.isJumping = true;
         }
+    }*/
+
+    public bool IsGrounded ()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, groundLayer);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
