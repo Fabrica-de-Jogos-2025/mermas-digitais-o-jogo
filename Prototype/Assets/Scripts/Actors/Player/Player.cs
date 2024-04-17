@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isPaused;
     public float Speed;
     public float jumpForce;
     public bool isJumping;
@@ -25,8 +26,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-        OnMove();
-        Jumping();
+
+        if (!isPaused) {
+            OnMove();
+            Jumping();
+        }
         CheckInGrounded();
     }
 
