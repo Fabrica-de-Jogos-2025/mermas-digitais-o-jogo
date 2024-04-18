@@ -19,12 +19,55 @@ MonoBehaviour:
   - actorName: Ada
     profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
     sentence:
-      portuguese: "Ol\xE1, mundo!"
+      portuguese: "Ol\xE1, mundo! Espera, este n\xE3o \xE9 o meu mundo, nem o meu
+        tempo."
       english: 
       spanish: 
   - actorName: Ada
     profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
     sentence:
-      portuguese: "Teste para dar instru\xE7\xE3o de puzzle."
+      portuguese: "Eu nasci em 1815 e criei um algoritmo que computa os n\xFAmeros
+        de Bernoulli. D\xE1 pra ver nessa m\xE1quina que o meu amigo Babbage me forneceu."
+      english: 
+      spanish: 
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Ali\xE1s, prazer! Meu nome \xE9 Ada Lovelace. Qual o seu?"
+      english: 
+      spanish: 
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Voc\xEA n\xE3o \xE9 muito de falar? Entendo, o seu nome depende
+        de quem define."
+      english: 
+      spanish: 
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Eu sou a primeira programadora da hist\xF3ria??? Uau, que incr\xEDvel!!"
+      english: "Chega de falar de mim, n\xE9? Temos que achar uma sa\xEDda deste
+        lugar para que os malwares n\xE3o continuem aterrorizando este mundo."
+      spanish: "Eu sou a primeira programadora da hist\xF3ria??? Uau, que incr\xEDvel!!"
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Chega de falar de mim, n\xE9? Temos que achar uma sa\xEDda deste
+        lugar para que os malwares n\xE3o continuem aterrorizando este mundo."
+      english: 
+      spanish: 
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Tive uma ideia! Aqui, vou lhe forncecer um dispositivo que pode
+        permitir que voc\xEA continue sua jornada."
+      english: 
+      spanish: 
+  - actorName: Ada
+    profile: {fileID: 21300000, guid: efc2ab897812fc44f8a6baa6d9607f4f, type: 3}
+    sentence:
+      portuguese: "Voc\xEA est\xE1 com ele aberto agora, logo abaixo tem um quebra-cabe\xE7a.
+        Tente resolver para ver o que acontece."
       english: 
       spanish: 
