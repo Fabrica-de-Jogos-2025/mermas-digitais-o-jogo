@@ -23,5 +23,6 @@ public class Robo : MonoBehaviour
         if (Vector2.Distance(transform.position, Target.position) >= StoppingDistance){
             transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
         }
+        DontDestroyOnLoad(gameObject);
     }
 }

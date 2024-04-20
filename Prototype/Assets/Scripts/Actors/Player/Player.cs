@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         robot = FindObjectOfType<Robo>();
         groundChecked = GetComponentInChildren<GroundCheck>();
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -30,6 +32,13 @@ public class Player : MonoBehaviour
         if (!isPaused) {
             OnMove();
             Jumping();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SceneManager.LoadScene("Boss.");
+            isJumping = false;
         }
         CheckInGrounded();
     }
