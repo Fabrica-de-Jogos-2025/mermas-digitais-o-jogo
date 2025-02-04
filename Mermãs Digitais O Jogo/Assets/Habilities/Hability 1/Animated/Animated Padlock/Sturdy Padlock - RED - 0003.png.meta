@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 940bdfad8e218ff419182b9f080952aa
+guid: 19f59d85b35669441bbb15697d49aa62
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5578709602784604268
-    second: Placa - Seta_0
+      213: -4182321013447162723
+    second: Sturdy Padlock - RED - 0003_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Placa - Seta_0
+      name: Sturdy Padlock - RED - 0003_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 22
-        height: 24
+        width: 20
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c60790393de8b6d40800000000000000
-      internalID: 5578709602784604268
+      spriteID: d9484d8723965f5c0800000000000000
+      internalID: -4182321013447162723
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Placa - Seta_0: 5578709602784604268
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
