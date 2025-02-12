@@ -2,10 +2,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float playerSpeed;
-    public float jumpForce;
-    public Vector2 direction;
-    public bool isJumping;
+    [SerializeField] private float playerSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private bool isJumping;
+    private Vector2 direction;
+    public bool IsJumping
+    {
+        get { return isJumping; }
+        set { isJumping = value; }
+    }
+    public float JumpForce
+    {
+        get { return jumpForce; }
+        set { jumpForce = value; }
+    }
+
+    public Vector2 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
 
     private Rigidbody2D rig;
     private GroundCheck groundChecked;
@@ -49,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
-            rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
     }
 

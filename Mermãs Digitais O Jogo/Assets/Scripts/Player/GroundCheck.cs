@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    public LayerMask groundLayer;
+    [SerializeField] private LayerMask groundLayer;
     
     public bool IsGrounded()
     {
