@@ -38,7 +38,7 @@ public class Hability1_1 : MonoBehaviour
         {
             RobotDialogue robot = FindObjectOfType<RobotDialogue>();
 
-            if (robot != null && player != null && !player.IsJumping)
+            if (robot != null && player != null)
             {
                 //robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
