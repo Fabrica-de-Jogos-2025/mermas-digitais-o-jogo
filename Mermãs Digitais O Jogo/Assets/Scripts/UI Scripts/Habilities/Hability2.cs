@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Splines;
@@ -8,6 +10,11 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private RectTransform canvasRect;
+    private bool isSnapped = false;
+
+    public static List<Hability2> allDraggableObjects = new List<Hability2>();
+    public List<GameObject> correctPositions; // Lista de posições corretas
+    private GameObject snappedTarget;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -17,10 +24,23 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        allDraggableObjects.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        allDraggableObjects.Remove(this);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (isSnapped)
+        {
+            isSnapped = false;
+            snappedTarget = null;
+        }
+
         // Torna o objeto transparente ao começar o arraste
         canvasGroup.alpha = 0.9f;
         canvasGroup.blocksRaycasts = false; // Permite que eventos passem para objetos abaixo
@@ -28,12 +48,15 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Move o objeto conforme o mouse/touch
-        Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
-
-        if (IsInsideCanvas(newPosition))
+        if (!isSnapped)
         {
-            rectTransform.anchoredPosition = newPosition;
+            // Move o objeto conforme o mouse/touch
+            Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
+
+            if (IsInsideCanvas(newPosition))
+            {
+                rectTransform.anchoredPosition = newPosition;
+            }
         }
     }
 
@@ -42,6 +65,40 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         // Restaura a visibilidade ao soltar o objeto
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = eventData.position
+        };
+        EventSystem.current.RaycastAll(pointerEventData, results);
+        foreach (var result in results)
+        {
+            if (result.gameObject != gameObject && result.gameObject.CompareTag("SnapTarget"))
+            {
+                rectTransform.position = result.gameObject.transform.position;
+                isSnapped = true;
+                snappedTarget = result.gameObject;
+                Hability2Use.CheckAllPositions();
+                return;
+            }
+        }
+    }
+
+    /*private void ValidateAllPositions()
+    {
+        bool allCorrect = allDraggableObjects.All(obj => obj.snappedTarget != null && obj.correctPositions.Contains(obj.snappedTarget));
+
+        if (allCorrect)
+        {
+            Debug.Log("Imagens na posição correta!");
+            puzzleSolved = true;
+        }
+    }*/
+
+    public bool IsCorrectlyPlaced()
+    {
+        return snappedTarget != null && correctPositions.Contains(snappedTarget);
     }
 
     private bool IsInsideCanvas(Vector2 targetPosition)
