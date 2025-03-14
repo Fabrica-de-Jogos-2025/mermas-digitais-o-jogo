@@ -589,14 +589,15 @@ MonoBehaviour:
     do seu computador, eu acabei vindo junto. E s\xF3 sei de uma coisa, alguns malwares
     escaparam, e pelo que sei isso \xE9 muito, muito ruim!!"
   - "Os malwares s\xE3o programas de computador maliciosos que podem causar diversos
-    preju\xEDzos a algu\xE9m, como roubar informa\xE7\xF5es ou at\xE9 mesmo sequestrar
-    seus dados. Se ganharam vida aqui no seu mundo, isso n\xE3o vai ser nada bom."
+    preju\xEDzos, como roubar informa\xE7\xF5es ou at\xE9 mesmo sequestrar seus dados.
+    Se ganharam vida aqui no seu mundo, isso n\xE3o vai ser nada bom."
   - "Precisamos det\xEA-los antes de que fa\xE7am algo. E a\xED, quer se juntar comigo
     nessa aventura?"
   - "Vou tomar o seu sil\xEAncio como um sim. N\xE3o se preocupa, eu vou te ajudar
     durante essa jornada!!"
   - "T\xE1, vamos come\xE7ar do come\xE7o porque voc\xEA deve estar perdida. Primeiro,
-    para andar para a esquerda e para a direita pressione os bot\xF5es "
+    para andar para a esquerda e para a direita pressione as setinhas esquerda e
+    direita do teclado, ou as teclas \"A\" e \"D\" se preferir!! "
   triggerOnce: 1
   pausarJogador: 0
 --- !u!1 &177518075
@@ -1462,7 +1463,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
@@ -1473,14 +1473,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,7 +1577,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.680174, y: -0.52524, z: -10}
+  m_LocalPosition: {x: -6.6801863, y: -0.52524, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2583,8 +2575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "Boa!! Agora estou com o poder nas m\xE3os, posso atacar os nossos inimigos aqui."
-  - "Vamos fazer um teste? Tem um inimigo a frente, pressione (\xEDcone do bot\xE3o
-    Espa\xE7o) para que eu possa dar um jeito nele."
+  - "Vamos fazer um teste? Tem um inimigo a frente, pressione a tecla \"Espa\xE7o\"
+    para que eu possa dar um jeito nele."
   triggerOnce: 1
   pausarJogador: 0
 --- !u!114 &1001559145
@@ -3108,7 +3100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "Agora, voc\xEA precisa pular para subir o degrau a frente. Para pular, \xE9
-    s\xF3 pressionar"
+    s\xF3 pressionar a setinha pra cima ou a tecla \"W\"."
   triggerOnce: 1
   pausarJogador: 0
 --- !u!61 &1184819618
