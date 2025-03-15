@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Hability1_1 : MonoBehaviour
+public class Hability2OpenAndClose : MonoBehaviour
 {
     [TextArea(3, 10)]
     public string[] dialogueMessages;
@@ -14,6 +14,7 @@ public class Hability1_1 : MonoBehaviour
     private PlayerMovement player;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public Hability2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,11 +39,15 @@ public class Hability1_1 : MonoBehaviour
         {
             RobotDialogue robot = FindObjectOfType<RobotDialogue>();
 
-            if (robot != null && player != null)
+            if (robot != null && player != null && !player.IsJumping)
             {
-                //robot.StartDialogue(dialogueMessages, player);
+                robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
             }
         }
+            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close)
+            {
+                habilityScreen.SetActive(false);
+            }
     }
 }
