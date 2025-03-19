@@ -1,17 +1,14 @@
 using UnityEngine;
 
-public class Plataform3 : MonoBehaviour
+public class Platform : MonoBehaviour
 {
-    
     [SerializeField] private float Speed;
-    [SerializeField] public float StoppingDistance1, StoppingDistance2;
-    private Transform Target, Target2;
+    [SerializeField] private float StoppingDistance1, StoppingDistance2;
+    public Transform Target, Target2;
     public bool verif = false;
 
     void Start()
     {
-        Target = GameObject.FindGameObjectWithTag("Limit 4").GetComponent<Transform>();
-        Target2 = GameObject.FindGameObjectWithTag("Limit 5").GetComponent<Transform>();
     }
 
     void Update()
@@ -41,3 +38,4 @@ public class Plataform3 : MonoBehaviour
     }
 
 }
+

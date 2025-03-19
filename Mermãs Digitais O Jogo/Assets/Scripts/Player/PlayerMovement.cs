@@ -176,22 +176,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision){
-	    if(collision.transform.tag == "Plataform 1")
-	    {
-            transform.SetParent(collision.transform);
-	    }
-        else if(collision.transform.tag == "Plataform 2")
+	    if(collision.transform.tag == "Platform")
 	    {
             transform.SetParent(collision.transform);
 	    }
     }
 
     public void OnCollisionExit2D(Collision2D collision){
-	    if(collision.transform.tag == "Plataform 1")
-	    {
-            transform.SetParent(null);
-	    }
-        else if(collision.transform.tag == "Plataform 2")
+	    if(collision.transform.tag == "Platform")
 	    {
             transform.SetParent(null);
 	    }

@@ -6,7 +6,8 @@ public class Hability3 : MonoBehaviour
     [SerializeField] private TMP_InputField numberInput;
     [SerializeField] private TMP_InputField numberInput2;
     public bool puzzleSolved = false;
-    private bool cardAppear = false;
+    public bool cardAppear = false;
+    private bool i = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,13 +26,14 @@ public class Hability3 : MonoBehaviour
         {
             if (number == 0)
             {
+                i = true;
                 puzzleSolved = true;
             }
         } 
 
-        if (int.TryParse(numberInput.text, out int secondNumber))
+        if (int.TryParse(numberInput2.text, out int secondNumber))
         {
-            if (secondNumber == 0)
+            if ((secondNumber == 0) && i)
             {
                 cardAppear = true;
             } 
