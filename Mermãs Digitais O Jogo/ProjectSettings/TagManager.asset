@@ -12,6 +12,15 @@ TagManager:
   - square
   - SnapTarget
   - FinalPosition
+  - Limit 1
+  - Limit 2
+  - Limit 3
+  - Plataform 1
+  - Plataform 2
+  - Limit 4
+  - Limit 5
+  - Limit 6
+  - Limit 7
   layers:
   - Default
   - TransparentFX
