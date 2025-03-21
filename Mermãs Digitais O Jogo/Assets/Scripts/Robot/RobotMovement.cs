@@ -12,7 +12,7 @@ public class RobotMovement : MonoBehaviour
     private Transform Target;
     private RobotPowerUp robotPowered;
     private static Vector3 respawnpoint;
-
+    private bool isUsingPowerUp = false;
     public static Vector3 Respawnpoint 
     { 
       get { return respawnpoint; } 
@@ -32,7 +32,7 @@ public class RobotMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, Target.position) >= StoppingDistance)
+        if (!isUsingPowerUp && Vector2.Distance(transform.position, Target.position) >= StoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
         }
@@ -57,9 +57,9 @@ public class RobotMovement : MonoBehaviour
 
     void PowerUp()
     {
-        if (robotPowered.HasPowerUp)
+        if (robotPowered.HasPowerUp && !isUsingPowerUp)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(UsePowerUp());
             }
@@ -68,9 +68,12 @@ public class RobotMovement : MonoBehaviour
 
     IEnumerator UsePowerUp()
     {
+        isUsingPowerUp = true;
         float direction = player.transform.localScale.x;
         float maxDistance;
-        
+        Vector3 originalPosition = transform.position;
+
+
         if (direction > 0)
         {
             maxDistance = Camera.main.ViewportToWorldPoint(new Vector3(1, 0.5f, 0)).x;
@@ -81,9 +84,8 @@ public class RobotMovement : MonoBehaviour
 
         while ((direction > 0 && transform.position.x < maxDistance) || (direction < 0 && transform.position.x > maxDistance))
         {
-                transform.position += Vector3.right * direction * Speed * Time.deltaTime; // Move o robô para a direita
+                transform.position += Vector3.right * Mathf.Sign(direction) * Speed * Time.deltaTime; // Move o robô para a direita
                 yield return null;
-            
         }
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 5f);
@@ -94,5 +96,13 @@ public class RobotMovement : MonoBehaviour
                 Destroy(enemy.gameObject);
             }
         }
+
+        while (Vector2.Distance(transform.position, originalPosition) > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, originalPosition, Speed * Time.deltaTime);
+            yield return null;
+        }
+
+        isUsingPowerUp = false;
     }
 }
