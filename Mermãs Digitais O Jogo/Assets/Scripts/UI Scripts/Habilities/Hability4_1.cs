@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Splines;
 
-public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class Hability4_1 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -12,7 +12,7 @@ public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private RectTransform canvasRect;
     private bool isSnapped = false;
 
-    public static List<Hability4> allDraggableObjects = new List<Hability4>();
+    public static List<Hability4_1> allDraggableObjects = new List<Hability4_1>();
     public List<GameObject> correctPositions; // Lista de posições corretas
     private GameObject snappedTarget;
     public bool close;
@@ -42,7 +42,7 @@ public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             snappedTarget = null;
         }
 
-        // Torna o objeto transparente ao começar o arraste
+        // Torna o objeto transparente ao come?ar o arraste
         canvasGroup.alpha = 0.9f;
         canvasGroup.blocksRaycasts = false; // Permite que eventos passem para objetos abaixo
     }
