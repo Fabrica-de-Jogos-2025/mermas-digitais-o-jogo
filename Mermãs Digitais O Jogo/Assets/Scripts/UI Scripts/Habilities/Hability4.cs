@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Splines;
 
-public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -12,14 +12,14 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private RectTransform canvasRect;
     private bool isSnapped = false;
 
-    public static List<Hability2> allDraggableObjects = new List<Hability2>();
-    public List<GameObject> correctPositions; // Lista de posi��es corretas
+    public static List<Hability4> allDraggableObjects = new List<Hability4>();
+    public List<GameObject> correctPositions; // Lista de posi??es corretas
     private GameObject snappedTarget;
     public bool close;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>(); // Garante que tenha um Canvas como refer�ncia
+        canvas = GetComponentInParent<Canvas>(); // Garante que tenha um Canvas como refer?ncia
         canvasRect = canvas.GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
@@ -42,7 +42,7 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             snappedTarget = null;
         }
 
-        // Torna o objeto transparente ao come�ar o arraste
+        // Torna o objeto transparente ao come?ar o arraste
         canvasGroup.alpha = 0.9f;
         canvasGroup.blocksRaycasts = false; // Permite que eventos passem para objetos abaixo
     }
@@ -81,7 +81,7 @@ public class Hability2 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
                 isSnapped = true;
                 snappedTarget = result.gameObject;
                 //Hability2Use.CheckAllPositions();
-                if (!close){close = true;}
+                if (!close) { close = true; }
                 return;
             }
         }

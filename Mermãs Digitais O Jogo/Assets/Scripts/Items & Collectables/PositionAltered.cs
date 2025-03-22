@@ -6,23 +6,21 @@ public class PositionAltered : MonoBehaviour
     public float Speed;
     public Transform Target;
     public Hability2OpenAndClose_2 Dest;
-    private int i = 0;
+    
     void Start()
     {
-        Target = GameObject.FindGameObjectWithTag("FinalPosition").GetComponent<Transform>();
     }
 
     void Update()
     {
         if (Dest.destroy)
         {
-            if (i==135)
+            if (Vector2.Distance(transform.position, Target.position) <= StoppingDistance)
             {
                 Dest.destroy = false;
             }
             else
             {
-                i++;
                 transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
             }
         }
