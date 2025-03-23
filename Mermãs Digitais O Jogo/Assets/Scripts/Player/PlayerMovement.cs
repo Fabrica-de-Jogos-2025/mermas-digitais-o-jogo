@@ -179,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
 	    if(collision.transform.tag == "Platform")
 	    {
             transform.SetParent(collision.transform);
+            DontDestroyOnLoad(this.gameObject);
 	    }
     }
 
