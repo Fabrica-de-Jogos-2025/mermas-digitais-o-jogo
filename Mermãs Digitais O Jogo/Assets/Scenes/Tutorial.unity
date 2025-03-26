@@ -2727,8 +2727,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1781053660}
   Speed: 5
-  StoppingDistance: 1.3
+  StoppingDistance: -1.3
   playerStatus: {fileID: 1781053666}
+  direction: 0
+  moviment: {x: -1, y: 0.5, z: 0}
 --- !u!50 &1089571312
 Rigidbody2D:
   serializedVersion: 5
