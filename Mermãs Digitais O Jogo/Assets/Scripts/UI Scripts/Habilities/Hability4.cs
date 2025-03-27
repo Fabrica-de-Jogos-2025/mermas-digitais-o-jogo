@@ -13,9 +13,10 @@ public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private bool isSnapped = false;
 
     public static List<Hability4> allDraggableObjects = new List<Hability4>();
-    public List<GameObject> correctPositions; // Lista de posições corretas
+    public List<GameObject> correctPositions; // Lista de posiï¿½ï¿½es corretas
     private GameObject snappedTarget;
     public bool close;
+    private Vector2 NP, newPosition;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -42,7 +43,7 @@ public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             snappedTarget = null;
         }
 
-        // Torna o objeto transparente ao começar o arraste
+        // Torna o objeto transparente ao comeï¿½ar o arraste
         canvasGroup.alpha = 0.9f;
         canvasGroup.blocksRaycasts = false; // Permite que eventos passem para objetos abaixo
     }
@@ -52,7 +53,18 @@ public class Hability4 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         if (!isSnapped)
         {
             // Move o objeto conforme o mouse/touch
-            Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
+            //Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
+
+            NP = rectTransform.anchoredPosition + new Vector2(
+            eventData.delta.x / (canvas.scaleFactor * 1.04f),
+            eventData.delta.y / (canvas.scaleFactor * 2.19f)
+            );
+
+            if(((NP.x > -300.7479) && (NP.y > -49.2)) && ((NP.x < 297.3465) && (NP.y < 50.05504)))
+            newPosition = rectTransform.anchoredPosition + new Vector2(
+            eventData.delta.x / (canvas.scaleFactor * 1.04f),
+            eventData.delta.y / (canvas.scaleFactor * 2.19f)
+            );
 
             if (IsInsideCanvas(newPosition))
             {

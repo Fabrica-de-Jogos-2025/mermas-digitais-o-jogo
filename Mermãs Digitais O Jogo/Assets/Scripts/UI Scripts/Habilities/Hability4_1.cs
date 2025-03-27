@@ -13,9 +13,10 @@ public class Hability4_1 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
     private bool isSnapped = false;
 
     public static List<Hability4_1> allDraggableObjects = new List<Hability4_1>();
-    public List<GameObject> correctPositions; // Lista de posições corretas
+    public List<GameObject> correctPositions; // Lista de posiï¿½ï¿½es corretas
     private GameObject snappedTarget;
     public bool close;
+    private Vector2 NP, newPosition;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -52,7 +53,18 @@ public class Hability4_1 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
         if (!isSnapped)
         {
             // Move o objeto conforme o mouse/touch
-            Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
+            //Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
+
+            NP = rectTransform.anchoredPosition + new Vector2(
+            eventData.delta.x / (canvas.scaleFactor * 1.04f),
+            eventData.delta.y / (canvas.scaleFactor * 2.19f)
+            );
+
+            if(((NP.x > -300.7479) && (NP.y > -49.2)) && ((NP.x < 297.3465) && (NP.y < 50.05504)))
+            newPosition = rectTransform.anchoredPosition + new Vector2(
+            eventData.delta.x / (canvas.scaleFactor * 1.04f),
+            eventData.delta.y / (canvas.scaleFactor * 2.19f)
+            );
 
             if (IsInsideCanvas(newPosition))
             {

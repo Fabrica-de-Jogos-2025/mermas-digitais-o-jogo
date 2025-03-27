@@ -15,13 +15,14 @@ public class Door : MonoBehaviour
     {
         if (!hasPlayed && anim != null)
         {
-            anim.SetInteger("transition", 0); // Ativa a animaÁ„o da porta
-            hasPlayed = true; // Marca que a animaÁ„o j· foi executada
+            anim.SetInteger("transition", 0); // Ativa a anima√ß√£o da porta
+            hasPlayed = true; // Marca que a anima√ß√£o j√° foi executada
         }
     }
 
     public Vector2 GetExitPosition()
     {
+        anim.SetInteger("transition", 1);
         return exitPoint != null ? exitPoint.position : transform.position;
     }
 

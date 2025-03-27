@@ -10,7 +10,9 @@ public class RobotMovement : MonoBehaviour
 
     [SerializeField] private PlayerStatus playerStatus;
     private Transform Target;
-    private RobotPowerUp robotPowered;
+    //private RobotPowerUp robotPowered;
+    //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
+    public bool HasPowerUp;
     private static Vector3 respawnpoint;
     private bool isUsingPowerUp = false;
     public static Vector3 Respawnpoint 
@@ -27,7 +29,7 @@ public class RobotMovement : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         playerStatus = GetComponent<PlayerStatus>();
-        robotPowered = FindAnyObjectByType<RobotPowerUp>();
+        //robotPowered = FindAnyObjectByType<RobotPowerUp>();
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
@@ -64,7 +66,7 @@ public class RobotMovement : MonoBehaviour
 
     void PowerUp()
     {
-        if (robotPowered.HasPowerUp && !isUsingPowerUp)
+        if (HasPowerUp && !isUsingPowerUp)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -82,7 +84,7 @@ public class RobotMovement : MonoBehaviour
         //Vector3 originalPosition = transform.position;
 
 
-        if (direction > 0)
+        if (((direction > 0) && moviment.x == -1) || moviment.x == -1)
         {
             maxDistance = Camera.main.ViewportToWorldPoint(new Vector3(0.75f, 0.5f, 0)).x;
             
@@ -102,7 +104,7 @@ public class RobotMovement : MonoBehaviour
                 yield return null;
             }
 
-        } else if (direction <= 0)
+        } else if (((direction <= 0) && moviment.x == 1) || moviment.x == 1)
         {
             maxDistance = Camera.main.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, 0)).x;
 

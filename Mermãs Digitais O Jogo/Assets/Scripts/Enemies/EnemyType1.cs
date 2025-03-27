@@ -6,7 +6,7 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private PlayerStatus life;
     [SerializeField] private RobotMovement robot;
-    [SerializeField] private RobotPowerUp powerUp;
+    //[SerializeField] private RobotPowerUp powerUp;
     [SerializeField] private float speed;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask enemyLayer;
@@ -32,7 +32,7 @@ public class EnemyType1 : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
 
-        LayerMask groundLayer = LayerMask.GetMask("Ground"); // Apenas a camada do chão
+        LayerMask groundLayer = LayerMask.GetMask("Ground"); // Apenas a camada do chï¿½o
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, distance, groundLayer);
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("CameraConfiner"), true);
@@ -78,7 +78,7 @@ public class EnemyType1 : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            powerUp.HasPowerUp = false;
+            robot.HasPowerUp = false;
             life.PlayerLife--;
             life.Hearts[life.PlayerLife].enabled = false;
             if (life.PlayerLife <= 0)

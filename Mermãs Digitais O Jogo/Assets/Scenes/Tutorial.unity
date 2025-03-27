@@ -959,7 +959,7 @@ MonoBehaviour:
   player: {fileID: 1781053660}
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
-  powerUp: {fileID: 1001559145}
+  powerUp: {fileID: 1089571311}
   speed: 2
   distance: 0.8
   enemyLayer:
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   player: {fileID: 1781053660}
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
-  powerUp: {fileID: 1001559145}
+  powerUp: {fileID: 1089571311}
   speed: 2
   distance: 0.3
   enemyLayer:
@@ -2591,7 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasPowerUp: 0
+  robotPowered: {fileID: 0}
 --- !u!1 &1080653076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,8 +2729,10 @@ MonoBehaviour:
   Speed: 5
   StoppingDistance: -1.3
   playerStatus: {fileID: 1781053666}
+  HasPowerUp: 0
   direction: 0
   moviment: {x: -1, y: 0.5, z: 0}
+  i: 0
 --- !u!50 &1089571312
 Rigidbody2D:
   serializedVersion: 5
@@ -4688,7 +4690,7 @@ MonoBehaviour:
   player: {fileID: 1781053660}
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
-  powerUp: {fileID: 1001559145}
+  powerUp: {fileID: 1089571311}
   speed: 2
   distance: 0.8
   enemyLayer:
