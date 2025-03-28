@@ -6,7 +6,9 @@ public class Colision : MonoBehaviour
     public Hability6_2 H;
     private bool playerInTrigger = false;
     private PlayerMovement player;
-    public bool valid = false;
+    public GameObject Enemy1;
+    public GameObject Enemy2;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,11 +40,8 @@ public class Colision : MonoBehaviour
             {
                 P.verif2 = true;
             }
-
-            if (valid == false)
-            {
-                valid = true;
-            }
+                Enemy1.SetActive(true);
+                Enemy2.SetActive(true);
         }
     }
             
