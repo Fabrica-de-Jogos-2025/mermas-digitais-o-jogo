@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7bab47b9cd6b97a4dbd61b5409a9f7a3
+guid: 112fa144250f3ab4da2cbdaff3a5f00e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7485382524971938333
-    second: Personagem-removebg-preview_0
+      213: -1981418222017897944
+    second: jumping_0
+  - first:
+      213: -7642617639853138913
+    second: jumping_1
+  - first:
+      213: 238710075600487543
+    second: jumping_2
+  - first:
+      213: -4932991158002552226
+    second: jumping_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,17 +105,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Personagem-removebg-preview_0
+      name: jumping_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 30
-        width: 226
-        height: 469
+        x: 7
+        y: 3
+        width: 26
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ed8127b0449e1890800000000000000
-      internalID: -7485382524971938333
+      spriteID: 82a132500a69084e0800000000000000
+      internalID: -1981418222017897944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 3
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c5b66bfb7ffe590800000000000000
+      internalID: -7642617639853138913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 10
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774497c8c81105300800000000000000
+      internalID: 238710075600487543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 7
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e527d1b8dae7a8bb0800000000000000
+      internalID: -4932991158002552226
       vertices: []
       indices: 
       edges: []
@@ -135,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Personagem-removebg-preview_0: -7485382524971938333
+      jumping_0: -1981418222017897944
+      jumping_1: -7642617639853138913
+      jumping_2: 238710075600487543
+      jumping_3: -4932991158002552226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
