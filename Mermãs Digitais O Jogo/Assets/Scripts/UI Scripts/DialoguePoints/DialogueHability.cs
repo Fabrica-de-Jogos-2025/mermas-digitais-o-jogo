@@ -30,7 +30,8 @@ public class DialogueHability : MonoBehaviour
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.X))
         {
-            RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
             if (robot != null && player != null && !player.IsJumping)
             {

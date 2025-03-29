@@ -38,7 +38,8 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
         {
-            RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
             if (robot != null && player != null && !player.IsJumping)
             {

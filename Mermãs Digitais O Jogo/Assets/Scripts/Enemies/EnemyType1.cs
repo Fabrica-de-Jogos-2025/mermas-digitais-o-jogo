@@ -22,9 +22,12 @@ public class EnemyType1 : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
-        life = FindObjectOfType<PlayerStatus>();
-        robot = FindObjectOfType<RobotMovement>();
+        //player = FindObjectOfType<PlayerMovement>();
+        //life = FindObjectOfType<PlayerStatus>();
+        //robot = FindObjectOfType<RobotMovement>();
+        player = FindFirstObjectByType<PlayerMovement>();
+        life = FindFirstObjectByType<PlayerStatus>();
+        robot = FindFirstObjectByType<RobotMovement>();
     }
     // Update is called once per frame
     void Update()

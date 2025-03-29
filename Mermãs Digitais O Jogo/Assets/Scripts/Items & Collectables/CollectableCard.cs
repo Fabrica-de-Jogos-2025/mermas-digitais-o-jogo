@@ -6,7 +6,8 @@ public class CollectableCard : MonoBehaviour
 
     private void Start()
     {
-        quantityCards = FindObjectOfType<PlayerStatus>();
+        //quantityCards = FindObjectOfType<PlayerStatus>();
+        quantityCards = FindFirstObjectByType<PlayerStatus>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

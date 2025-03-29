@@ -11,7 +11,8 @@ public class DialogueTutorial2 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
+            RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
             PlayerMovement player = other.GetComponent<PlayerMovement>();
 
             if (robot != null)
