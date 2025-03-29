@@ -16,8 +16,8 @@ public class Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     public static List<Hability5> allDraggableObjects = new List<Hability5>();
     public List<GameObject> correctPositions; // Lista de posições corretas
     private GameObject snappedTarget;
-    public bool close;
-    private bool i = false;
+    public bool close, allCorrect;
+    public bool i = false;
     [SerializeField] private GameObject rocket; // Referência ao foguete
     [SerializeField] private GameObject rocketCollider; // Collider do foguete
     
@@ -62,8 +62,8 @@ public class Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             //Vector2 newPosition = rectTransform.anchoredPosition + eventData.delta / canvas.scaleFactor;
 
             NP = rectTransform.anchoredPosition + new Vector2(
-            eventData.delta.x / (canvas.scaleFactor * 1.04f),
-            eventData.delta.y / (canvas.scaleFactor * 2.19f)
+            eventData.delta.x / (canvas.scaleFactor * 1.22772f),
+            eventData.delta.y / (canvas.scaleFactor * 2.5853f)
             );
 
             if(((NP.x > -300.7479) && (NP.y > -49.2)) && ((NP.x < 297.3465) && (NP.y < 50.05504)))
@@ -134,7 +134,7 @@ public class Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private void CheckAllPositions()
     {
         // Verifica se todos os objetos estão corretamente posicionados
-        bool allCorrect = true;
+        allCorrect = true;
         foreach (Hability5 obj in allDraggableObjects)
         {
             if (!obj.IsCorrectlyPlaced())
@@ -143,6 +143,11 @@ public class Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
                 break;
             }
         }
+    }
+
+    void Start()
+    {
+        //numberInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
     }
 
     public void NumberCaption() {

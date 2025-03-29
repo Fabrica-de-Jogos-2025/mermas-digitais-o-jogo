@@ -29,7 +29,7 @@ public class Die5 : MonoBehaviour
         {
             StartCoroutine(DestroyAfterDelay());
             isDestroyed = true; // Evita chamadas repetidas da coroutine
-            isDestroyed = true;
+            //isDestroyed = true;
             Destroy(this.gameObject);
             Destroy(rocketCollider.gameObject);
         }
