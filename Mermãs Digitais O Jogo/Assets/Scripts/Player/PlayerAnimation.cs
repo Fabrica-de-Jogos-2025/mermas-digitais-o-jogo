@@ -7,7 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
+        //player = FindObjectOfType<PlayerMovement>();
+        player = FindFirstObjectByType<PlayerMovement>();
         anim = GetComponent<Animator>();
     }
 

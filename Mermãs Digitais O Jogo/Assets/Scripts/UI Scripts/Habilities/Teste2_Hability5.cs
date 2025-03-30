@@ -15,7 +15,7 @@ public class Teste2_Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler
     public List<GameObject> correctPositions; // Lista de posições corretas
     private GameObject snappedTarget;
     public bool close, allCorrect;
-    public bool i = false;
+    //public bool i = false;
     
     private Vector2 NP, newPosition;
 
@@ -98,7 +98,7 @@ public class Teste2_Hability5 : MonoBehaviour, IPointerDownHandler, IDragHandler
                 if (!close)
                 {
                     close = true;
-                    CheckAllPositions();
+                    //CheckAllPositions();
                 }
                 return;
             }

@@ -6,7 +6,7 @@ public class Teste_Die_5_2 : MonoBehaviour
     public Teste_Hability5_2 Dest;
     //public float destroyInSec = 3f;
     private bool isDestroyed = false;
-    public GameObject rocket; // Referência ao foguete
+    //public GameObject rocket; // Referência ao foguete
     [SerializeField] private GameObject rocketCollider; // Collider do foguete
 
     
@@ -18,7 +18,7 @@ public class Teste_Die_5_2 : MonoBehaviour
             isDestroyed = true; // Evita chamadas repetidas da coroutine
             //isDestroyed = true;
             Destroy(this.gameObject);
-            Destroy(rocket.gameObject);
+            //Destroy(rocket.gameObject);
             Destroy(rocketCollider.gameObject);
         }
     }
@@ -27,6 +27,6 @@ public class Teste_Die_5_2 : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyInSec);
         Destroy(this.gameObject);
-        Destroy(rocket.gameObject);
+        //Destroy(rocket.gameObject);
     }*/
 }
