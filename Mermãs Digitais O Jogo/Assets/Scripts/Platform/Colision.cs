@@ -8,6 +8,8 @@ public class Colision : MonoBehaviour
     private PlayerMovement player;
     public GameObject Enemy1;
     public GameObject Enemy2;
+    public bool permissionEnemy = true;
+    public bool Grids = false;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,8 +42,13 @@ public class Colision : MonoBehaviour
             {
                 P.verif2 = true;
             }
+
+            if (permissionEnemy)
+            {
                 Enemy1.SetActive(true);
                 Enemy2.SetActive(true);
+                Grids = true;
+            }
         }
     }
             
