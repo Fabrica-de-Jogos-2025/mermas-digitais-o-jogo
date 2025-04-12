@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 78613874556b1b143845919cdc93b366
+guid: cc07fff24d9dc7e498dd479b39c1fac9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5995236876371314989
-    second: opcoes nome_0
+      213: 2491550991131956940
+    second: Untitled 04-06-2025 07-31-57_0
+  - first:
+      213: 6600503950400662889
+    second: Untitled 04-06-2025 07-31-57_1
+  - first:
+      213: 8015254738587223758
+    second: Untitled 04-06-2025 07-31-57_2
+  - first:
+      213: 5101984564898452979
+    second: Untitled 04-06-2025 07-31-57_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,7 +105,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -114,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: opcoes nome_0
+      name: Untitled 04-06-2025 07-31-57_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 649
-        height: 282
+        x: 33
+        y: 17
+        width: 114
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d6b09733d3accca0800000000000000
-      internalID: -5995236876371314989
+      spriteID: cc65136fc64c39220800000000000000
+      internalID: 2491550991131956940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled 04-06-2025 07-31-57_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 15
+        width: 107
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96da1363f53b99b50800000000000000
+      internalID: 6600503950400662889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled 04-06-2025 07-31-57_2
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 11
+        width: 103
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec602c5d7b7eb3f60800000000000000
+      internalID: 8015254738587223758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled 04-06-2025 07-31-57_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 15
+        width: 107
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f55c482ee3edc640800000000000000
+      internalID: 5101984564898452979
       vertices: []
       indices: 
       edges: []
@@ -149,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      opcoes nome_0: -5995236876371314989
+      Untitled 04-06-2025 07-31-57_0: 2491550991131956940
+      Untitled 04-06-2025 07-31-57_1: 6600503950400662889
+      Untitled 04-06-2025 07-31-57_2: 8015254738587223758
+      Untitled 04-06-2025 07-31-57_3: 5101984564898452979
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
