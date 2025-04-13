@@ -3,13 +3,14 @@ using UnityEngine;
 public class Colision : MonoBehaviour
 {
     public PlatformType2 P;
-    public Hability6_2 H;
+    public Hability6 H;
     private bool playerInTrigger = false;
     private PlayerMovement player;
     public GameObject Enemy1;
     public GameObject Enemy2;
     public bool permissionEnemy = true;
     public bool Grids = false;
+    private bool UC = true;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,11 +44,12 @@ public class Colision : MonoBehaviour
                 P.verif2 = true;
             }
 
-            if (permissionEnemy)
+            if (permissionEnemy && UC)
             {
                 Enemy1.SetActive(true);
                 Enemy2.SetActive(true);
                 Grids = true;
+                UC = false;
             }
         }
     }

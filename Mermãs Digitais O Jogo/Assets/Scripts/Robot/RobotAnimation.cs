@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour
+public class RobotAnimation : MonoBehaviour
 {
     private PlayerMovement player;
+    private RobotMovement robot;
     private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = FindFirstObjectByType<PlayerMovement>();
+        robot = FindFirstObjectByType<RobotMovement>();
         anim = GetComponent<Animator>();
     }
 
@@ -15,7 +17,6 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         Walking();
-        Jumping();
     }
 
     void Walking()
@@ -24,13 +25,12 @@ public class PlayerAnimation : MonoBehaviour
         {
             anim.SetInteger("transition", 1);
         }
-
         else
         {
             anim.SetInteger("transition", 0);
         }
 
-        if (player.Direction.x > 0)
+        /*if (robot.Direction.x > 0)
         {
             transform.eulerAngles = new Vector2(0, 0);
         }
@@ -38,14 +38,6 @@ public class PlayerAnimation : MonoBehaviour
         if (player.Direction.x < 0)
         {
             transform.eulerAngles = new Vector2(0, 180);
-        }
-    }
-
-    void Jumping()
-    {
-        if (player.IsJumping)
-        {
-            anim.SetInteger("transition", 2);
-        }
+        }*/
     }
 }

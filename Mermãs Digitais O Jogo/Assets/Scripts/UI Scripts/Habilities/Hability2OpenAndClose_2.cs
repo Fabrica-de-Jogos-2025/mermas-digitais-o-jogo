@@ -45,12 +45,14 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
             {
                 //robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                //pausarJogador = true;
             }
         }
             else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1)
             {
                 habilityScreen.SetActive(false);
                 destroy = true;
+                //pausarJogador = false;
             }
     }
 }

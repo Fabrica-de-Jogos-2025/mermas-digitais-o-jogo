@@ -43,6 +43,7 @@ public class Hability1_1 : MonoBehaviour
             {
                 //robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                //pausarJogador = true;
             }
         }
     }

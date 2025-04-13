@@ -47,6 +47,7 @@ public class Hability1Use_1 : MonoBehaviour
 
             if (puzzleSolved)
             {
+                habilityScreen.pausarJogador = false;
                 habilityScreen.HabilityScreen.SetActive(false);
                 destroy = true;
             }

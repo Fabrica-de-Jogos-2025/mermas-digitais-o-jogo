@@ -4,28 +4,25 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Hability6 : MonoBehaviour, IPointerClickHandler
+public class Hability6Error : MonoBehaviour, IPointerClickHandler
 {
     public VideoPlayer video;
     public GameObject uiCanvas;
-    public GameObject ship;
-    [SerializeField] private Image rightAnswer;
-    [SerializeField] private Image wrongAnswer1;
-    [SerializeField] private Image wrongAnswer2;
-    public GameObject videoPanel; 
-    public RawImage videoDisplay; 
+    [SerializeField] private Image wrongAnswer;
+    public GameObject videoPanel;
+    public RawImage videoDisplay;
     public RenderTexture renderTexture;
-    public bool UsoDaUltimaHabilidade = false;
 
     private void Start()
     {
         if (video == null)
         {
-            video = FindObjectOfType<VideoPlayer>(); 
+            video = FindObjectOfType<VideoPlayer>();
         }
 
         if (video == null)
         {
+            uiCanvas.SetActive(true);
             Debug.LogError("Nenhum VideoPlayer encontrado na cena!");
             return;
         }
@@ -36,7 +33,7 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
             videoDisplay.texture = renderTexture;
         }
 
-        videoPanel.SetActive(false); 
+        videoPanel.SetActive(false);
         video.loopPointReached += OnVideoEnd;
     }
 
@@ -44,35 +41,18 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
     {
         if (video != null && uiCanvas != null)
         {
-            if (wrongAnswer1 != null)
-            {
-                Destroy(wrongAnswer1.gameObject);
-            }
-
-            if (wrongAnswer2 != null)
-            {
-                Destroy(wrongAnswer2.gameObject);
-            }
-
-            Destroy(rightAnswer.gameObject);
-            videoPanel.SetActive(true); 
+            videoPanel.SetActive(true);
             videoDisplay.gameObject.SetActive(true);
             video.Play();
-        }
-
-        if (ship != null)
-        {
-            UsoDaUltimaHabilidade = true;
-            Destroy(ship);
+            Destroy(wrongAnswer.gameObject);
         }
     }
 
     private void OnVideoEnd(VideoPlayer vp)
     {
-        if (uiCanvas != null)
-        {
-            uiCanvas.SetActive(false);
-        }
+        uiCanvas.SetActive(true);
+        /*Destroy(videoPanel.gameObject);
+        Destroy(videoDisplay.gameObject);*/
         videoPanel.SetActive(false);
         videoDisplay.gameObject.SetActive(false);
     }
