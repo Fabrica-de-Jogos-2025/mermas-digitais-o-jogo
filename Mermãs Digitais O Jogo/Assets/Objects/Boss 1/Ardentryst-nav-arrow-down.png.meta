@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ardentryst-nav-arrow-down_0: 1129342731883736827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

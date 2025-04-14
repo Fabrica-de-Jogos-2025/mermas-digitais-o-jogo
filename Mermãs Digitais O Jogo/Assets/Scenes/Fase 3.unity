@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 1281748851}
   Enemy2: {fileID: 753795966}
   permissionEnemy: 1
@@ -3193,7 +3193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &223847870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3542,7 +3542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 1574195042}
   Enemy2: {fileID: 1002093926}
   permissionEnemy: 1
@@ -36758,7 +36758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 1835294262}
   Enemy2: {fileID: 1699427801}
   permissionEnemy: 1
@@ -38937,7 +38937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 0}
   Enemy2: {fileID: 0}
   permissionEnemy: 0
@@ -39996,10 +39996,7 @@ MonoBehaviour:
   videoPanel: {fileID: 1011365298}
   videoDisplay: {fileID: 699075752}
   renderTexture: {fileID: 8400000, guid: f90a5b5c38b581b488c30aa15fd34ca6, type: 2}
-<<<<<<< HEAD
   UsoDaUltimaHabilidade: 0
-=======
->>>>>>> feature/UI
 --- !u!1 &1054628979
 GameObject:
   m_ObjectHideFlags: 0
@@ -41768,11 +41765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 0
-=======
-  m_IsActive: 1
->>>>>>> feature/UI
 --- !u!114 &1194288150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43934,7 +43927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 810284735}
   Enemy2: {fileID: 949550652}
   permissionEnemy: 1
@@ -47107,7 +47100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 2067693877}
   Enemy2: {fileID: 1817537261}
   permissionEnemy: 1
@@ -47603,7 +47596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 1912134835}
   Enemy2: {fileID: 1720264720}
   permissionEnemy: 1
@@ -53298,7 +53291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
-  H: {fileID: 0}
+  H: {fileID: 2093588627}
   Enemy1: {fileID: 270605426}
   Enemy2: {fileID: 1603925644}
   permissionEnemy: 1
@@ -53546,10 +53539,7 @@ MonoBehaviour:
   videoPanel: {fileID: 48359089}
   videoDisplay: {fileID: 119669463}
   renderTexture: {fileID: 8400000, guid: f90a5b5c38b581b488c30aa15fd34ca6, type: 2}
-<<<<<<< HEAD
   UsoDaUltimaHabilidade: 0
-=======
->>>>>>> feature/UI
 --- !u!1 &2101268001
 GameObject:
   m_ObjectHideFlags: 0
