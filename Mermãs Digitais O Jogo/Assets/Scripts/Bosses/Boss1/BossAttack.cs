@@ -22,6 +22,8 @@ public class BossAttack : MonoBehaviour
 
     public GameObject Temporario1,Temporario2;
 
+    private float speedFactor;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -33,33 +35,15 @@ public class BossAttack : MonoBehaviour
         if ((V.valid && (i == 0)) || (V2.valid && (i == 1)) || (V3.valid && (i == 2)))
         {
             arrowdown.SetActive(false);
-            //anim.SetInteger("transition", 1);
-
-            /*if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-            {
-                permission = true;
-            }
-            //permission = true;*/
-
             k++;
-
             i++;
-
-            /*if (i == 3)
-            {
-                anim.SetInteger("transition", 2);
-
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
-                {
-                    gameObject.SetActive(false);
-                }
-            }*/
         }
 
         if (k == 0)
         {
             anim.SetInteger("transition", 1);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+            speedFactor = 0.06667f;
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
             {
                 permission = true;
                 k = 1;
@@ -68,8 +52,10 @@ public class BossAttack : MonoBehaviour
         else if (k == 2)
         {
             anim.SetInteger("transition", 1);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+            speedFactor = 0.06667f;
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
             {
+                speedFactor = 0f;
                 permission = true;
                 k = 3;
             }
@@ -77,8 +63,10 @@ public class BossAttack : MonoBehaviour
         else if (k == 4)
         {
             anim.SetInteger("transition", 1);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+            speedFactor = 0.06667f;
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
             {
+                speedFactor = 0f;
                 permission = true;
                 k = 5;
             }
@@ -88,9 +76,11 @@ public class BossAttack : MonoBehaviour
             if (i == 3)
             {
                 anim.SetInteger("transition", 2);
+                speedFactor = 0.7f;
 
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
                 {
+                    speedFactor = 0f;
                     gameObject.SetActive(false);
                     Temporario1.SetActive(true);
                     Temporario2.SetActive(true);
@@ -98,12 +88,6 @@ public class BossAttack : MonoBehaviour
             }
         }
 
-        
-
-        
-
-        //if(A.i <= 7)
-        
         else if ((tempoDecorrido <= tempoTotal) && permission)
         {
             if(permission)
@@ -114,7 +98,7 @@ public class BossAttack : MonoBehaviour
             if(h)
             {
                 anim.SetInteger("transition", 3);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && anim.GetCurrentAnimatorStateInfo(0).IsName("spitting"))
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("spitting"))
                 {
                     Attack();
                 }
