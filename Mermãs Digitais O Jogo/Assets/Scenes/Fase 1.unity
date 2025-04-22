@@ -108095,10 +108095,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueMessages:
-  - "Certo, deixe-me ver: nessa habilidade, parece que temos que criar uma valida\xE7\xE3o
-    l\xF3gica. Nesse caso, \xE9 uma nega\xE7\xE3o!! O conceito est\xE1 a\xED, tente
-    inverter os valores l\xF3gicos clicando no tri\xE2ngulo verde e no c\xEDrculo
-    vermelho na tela!!"
+  - "Certo, deixa eu ver: nessa habilidade, parece que temos que criar uma valida\xE7\xE3o
+    l\xF3gica. Pelo visto \xE9 uma nega\xE7\xE3o!! Temos o conceito, tente inverter
+    os valores l\xF3gicos clicando no tri\xE2ngulo verde e no c\xEDrculo vermelho
+    na tela!!"
   - "Boa, a l\xF3gica foi validada como verdadeiro e olha s\xF3, a porta destrancou,
     podemos prosseguir nossa aventura!!"
   - "Ent\xE3o basicamente essa habilidade envolve validar alguma opera\xE7\xE3o l\xF3gica
