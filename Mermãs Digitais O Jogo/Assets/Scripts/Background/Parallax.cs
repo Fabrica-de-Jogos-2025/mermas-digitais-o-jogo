@@ -4,13 +4,14 @@ public class Parallax : MonoBehaviour
 {
     private float startPos;
 
-    public GameObject cam;
+    private Camera cam;
     [Range (0f, 1f)]
     public float parallaxEffect;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cam = FindAnyObjectByType<Camera>();
         startPos = transform.position.x;
     }
 
