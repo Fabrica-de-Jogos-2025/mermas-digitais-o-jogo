@@ -444,7 +444,7 @@ Transform:
   m_GameObject: {fileID: 111876028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.153, z: 0}
+  m_LocalPosition: {x: 0, y: -0.137, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.4876053}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1046,7 +1046,7 @@ Transform:
   m_GameObject: {fileID: 279729762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 6.81, y: 0.311, z: -0.050951947}
+  m_LocalPosition: {x: 6.81, y: 0.311, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1070,12 +1070,12 @@ MonoBehaviour:
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 681269545}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &279729765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1110,7 +1110,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.2042915}
+  m_Offset: {x: 0, y: -0.21582863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1120,7 +1120,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4553375, y: 0.60128194}
+  m_Size: {x: 0.4553375, y: 0.6243562}
   m_EdgeRadius: 0
 --- !u!50 &279729766
 Rigidbody2D:
@@ -1495,12 +1495,12 @@ MonoBehaviour:
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
   speed: 2
-  distance: 0.3
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1080653077}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &422401517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2150,7 +2150,7 @@ RectTransform:
   m_GameObject: {fileID: 681005359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83029, y: 0.83029, z: 0.83029}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 762663831}
@@ -3115,8 +3115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95c1c82bd8e5c24daa5b91678e05c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiPlayer: {fileID: 1904358936}
   dialoguePanel: {fileID: 762663830}
   dialogueText: {fileID: 108551676}
+  name: {fileID: 2090497173}
   imageRobot: {fileID: 681005361}
   spriteRobot: {fileID: 0}
   charactersPerSecond: 30
@@ -4075,7 +4077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5345638964182484994, guid: 59757b2e3357b5a44a1df793ce50afb9, type: 3}
+  m_Sprite: {fileID: -4626335958796280674, guid: efe1ba35fa92b9046955ebbf64338246, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5107,7 +5109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: -13.999979}
+  m_AnchoredPosition: {x: 55, y: -13.999979}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2072644332
@@ -5200,7 +5202,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.001958847, y: -0.18733324}
+  m_Offset: {x: -0.001958847, y: -0.21451354}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5210,7 +5212,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.45533752, y: 0.5517986}
+  m_Size: {x: 0.45533752, y: 0.6061592}
   m_EdgeRadius: 0
 --- !u!50 &2075494649
 Rigidbody2D:
@@ -5248,7 +5250,7 @@ Transform:
   m_GameObject: {fileID: 2075494647}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.47, y: 0.3, z: -0.050951947}
+  m_LocalPosition: {x: -0.47, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5272,12 +5274,12 @@ MonoBehaviour:
   life: {fileID: 1781053666}
   robot: {fileID: 1089571311}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 531764148}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!1 &2090497171
 GameObject:
   m_ObjectHideFlags: 0

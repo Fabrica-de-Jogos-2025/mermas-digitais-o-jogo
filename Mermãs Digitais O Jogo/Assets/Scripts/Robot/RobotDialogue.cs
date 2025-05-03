@@ -5,13 +5,16 @@ using System.Collections;
 public class RobotDialogue : MonoBehaviour
 {
     [Header("Configurações de Diálogo")]
+    public GameObject uiPlayer;
     public GameObject dialoguePanel;
     public Text dialogueText;
+    public Text name;
     public Image imageRobot;
     public Sprite spriteRobot;
     public float charactersPerSecond = 30f;
 
     private string[] currentDialogue;
+    private string characterName;
     private int dialogueIndex;
     private bool dialogueActive;
     private bool isTyping;
@@ -20,12 +23,14 @@ public class RobotDialogue : MonoBehaviour
 
     void Start()
     {
+        uiPlayer.SetActive(true);
         dialoguePanel.SetActive(false);
         dialogueIndex = 0;
         
-        if(imageRobot != null && spriteRobot != null)
+        if(imageRobot != null && spriteRobot != null && name != null)
         {
             imageRobot.sprite = spriteRobot;
+            name.text = characterName;
         }
     }
 
@@ -55,6 +60,7 @@ public class RobotDialogue : MonoBehaviour
         {
             currentDialogue = dialogue;
             dialogueActive = true;
+            uiPlayer.SetActive(false);
             dialoguePanel.SetActive(true);
             dialogueIndex = 0;
             
@@ -115,6 +121,7 @@ public class RobotDialogue : MonoBehaviour
 
     void EndDialogue()
     {
+        uiPlayer.SetActive(true);
         dialoguePanel.SetActive(false);
         dialogueActive = false;
         dialogueIndex = 0;

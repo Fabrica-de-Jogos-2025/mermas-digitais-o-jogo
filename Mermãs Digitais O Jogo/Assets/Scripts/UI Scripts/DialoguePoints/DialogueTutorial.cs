@@ -18,7 +18,7 @@ public class TutorialTrigger : MonoBehaviour
             if(robot != null && !player.IsJumping)
             {
                 robot.StartDialogue(dialogueMessages, player);
-                
+
                 if(triggerOnce)
                 {
                     Destroy(gameObject);

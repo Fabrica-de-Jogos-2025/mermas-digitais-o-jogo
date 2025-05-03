@@ -26540,12 +26540,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1342963541}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &497041633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26862,12 +26862,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 802461564}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &513592426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27521,12 +27521,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 158897113}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &651907310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28521,12 +28521,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 987283879}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &891713785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28887,12 +28887,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1271008954}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &929772441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29401,7 +29401,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1378168628516379421, guid: dc151eb1fd4003e4d9c3c51ae38b4bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -29630,12 +29630,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1610861761}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &997175746
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30365,12 +30365,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 629018147}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &1102875590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31282,12 +31282,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1576947267}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &1236267394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31601,12 +31601,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 1191868900}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &1290682681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31980,7 +31980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a47c166d7a14d14ba1624764a24875d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Fase 3
+  sceneName: Boss Fase 2
 --- !u!61 &1329285717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32329,7 +32329,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1378168628516379421, guid: dc151eb1fd4003e4d9c3c51ae38b4bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -35920,7 +35920,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1378168628516379421, guid: dc151eb1fd4003e4d9c3c51ae38b4bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -36577,12 +36577,12 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   speed: 2
-  distance: 0.8
+  distance: 0.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheck: {fileID: 71930377}
-  collisionRadius: 0.36
+  collisionRadius: 0.24
 --- !u!61 &2052209552
 BoxCollider2D:
   m_ObjectHideFlags: 0
