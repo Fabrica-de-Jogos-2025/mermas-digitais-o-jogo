@@ -3391,6 +3391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAt: {fileID: 1781053663}
   offset: {x: 0, y: 0.9, z: 0}
+  canvas: {fileID: 1268662624}
 --- !u!1 &1150562870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1268662621
 RectTransform:
   m_ObjectHideFlags: 0

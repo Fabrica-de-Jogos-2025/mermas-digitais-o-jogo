@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
 public class Hability1 : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Hability1 : MonoBehaviour
     [SerializeField] private GameObject habilityScreen;
     [SerializeField] private GameObject[] images;
     public bool pausarJogador = false;
+    public Sprite spriteCharacter;
+    public string nameofCharacter;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
@@ -41,6 +44,12 @@ public class Hability1 : MonoBehaviour
 
             if (robot != null && player != null && !player.IsJumping)
             {
+                if (spriteCharacter != null)
+                    robot.imageRobot.sprite = spriteCharacter;
+
+                if (!string.IsNullOrEmpty(nameofCharacter))
+                    robot.name.text = nameofCharacter;
+
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
             }

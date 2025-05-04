@@ -109137,6 +109137,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 2115774645}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
+  nameofCharacter: "Rob\xF4"
 --- !u!61 &1399057925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112857,6 +112859,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 333039345}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
+  nameofCharacter: "Rob\xF4"
   CLOSE_1: {fileID: 578998757}
   CLOSE_2: {fileID: 1774383104}
   CLOSE_3: {fileID: 1412060278}

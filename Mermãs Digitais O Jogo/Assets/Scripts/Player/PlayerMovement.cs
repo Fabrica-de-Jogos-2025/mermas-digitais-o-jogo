@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isFrozen = false;
     private Vector2 direction;
     [SerializeField] private Door currentDoor;
-    private PlayerStatus life;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -155,16 +152,6 @@ public class PlayerMovement : MonoBehaviour
         {
             currentDoor = collision.GetComponent<Door>();
         }
-        /*else if (collision.CompareTag("Coin"))
-        {
-            Vector3Int cellPosition = coinTilemap.WorldToCell(collision.transform.position);
-
-            if (coinTilemap.HasTile(cellPosition))
-            {
-                coinTilemap.SetTile(cellPosition, null); // Remove a moeda da Tilemap
-                coinManager.AddCoin(); // Atualiza o contador
-            }
-        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)

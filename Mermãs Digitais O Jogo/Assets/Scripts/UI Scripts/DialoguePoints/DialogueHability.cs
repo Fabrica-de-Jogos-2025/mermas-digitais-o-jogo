@@ -5,22 +5,11 @@ public class DialogueHability : MonoBehaviour
     [TextArea(3, 10)]
     public string[] dialogueMessages;
     public bool pausarJogador = false;
-    private RobotDialogue robotSprite;
     public Sprite spriteCharacter;
     public string nameofCharacter;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
-
-    private void Start()
-    {
-        robotSprite = FindFirstObjectByType<RobotDialogue>();
-
-        if (robotSprite != null && spriteCharacter != null && nameofCharacter != null) {
-            robotSprite.imageRobot.sprite = spriteCharacter;
-            robotSprite.name.text = nameofCharacter;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -48,6 +37,12 @@ public class DialogueHability : MonoBehaviour
 
             if (robot != null && player != null && !player.IsJumping)
             {
+                if (spriteCharacter != null)
+                    robot.imageRobot.sprite = spriteCharacter;
+
+                if (!string.IsNullOrEmpty(nameofCharacter))
+                    robot.name.text = nameofCharacter;
+
                 robot.StartDialogue(dialogueMessages, player);
             }
         }
