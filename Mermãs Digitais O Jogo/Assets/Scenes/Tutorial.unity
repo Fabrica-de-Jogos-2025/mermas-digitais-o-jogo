@@ -256,10 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueMessages:
-  - "Cuidado, esses s\xE3o alguns dos malwares! Por enquanto, eles oferecem pouco
-    perigo, mas n\xE3o deixe de ficar alerta, porque se encostar neles voc\xEA perde
-    um cora\xE7\xE3o. Desvie deles com o seu pulo para que voc\xEA n\xE3o perca seus
-    cora\xE7\xF5es.\r"
+  - "Cuidado! Esses malwares ainda n\xE3o s\xE3o t\xE3o perigosos, mas se encostar
+    neles, perde um cora\xE7\xE3o. Pule por cima para evitar isso.\r"
   triggerOnce: 1
   pausarJogador: 0
 --- !u!1 &70542671
@@ -3638,7 +3636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1268662621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4017,8 +4015,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "O computador que voc\xEA acabou de passar reagiu, isso significa que voc\xEA
-    passou por um ponto de controle. Ao falhar durante uma fase, a gente retorna
-    desse ponto, sem precisar percorrer a fase do come\xE7o novamente. \xDAtil, n\xE9?!"
+    passou por um checkpoint. "
+  - "Ao falhar durante uma fase, a gente retorna desse ponto, sem precisar percorrer
+    a fase do come\xE7o novamente. \xDAtil, n\xE9?!"
   triggerOnce: 1
   pausarJogador: 0
 --- !u!1 &1409203662
