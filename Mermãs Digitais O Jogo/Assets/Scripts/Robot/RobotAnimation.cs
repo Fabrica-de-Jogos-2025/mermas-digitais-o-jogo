@@ -5,6 +5,7 @@ public class RobotAnimation : MonoBehaviour
     private PlayerMovement player;
     private RobotMovement robot;
     private Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +22,7 @@ public class RobotAnimation : MonoBehaviour
 
     void Walking()
     {
-        if (player.Direction.sqrMagnitude > 0)
+        if (player.Direction.sqrMagnitude > 0 && !player.IsFrozen)
         {
             anim.SetInteger("transition", 1);
         }

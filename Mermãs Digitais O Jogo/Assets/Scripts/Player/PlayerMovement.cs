@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isJumping;
     private bool isFrozen = false;
+    private bool isPaused = false;
     private Vector2 direction;
     [SerializeField] private Door currentDoor;
+    [SerializeField] private GameObject pauseScreen;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -26,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
         get { return direction; }
         set { direction = value; }
     }
+
+    public bool IsFrozen { get => isFrozen; set => isFrozen = value; }
 
     private Rigidbody2D rig;
     private GroundCheck groundChecked;
@@ -55,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
         CheckInGrounded();
         CheckForCoin();
+        PauseGame();
 
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
@@ -65,8 +70,8 @@ public class PlayerMovement : MonoBehaviour
     void OnMove()
     {
         if (isFrozen) return;
-        
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * playerSpeed;
 
         float rotation = Input.GetAxis("Horizontal");
@@ -138,11 +143,26 @@ public class PlayerMovement : MonoBehaviour
         if (freeze)
         {
             rig.linearVelocity = Vector2.zero;
-            rig.simulated = false; 
+            rig.simulated = false;
         }
         else
         {
-            rig.simulated = true; 
+            rig.simulated = true;
+        }
+    }
+
+    void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) && !isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+            pauseScreen.SetActive(true);
+        } else if (isPaused && Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+            pauseScreen.SetActive(false);
         }
     }
 

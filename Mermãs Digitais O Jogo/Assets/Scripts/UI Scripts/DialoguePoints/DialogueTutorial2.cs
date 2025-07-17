@@ -26,6 +26,7 @@ public class DialogueTutorial2 : MonoBehaviour
                     robot.name.text = nameofCharacter;
 
                 robot.StartDialogue(dialogueMessages, player);
+                
 
                 if (triggerOnce)
                 {
