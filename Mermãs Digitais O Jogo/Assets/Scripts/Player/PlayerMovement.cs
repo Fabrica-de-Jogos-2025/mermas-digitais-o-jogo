@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsFrozen { get => isFrozen; set => isFrozen = value; }
+    public GameObject PauseScreen { get => pauseScreen; set => pauseScreen = value; }
+    public bool IsPaused { get => isPaused; set => isPaused = value; }
 
     private Rigidbody2D rig;
     private GroundCheck groundChecked;
@@ -151,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter) && !isPaused)
         {

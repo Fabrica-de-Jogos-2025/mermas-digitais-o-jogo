@@ -1,0 +1,28 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PauseScreen : MonoBehaviour
+{
+    [SerializeField] private PlayerMovement player;
+    [SerializeField] private RobotMovement robot;
+    public void ResumeButton()
+    {
+        player.PauseScreen.SetActive(false);
+        player.IsPaused = false;
+    }
+    public void ResetButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+        player.PauseScreen.SetActive(false);
+        player.IsPaused = false;
+        Destroy(player.gameObject);
+        Destroy(robot.gameObject);
+    }
+
+    public void QuitButton()
+    {
+
+    }
+}
