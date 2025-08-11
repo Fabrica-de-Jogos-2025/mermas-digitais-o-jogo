@@ -24,7 +24,7 @@ public class RobotPowerUp : MonoBehaviour
         {
 
             //Destroy(gameObject);
-            gameObject.SetActive (false);
+            Destroy(gameObject);
             robotPowered.HasPowerUp = true;
         }
     }

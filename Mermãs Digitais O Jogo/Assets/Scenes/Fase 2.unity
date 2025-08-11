@@ -27892,6 +27892,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 1474372541}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &768072481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28741,6 +28743,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 894553860}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &899124556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29014,6 +29018,8 @@ MonoBehaviour:
     por algum motivo eles s\xE3o chamados de vari\xE1veis. Como voc\xEA quer tamb\xE9m
     seguir sua jornada e nossos interesses se alinham..., pega, pode ser \xFAtil!!"
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &964307311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31980,7 +31986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a47c166d7a14d14ba1624764a24875d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Boss Fase 2
+  sceneName: Fase 3
 --- !u!61 &1329285717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34411,6 +34417,8 @@ MonoBehaviour:
   - "Eu vou lhe fornecer para voc\xEA usar durante a sua jornada, isso pode me ajudar
     tamb\xE9m!!"
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &1665205106
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class PauseScreen : MonoBehaviour
     {
         player.PauseScreen.SetActive(false);
         player.IsPaused = false;
+        Time.timeScale = 1;
     }
     public void ResetButton()
     {

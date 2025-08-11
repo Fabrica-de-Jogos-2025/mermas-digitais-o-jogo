@@ -120088,7 +120088,7 @@ MonoBehaviour:
   - "(Poxa, eu estava finalizando essa parte da programa\xE7\xE3o dessa m\xE1quina
     gigante\u2026)"
   - "Eita! N\xE3o esperava algu\xE9m aparecer aqui t\xE3o de repente, ol\xE1 senhorita!!
-    Qual \xE9 o seu nome?"
+    Qual \xE9 o seu nome? O meu \xE9 Betty Holberton, prazer!!"
   - "N\xE3o \xE9 do tipo que fala, n\xE9? Tudo bem, n\xE3o \xE9 o mais importante
     agora. A \xFAnica coisa que sei \xE9 que eu estava programando uma m\xE1quina
     junto de outras 5 mulheres, mas acabei parando aqui."
@@ -120372,7 +120372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a47c166d7a14d14ba1624764a24875d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Boss Fase 1
+  sceneName: Fase 2
 --- !u!61 &1946637246
 BoxCollider2D:
   m_ObjectHideFlags: 0

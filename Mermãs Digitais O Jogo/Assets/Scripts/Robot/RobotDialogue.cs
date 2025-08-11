@@ -1,9 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class RobotDialogue : MonoBehaviour
 {
+    [System.Serializable]
+    public class PalavraColorida
+    {
+        public string palavra;
+        public Color cor;
+    }
+
     [Header("Configurações de Diálogo")]
     public GameObject uiPlayer;
     public GameObject dialoguePanel;
@@ -13,7 +22,12 @@ public class RobotDialogue : MonoBehaviour
     public Sprite spriteRobot;
     public float charactersPerSecond = 30f;
 
+    [Header("Palavras em destaque")]
+    public List<PalavraColorida> palavrasColoridas = new List<PalavraColorida>();
+    public Action OnDialogueEnd;
+
     private string[] currentDialogue;
+    private string currentProcessedMessage;
     private string characterName;
     private int dialogueIndex;
     private bool dialogueActive;
@@ -32,19 +46,25 @@ public class RobotDialogue : MonoBehaviour
             imageRobot.sprite = spriteRobot;
             name.text = characterName;
         }
+
+        if (dialogueText != null)
+        {
+            dialogueText.supportRichText = true;
+        }
     }
 
     void Update()
     {
         if(dialogueActive && Input.GetKeyDown(KeyCode.X))
         {
-            if(isTyping)
+            if (isTyping)
             {
                 if(currentTypingCoroutine != null)
                 {
                     StopCoroutine(currentTypingCoroutine);
+                    currentTypingCoroutine = null;
                 }
-                dialogueText.text = currentDialogue[dialogueIndex];
+                dialogueText.text = currentProcessedMessage ?? currentDialogue[dialogueIndex];
                 isTyping = false;
             }
             else
@@ -99,8 +119,16 @@ public class RobotDialogue : MonoBehaviour
         if(currentTypingCoroutine != null)
         {
             StopCoroutine(currentTypingCoroutine);
+            currentTypingCoroutine = null;
         }
-        currentTypingCoroutine = StartCoroutine(TypeText(currentDialogue[index]));
+        /*string message = ApplyColors(currentDialogue[index]);
+        currentTypingCoroutine = StartCoroutine(TypeText(currentDialogue[index]));*/
+
+        // processa AQUI a mensagem (com as tags <color>)
+        currentProcessedMessage = ApplyColors(currentDialogue[index]);
+
+        // inicia a digitação usando a mensagem processada
+        currentTypingCoroutine = StartCoroutine(TypeText(currentProcessedMessage));
     }
 
     IEnumerator TypeText(string message)
@@ -108,15 +136,59 @@ public class RobotDialogue : MonoBehaviour
         isTyping = true;
         dialogueText.text = "";
         
-        float delay = 1.5f / charactersPerSecond;
-        
-        foreach(char character in message)
+        float delay = 0.2f / charactersPerSecond;
+
+        int i = 0;
+        while (i < message.Length)
         {
-            dialogueText.text += character;
-            yield return new WaitForSeconds(delay);
+            char c = message[i];
+
+            if (c == '<')
+            {
+                // é uma tag — copia até o '>' imediatamente, sem delay
+                int close = message.IndexOf('>', i);
+                if (close == -1)
+                {
+                    // tag malformada: apenas adiciona o char atual
+                    dialogueText.text += message[i];
+                    i++;
+                }
+                else
+                {
+                    dialogueText.text += message.Substring(i, close - i + 1);
+                    i = close + 1;
+                }
+            }
+            else
+            {
+                // caractere normal: escreve e espera
+                dialogueText.text += c;
+                i++;
+                yield return new WaitForSeconds(delay);
+            }
         }
-        
+
         isTyping = false;
+        currentTypingCoroutine = null;
+    }
+
+    string ApplyColors(string textoOriginal)
+    {
+        string textoFormatado = textoOriginal;
+
+        foreach (var item in palavrasColoridas)
+        {
+            if (!string.IsNullOrEmpty(item.palavra))
+            {
+                string corHex = ColorUtility.ToHtmlStringRGB(item.cor);
+                textoFormatado = textoFormatado.Replace(
+                    item.palavra,
+                    $"<color=#{corHex}>{item.palavra}</color>"
+                );
+            }
+        }
+
+        return textoFormatado;
     }
 
     void EndDialogue()
@@ -126,8 +198,8 @@ public class RobotDialogue : MonoBehaviour
         dialogueActive = false;
         dialogueIndex = 0;
         isTyping = false;
-        
-        if(currentTypingCoroutine != null)
+
+        if (currentTypingCoroutine != null)
         {
             StopCoroutine(currentTypingCoroutine);
             currentTypingCoroutine = null;
@@ -138,5 +210,8 @@ public class RobotDialogue : MonoBehaviour
             currentPlayer.FreezePlayer(false);
             currentPlayer = null;
         }
+
+        OnDialogueEnd?.Invoke();
+        OnDialogueEnd = null;
     }
 }

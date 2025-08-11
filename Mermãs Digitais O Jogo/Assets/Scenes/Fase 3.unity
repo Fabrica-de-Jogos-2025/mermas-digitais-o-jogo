@@ -3443,7 +3443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207459225}
   m_Layer: 0
-  m_Name: ' Skill Uses'
+  m_Name: Skill Uses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5638,6 +5638,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 1142687849}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &341483724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41902,6 +41904,8 @@ MonoBehaviour:
     testar essa funcionalidade aqui, e pode ficar tamb\xE9m, acho que vai ser \xFAtil
     pra voc\xEA!! "
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &1135871221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47963,6 +47967,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 1432599936}
   images: []
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &1580691009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48313,23 +48319,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueMessages:
-  - "(Acabei de corrigir esse bug, mais alguns ajustes e esse foguete vai estar pronto
-    para lan\xE7amento)."
-  - "(Tenho muito trabalho e muitas fun\xE7\xF5es, programadora, m\xE3e\u2026 mas
-    vai dar certo!! Energias positivas pra esse foguete da Nasa.)\r"
-  - "Nossa, que susto!! N\xE3o sabia que tinha mais algu\xE9m ouvindo. Oi garota,
-    o que voc\xEA est\xE1 fazendo por aqui, qual o seu nome?\r"
-  - "Espera\u2026 eu n\xE3o t\xF4 na sala onde estava fazendo meus testes, onde \xE9
-    que eu estou?\r"
-  - "Parece que de alguma forma eu vim parar nesse mundo, que diferente!!\r"
-  - "Enfim, eu nem me apresentei, eu me chamo Margaret Hamilton, prazer em conhec\xEA-la!!"
-  - "Eu estava fazendo alguns ajustes no foguete logo \xE0 frente, ele est\xE1 quase
-    finalizado. Pelo visto voc\xEA t\xE1 querendo passar por ele para continuar sua
-    jornada, certo?"
-  - "Bom, pra passar por ele, basta abrir as portas laterais. Faz o seguinte, pode
-    testar essa funcionalidade aqui, e pode ficar tamb\xE9m, acho que vai ser \xFAtil
-    pra voc\xEA!! "
+  - "(Acho que esse jogo vai ser o maior sucesso da minha carreira\u2026)"
+  - "Nossa n\xE3o percebi que vinha algu\xE9m chegando. Ol\xE1 querida, quer ver
+    um pouco do jogo que acabei de desenvolver, se chama River Raid!!"
+  - "Ah desculpa, voc\xEA parece t\xE1 um pouco apressada. \xC9 que nunca vi nenhuma
+    mulher interessada em desenvolvimento de jogos, se bobear eu sou a primeira.\r"
+  - "Ali\xE1s, eu me chamo Carol Shaw, e voc\xEA como se chama?\r"
+  - "Hm, mais uma de poucas palavras, \xE9 comum no meu meio, o pessoal acaba sendo
+    mais t\xEDmido, inclusive eu.\r"
+  - "Bom, voltando ao assunto, voc\xEA parece estar um pouco apressada n\xE9? Aqui,
+    talvez esse dispositivo possa lhe ajudar, e mesmo quieta voc\xEA foi simp\xE1tica,
+    al\xE9m de ele estar com um pouco da minha paix\xE3o por games."
+  - "N\xE3o precisa me agradecer, adoro ser gentil com quem precisa!!"
   pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
 --- !u!61 &1601933933
 BoxCollider2D:
   m_ObjectHideFlags: 0
