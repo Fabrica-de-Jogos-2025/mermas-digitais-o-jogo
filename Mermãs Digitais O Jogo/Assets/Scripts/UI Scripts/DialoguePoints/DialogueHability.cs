@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogueHability : MonoBehaviour
@@ -6,6 +7,7 @@ public class DialogueHability : MonoBehaviour
     public string[] dialogueMessages;
     public bool pausarJogador = false;
     public Sprite spriteCharacter;
+    
     public string nameofCharacter;
 
     private bool playerInTrigger = false;
@@ -39,6 +41,8 @@ public class DialogueHability : MonoBehaviour
             {
                 if (spriteCharacter != null)
                     robot.imageRobot.sprite = spriteCharacter;
+                    
+                    
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
                     robot.name.text = nameofCharacter;

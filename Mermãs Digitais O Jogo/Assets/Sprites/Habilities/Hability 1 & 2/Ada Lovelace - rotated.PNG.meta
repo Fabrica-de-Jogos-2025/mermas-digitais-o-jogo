@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: fcc80c9ad4c96bb45b919c0ef36fad10
+guid: 9c198f3f672122244a2133fca1c6c17b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9103333480473540825
-    second: Pause Icon_0
-  - first:
-      213: 1439422567615640044
-    second: Pause Icon_1
+      213: -3272220331895832812
+    second: Ada Lovelace_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pause Icon_0
+      name: Ada Lovelace_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 124
+        x: 10
+        y: 3
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72744785e667aa180800000000000000
-      internalID: -9103333480473540825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pause Icon_1
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 0
-        width: 50
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce13968e23bd9f310800000000000000
-      internalID: 1439422567615640044
+      spriteID: 41fb982f1fcb692d0800000000000000
+      internalID: -3272220331895832812
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pause Icon_0: -9103333480473540825
-      Pause Icon_1: 1439422567615640044
+      Ada Lovelace_0: -3272220331895832812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -118351,7 +118351,7 @@ MonoBehaviour:
     N\xE3o se preocupe, ao pressionar, ir\xE1 aparecer a habilidade necess\xE1ria
     para resolver o quebra-cabe\xE7a."
   pausarJogador: 0
-  spriteCharacter: {fileID: -3272220331895832812, guid: 5e9d53adb3128ab4d9718e0abc85095f, type: 3}
+  spriteCharacter: {fileID: -3272220331895832812, guid: 9c198f3f672122244a2133fca1c6c17b, type: 3}
   nameofCharacter: Ada
 --- !u!1 &1667111358
 GameObject:
