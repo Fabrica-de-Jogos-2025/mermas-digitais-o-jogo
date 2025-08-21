@@ -9,9 +9,11 @@ public class DialogueHability : MonoBehaviour
     public Sprite spriteCharacter;
     
     public string nameofCharacter;
+    public GameObject uiDialogueTutorial;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,6 +21,7 @@ public class DialogueHability : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
+            uiDialogueTutorial.SetActive(true);
         }
     }
 
@@ -27,6 +30,7 @@ public class DialogueHability : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            uiDialogueTutorial.SetActive(false);
         }
     }
 

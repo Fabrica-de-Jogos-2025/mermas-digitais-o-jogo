@@ -259,7 +259,6 @@ MonoBehaviour:
   - "Cuidado! Esses malwares ainda n\xE3o s\xE3o t\xE3o perigosos, mas se encostar
     neles, perde um cora\xE7\xE3o. Pule por cima para evitar isso.\r"
   triggerOnce: 1
-  pausarJogador: 0
   uiTutorial: {fileID: 0}
   tutorialColliders: {fileID: 0}
   tutorialType: 0
@@ -784,7 +783,6 @@ MonoBehaviour:
     para andar para a esquerda e para a direita pressione as setinhas esquerda e
     direita do teclado, ou as teclas \"A\" e \"D\" se preferir!! "
   triggerOnce: 1
-  pausarJogador: 0
   uiTutorial: {fileID: 817201978}
   tutorialColliders: {fileID: 132698231}
   tutorialType: 0
@@ -4518,7 +4516,6 @@ MonoBehaviour:
   - "Agora, voc\xEA precisa pular para subir o degrau a frente. Para pular, \xE9
     s\xF3 pressionar a setinha pra cima ou a tecla \"W\"."
   triggerOnce: 1
-  pausarJogador: 0
   uiTutorial: {fileID: 1730880813}
   tutorialColliders: {fileID: 1184819618}
   tutorialType: 1
@@ -5056,7 +5053,6 @@ MonoBehaviour:
   - "Ao falhar durante uma fase, a gente retorna desse ponto, sem precisar percorrer
     a fase do come\xE7o novamente. \xDAtil, n\xE9?!"
   triggerOnce: 1
-  pausarJogador: 0
   uiTutorial: {fileID: 0}
   tutorialColliders: {fileID: 0}
   tutorialType: 0
@@ -6767,7 +6763,6 @@ MonoBehaviour:
   - "Vamos fazer um teste? Tem um inimigo a frente, pressione a tecla \"Espa\xE7o\"
     para que eu possa dar um jeito nele."
   triggerOnce: 1
-  pausarJogador: 0
   uiTutorial: {fileID: 1823561030}
   tutorialColliders: {fileID: 1931464156}
   tutorialType: 2

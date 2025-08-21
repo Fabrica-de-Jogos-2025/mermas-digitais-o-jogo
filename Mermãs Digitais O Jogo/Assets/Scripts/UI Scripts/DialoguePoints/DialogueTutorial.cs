@@ -13,7 +13,6 @@ public class TutorialTrigger : MonoBehaviour
     [TextArea(3, 10)]
     public string[] dialogueMessages;
     public bool triggerOnce = true;
-    public bool pausarJogador = false;
     private bool startDialogue = true;
 
     [Header("UI do Tutorial")]

@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         rig = GetComponent<Rigidbody2D>();
+        //robot = FindAnyObjectByType<RobotMovement>();
         groundChecked = GetComponentInChildren<GroundCheck>();
         lastCheckpointPosition = transform.position;
     }
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
 
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * playerSpeed;
 
         float rotation = Input.GetAxis("Horizontal");

@@ -15,6 +15,7 @@ public class RobotMovement : MonoBehaviour
     public bool HasPowerUp;
     private static Vector3 respawnpoint;
     private bool isUsingPowerUp = false;
+    private bool isFreeze = false;
     public static Vector3 Respawnpoint 
     { 
       get { return respawnpoint; } 
@@ -22,6 +23,7 @@ public class RobotMovement : MonoBehaviour
     }
     public float direction;
     public Vector3 moviment;
+    private Rigidbody2D rig;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +33,8 @@ public class RobotMovement : MonoBehaviour
         playerStatus = GetComponent<PlayerStatus>();
         //robotPowered = FindAnyObjectByType<RobotPowerUp>();
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        rig = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -43,19 +47,22 @@ public class RobotMovement : MonoBehaviour
 
         float rotation = Input.GetAxis("Horizontal");
 
-        if (rotation > 0)
+        if (rotation > 0 && !player.IsFrozen)
         {
             transform.eulerAngles = new Vector2(0f, 0f);
             moviment = new Vector3(-1f, 0.5f, 0f);
-        } else if (rotation < 0)
+        } else if (rotation < 0 && !player.IsFrozen)
         {
             transform.eulerAngles = new Vector2(0f, 180f);
             moviment = new Vector3(1f, 0.5f, 0f);
+        } else if (player.IsFrozen)
+        {
+            IsPaused(true);
         }
 
-        if(Vector2.Distance(transform.position, Target.position) <= 2)
+        if (Vector2.Distance(transform.position, Target.position) <= 2)
         {
-        PowerUp();
+            PowerUp();
         }
     }
 
@@ -72,6 +79,21 @@ public class RobotMovement : MonoBehaviour
             {
                 StartCoroutine(UsePowerUp());
             }
+        }
+    }
+
+    public void IsPaused(bool isPaused)
+    {
+        isPaused = isFreeze;
+
+        if (isFreeze)
+        {
+            rig.linearVelocity = Vector2.zero;
+            rig.simulated = false;
+        }
+        else
+        {
+            rig.simulated = true;
         }
     }
 
