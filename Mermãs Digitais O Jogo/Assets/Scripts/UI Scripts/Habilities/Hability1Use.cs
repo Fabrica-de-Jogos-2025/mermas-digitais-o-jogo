@@ -9,10 +9,12 @@ public class Hability1Use : MonoBehaviour
     private Image imageButton;
     [SerializeField] private Image[] buttons;
     private Hability1 habilityScreen;
+    //public Hability1 habilityScreen;   
     private int currentIndex = 0;
     private bool puzzleSolved = false;
     private Padlock padlock;
     public bool PuzzleSolved { get => puzzleSolved; set => puzzleSolved = value; }
+    public PlayerMovement PM;
 
     void Start()
     {
@@ -34,7 +36,7 @@ public class Hability1Use : MonoBehaviour
     public void VerifyPuzzle()
     {
         
-        if (booleanOperation == "Negação")
+        if (booleanOperation == "NegaÃ§Ã£o")
         {
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -49,7 +51,10 @@ public class Hability1Use : MonoBehaviour
             {
                 padlock.Anim.SetInteger("transition", 0);
                 habilityScreen.HabilityScreen.SetActive(false);
-                Destroy(padlock.gameObject);
+                //Destroy(habilityScreen.gameObject);
+                //Destroy(padlock.gameObject);
+                //padlock.gameObject.SetActive(false);
+                padlock.i = true;
             }
         }
     }

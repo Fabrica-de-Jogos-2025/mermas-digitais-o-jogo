@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogueHability : MonoBehaviour
@@ -5,9 +6,14 @@ public class DialogueHability : MonoBehaviour
     [TextArea(3, 10)]
     public string[] dialogueMessages;
     public bool pausarJogador = false;
+    public Sprite spriteCharacter;
+    
+    public string nameofCharacter;
+    public GameObject uiDialogueTutorial;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,6 +21,7 @@ public class DialogueHability : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
+            uiDialogueTutorial.SetActive(true);
         }
     }
 
@@ -23,6 +30,7 @@ public class DialogueHability : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            uiDialogueTutorial.SetActive(false);
         }
     }
 
@@ -35,6 +43,14 @@ public class DialogueHability : MonoBehaviour
 
             if (robot != null && player != null && !player.IsJumping)
             {
+                if (spriteCharacter != null)
+                    robot.imageRobot.sprite = spriteCharacter;
+                    
+                    
+
+                if (!string.IsNullOrEmpty(nameofCharacter))
+                    robot.name.text = nameofCharacter;
+
                 robot.StartDialogue(dialogueMessages, player);
             }
         }

@@ -14,6 +14,7 @@ TagManager:
   - FinalPosition
   - Platform
   - Item
+  - Padlock
   layers:
   - Default
   - TransparentFX

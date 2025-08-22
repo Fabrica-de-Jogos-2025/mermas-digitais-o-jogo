@@ -1,8 +1,8 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,9 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isJumping;
     private bool isFrozen = false;
+    private bool isPaused = false;
     private Vector2 direction;
     [SerializeField] private Door currentDoor;
-    private PlayerStatus life;
+    [SerializeField] private Padlock currentPadlock;
+    public bool permissionDoor_a = false;
+    [SerializeField] private GameObject pauseScreen;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -30,12 +33,17 @@ public class PlayerMovement : MonoBehaviour
         set { direction = value; }
     }
 
+    public bool IsFrozen { get => isFrozen; set => isFrozen = value; }
+    public GameObject PauseScreen { get => pauseScreen; set => pauseScreen = value; }
+    public bool IsPaused { get => isPaused; set => isPaused = value; }
+
     private Rigidbody2D rig;
     private GroundCheck groundChecked;
     private Vector2 lastCheckpointPosition;
 
     public CoinManager coinManager;
     public Tilemap coinTilemap;
+    public bool i = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         rig = GetComponent<Rigidbody2D>();
+        //robot = FindAnyObjectByType<RobotMovement>();
         groundChecked = GetComponentInChildren<GroundCheck>();
         lastCheckpointPosition = transform.position;
     }
@@ -58,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
         CheckInGrounded();
         CheckForCoin();
+        PauseGame();
 
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
@@ -68,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     void OnMove()
     {
         if (isFrozen) return;
-        
+
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * playerSpeed;
 
@@ -88,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     void Jumping()
     {
         if (isFrozen) return;
-        
+
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping)
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
@@ -125,8 +135,11 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator TeleportAfterAnimation()
     {
-        yield return new WaitForSeconds(0.8f); 
-        transform.position = currentDoor.GetExitPosition(); 
+        yield return new WaitForSeconds(0.8f);
+        if (currentDoor != null && i)
+        {
+            transform.position = currentDoor.GetExitPosition();
+        }
     }
 
     public void SetLastCheckpoint(Vector2 newCheckpoint)
@@ -141,11 +154,27 @@ public class PlayerMovement : MonoBehaviour
         if (freeze)
         {
             rig.linearVelocity = Vector2.zero;
-            rig.simulated = false; 
+            rig.simulated = false;
         }
         else
         {
-            rig.simulated = true; 
+            rig.simulated = true;
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) && !isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+            pauseScreen.SetActive(true);
+        }
+        else if (isPaused && Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+            pauseScreen.SetActive(false);
         }
     }
 
@@ -155,16 +184,6 @@ public class PlayerMovement : MonoBehaviour
         {
             currentDoor = collision.GetComponent<Door>();
         }
-        /*else if (collision.CompareTag("Coin"))
-        {
-            Vector3Int cellPosition = coinTilemap.WorldToCell(collision.transform.position);
-
-            if (coinTilemap.HasTile(cellPosition))
-            {
-                coinTilemap.SetTile(cellPosition, null); // Remove a moeda da Tilemap
-                coinManager.AddCoin(); // Atualiza o contador
-            }
-        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -175,20 +194,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision){
-	    if(collision.transform.tag == "Platform")
-	    {
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Platform")
+        {
             transform.SetParent(collision.transform);
             DontDestroyOnLoad(this.gameObject);
-	    }
+        }
     }
 
-    public void OnCollisionExit2D(Collision2D collision){
-	    if(collision.transform.tag == "Platform")
-	    {
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Platform")
+        {
             transform.SetParent(null);
             DontDestroyOnLoad(this.gameObject);
-	    }
+        }
     }
 
 }

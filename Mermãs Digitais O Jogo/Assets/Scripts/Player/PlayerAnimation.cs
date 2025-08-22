@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private PlayerMovement player;
+    private RobotAnimation robotAnimation;
     private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Walking()
     {
-        if (player.Direction.sqrMagnitude > 0)
+        if (player.Direction.sqrMagnitude > 0 && !player.IsFrozen)
         {
             anim.SetInteger("transition", 1);
         }

@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
 public class Hability1 : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class Hability1 : MonoBehaviour
     [SerializeField] private GameObject habilityScreen;
     [SerializeField] private GameObject[] images;
     public bool pausarJogador = false;
+    public Sprite spriteCharacter;
+    public string nameofCharacter;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    //public Hability1Use validation, validation2;
+    //public GameObject detroyer;
+    private bool validation = true;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,15 +40,30 @@ public class Hability1 : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        /*if (validation.puzzleSolved && validation2.puzzleSolved)
+        {
+            Destroy(detroyer.gameObject);
+            validation.puzzleSolved = false;
+            validation2.puzzleSolved = false;
+        }*/
+
+
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
             if (robot != null && player != null && !player.IsJumping)
             {
+                if (spriteCharacter != null)
+                    robot.imageRobot.sprite = spriteCharacter;
+
+                if (!string.IsNullOrEmpty(nameofCharacter))
+                    robot.name.text = nameofCharacter;
+
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                validation = false;
             }
         }
     }

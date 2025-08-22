@@ -1,11 +1,28 @@
 using UnityEngine;
+// using static TutorialTrigger;
 
 public class TutorialTrigger : MonoBehaviour
 {
+    public enum TutorialType
+    {
+        Introduction,
+        Jump,
+        PowerUp
+    }
+
     [TextArea(3, 10)]
     public string[] dialogueMessages;
     public bool triggerOnce = true;
-    public bool pausarJogador = false;
+    private bool startDialogue = true;
+
+    [Header("UI do Tutorial")]
+    public GameObject uiTutorial;
+    
+    public Collider2D tutorialColliders;
+    private KeyCode[] teclasTutorial;
+
+    private bool tutorialAtivo;
+    public TutorialType tutorialType;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,13 +32,59 @@ public class TutorialTrigger : MonoBehaviour
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
             PlayerMovement player = other.GetComponent<PlayerMovement>();
             
-            if(robot != null && !player.IsJumping)
+            if(robot != null && !player.IsJumping && startDialogue)
             {
+                DefinirTeclas();
+                robot.OnDialogueEnd += MostrarTutorial;
                 robot.StartDialogue(dialogueMessages, player);
-                
+
                 if(triggerOnce)
                 {
-                    Destroy(gameObject);
+                    startDialogue = false;
+                }
+            }
+        }
+    }
+
+    void DefinirTeclas()
+    {
+        switch (tutorialType)
+        {
+            case TutorialType.Introduction:
+                teclasTutorial = new KeyCode[] { KeyCode.A, KeyCode.D, KeyCode.LeftArrow, KeyCode.RightArrow };
+                break;
+            case TutorialType.Jump:
+                teclasTutorial = new KeyCode[] { KeyCode.W, KeyCode.UpArrow };
+                break;
+            case TutorialType.PowerUp:
+                teclasTutorial = new KeyCode[] { KeyCode.Space };
+                break;
+        }
+    }
+
+    void MostrarTutorial()
+    {
+        uiTutorial.SetActive(true);
+        tutorialAtivo = true;
+    }
+
+    void Update()
+    {
+        if (tutorialAtivo && teclasTutorial != null)
+        {
+            foreach (var tecla in teclasTutorial)
+            {
+                if (Input.GetKeyDown(tecla))
+                {
+                    Destroy(uiTutorial.gameObject);
+                    tutorialAtivo = false;
+
+                    if (triggerOnce)
+                    {
+                        Destroy(gameObject);
+                    }
+
+                    break;
                 }
             }
         }

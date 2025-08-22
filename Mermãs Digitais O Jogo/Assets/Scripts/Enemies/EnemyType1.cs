@@ -18,7 +18,7 @@ public class EnemyType1 : MonoBehaviour
 
     public LayerMask EnemyLayer { get => enemyLayer; set => enemyLayer = value; }
     public Transform GroundCheck { get => groundCheck; set => groundCheck = value; }
-
+    public float Speed { get => speed; set => speed = value; }
 
     private void Start()
     {
