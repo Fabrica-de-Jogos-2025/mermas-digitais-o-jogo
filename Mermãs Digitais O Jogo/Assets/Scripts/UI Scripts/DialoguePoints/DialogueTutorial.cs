@@ -22,6 +22,7 @@ public class TutorialTrigger : MonoBehaviour
     private KeyCode[] teclasTutorial;
 
     private bool tutorialAtivo;
+    public bool tutorialJumpAtivo = false;
     public TutorialType tutorialType;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,6 +43,20 @@ public class TutorialTrigger : MonoBehaviour
                 {
                     startDialogue = false;
                 }
+
+                if (tutorialType == TutorialType.Jump)
+                {
+                    tutorialJumpAtivo = true;
+                }
+
+
+                if (tutorialType == TutorialType.PowerUp)
+                {
+                    // aqui destruímos o power-up do tutorial
+                    Destroy(gameObject.GetComponent<Collider2D>()); // desabilita o colisor
+                                                                    // opcional: também pode desativar visualmente
+                    GetComponent<SpriteRenderer>().enabled = false;
+                }
             }
         }
     }
@@ -59,6 +74,8 @@ public class TutorialTrigger : MonoBehaviour
             case TutorialType.PowerUp:
                 teclasTutorial = new KeyCode[] { KeyCode.Space };
                 break;
+            default:
+                break;
         }
     }
 
@@ -66,6 +83,7 @@ public class TutorialTrigger : MonoBehaviour
     {
         uiTutorial.SetActive(true);
         tutorialAtivo = true;
+        Debug.Log($"[TutorialTrigger] Tipo: {tutorialType} | Teclas: {(teclasTutorial == null ? "null" : string.Join(", ", teclasTutorial))}");
     }
 
     void Update()
@@ -74,7 +92,7 @@ public class TutorialTrigger : MonoBehaviour
         {
             foreach (var tecla in teclasTutorial)
             {
-                if (Input.GetKeyDown(tecla))
+                if (Input.GetKey(tecla))
                 {
                     Destroy(uiTutorial.gameObject);
                     tutorialAtivo = false;
@@ -83,7 +101,6 @@ public class TutorialTrigger : MonoBehaviour
                     {
                         Destroy(gameObject);
                     }
-
                     break;
                 }
             }

@@ -13,9 +13,11 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
     private bool playerInTrigger = false;
     private PlayerMovement player;
 
+
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
     public Hability2_2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
     public bool destroy = false;
+    public GameObject habilityUITutorial;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,6 +25,11 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
+            habilityUITutorial.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.H)) {
+                habilityUITutorial.SetActive(false);
+            }
         }
     }
 
@@ -31,6 +38,7 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            habilityUITutorial.SetActive(false);
         }
     }
 

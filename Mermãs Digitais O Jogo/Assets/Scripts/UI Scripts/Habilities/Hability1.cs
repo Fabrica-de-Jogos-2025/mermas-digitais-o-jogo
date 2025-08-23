@@ -15,8 +15,10 @@ public class Hability1 : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+    [SerializeField] private Hability1Use [] status;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public GameObject habilityUITutorial;
     //public Hability1Use validation, validation2;
     //public GameObject detroyer;
     private bool validation = true;
@@ -27,6 +29,14 @@ public class Hability1 : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
+            if (!status[0].PuzzleSolved && !status[1].PuzzleSolved)
+            {
+                habilityUITutorial.SetActive(true);
+            }
+            if (Input.GetKeyDown(KeyCode.H) || (status[0].PuzzleSolved && status[1].PuzzleSolved))
+            {
+                habilityUITutorial.SetActive(false);
+            }
         }
     }
 
@@ -35,6 +45,7 @@ public class Hability1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            habilityUITutorial.SetActive(false);
         }
     }
 

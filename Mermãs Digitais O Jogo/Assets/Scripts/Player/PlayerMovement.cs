@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Padlock currentPadlock;
     public bool permissionDoor_a = false;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private TutorialTrigger trigger;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping && trigger.tutorialJumpAtivo)
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
