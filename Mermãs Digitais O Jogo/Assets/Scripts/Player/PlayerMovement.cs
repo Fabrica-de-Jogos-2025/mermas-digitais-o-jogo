@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Padlock currentPadlock;
     public bool permissionDoor_a = false;
     [SerializeField] private GameObject pauseScreen;
+//    [SerializeField] private TutorialTrigger trigger;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public CoinManager coinManager;
     public Tilemap coinTilemap;
     public bool i = false;
+    public bool TutoJumpAtiv = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -99,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping && TutoJumpAtiv) //trigger.tutorialJumpAtivo
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }

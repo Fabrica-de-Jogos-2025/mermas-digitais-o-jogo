@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject telaLoja;
     public GameObject telaOpcoes;
     public GameObject telaCreditos;
+    public GameObject telaMenu;
 
     // Referências dos botões
     public Button historiaBtn;
@@ -16,11 +17,13 @@ public class MainMenu : MonoBehaviour
     public Button opcoesBtn;
     public Button creditosBtn;
     public Button sairBtn;
-
+    
+    public Button voltarTituloBtn;
     public Button voltarLojaBtn;
     public Button voltarOpcoesBtn;
     public Button voltarCreditosBtn;
 
+    private ClickButtonEffect uiTitleScreen;
     void Start()
     {
         // Configura os botões
@@ -33,6 +36,7 @@ public class MainMenu : MonoBehaviour
         if (voltarLojaBtn != null) voltarLojaBtn.onClick.AddListener(() => FecharTela(telaLoja));
         if (voltarOpcoesBtn != null) voltarOpcoesBtn.onClick.AddListener(() => FecharTela(telaOpcoes));
         if (voltarCreditosBtn != null) voltarCreditosBtn.onClick.AddListener(() => FecharTela(telaCreditos));
+        if (voltarTituloBtn != null) voltarTituloBtn.onClick.AddListener(() => FecharTela(telaMenu));
 
         // Desativa todos os painéis inicialmente
         FecharTodasAsTelas();

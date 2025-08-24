@@ -12,8 +12,11 @@ public class Hability1_1 : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+    // [SerializeField] private Hability1Use_1 [] status;
+    [SerializeField] private bool deactivatedHabilityUI = false;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public GameObject habilityUITutorial;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +24,15 @@ public class Hability1_1 : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
+            if (!deactivatedHabilityUI)
+            {
+                habilityUITutorial.SetActive(true);
+            }
+            /*if (Input.GetKeyDown(KeyCode.H))
+            {
+                habilityUITutorial.SetActive(false);
+                deactivatedHabilityUI = true;
+            }*/
         }
     }
 
@@ -29,6 +41,7 @@ public class Hability1_1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            habilityUITutorial.SetActive(false);
         }
     }
 
@@ -37,13 +50,26 @@ public class Hability1_1 : MonoBehaviour
         if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
-            RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
+            //RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
-            if (robot != null && player != null)
+            /*if (robot != null && player != null)
             {
                 //robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
                 //pausarJogador = true;
+            }*/
+
+            // Desativa a tela de tutorial se ainda não foi desativada
+            if (!deactivatedHabilityUI)
+            {
+                habilityUITutorial.SetActive(false);
+                deactivatedHabilityUI = true;
+            }
+
+            // Ativa a tela de habilidade
+            if (habilityScreen != null)
+            {
+                habilityScreen.SetActive(true);
             }
         }
     }

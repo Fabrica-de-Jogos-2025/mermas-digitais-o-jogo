@@ -1,23 +1,24 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 
-public class Hability2OpenAndClose_2 : MonoBehaviour
+public class Hab_1_Sem_UI : MonoBehaviour
 {
     [TextArea(3, 10)]
     public string[] dialogueMessages;
     [SerializeField] private GameObject habilityScreen;
     [SerializeField] private GameObject[] images;
     public bool pausarJogador = false;
+    public Sprite spriteCharacter;
+    public string nameofCharacter;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
-
+    [SerializeField] private Hability1Use [] status;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
-    public Hability2_2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
-    public bool destroy = false;
-    public GameObject habilityUITutorial;
+    private bool validation = true;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,11 +26,6 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
-            habilityUITutorial.SetActive(true);
-
-            if (Input.GetKeyDown(KeyCode.H)) {
-                habilityUITutorial.SetActive(false);
-            }
         }
     }
 
@@ -38,29 +34,40 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
-            habilityUITutorial.SetActive(false);
         }
     }
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        /*if (validation.puzzleSolved && validation2.puzzleSolved)
+        {
+            Destroy(detroyer.gameObject);
+            validation.puzzleSolved = false;
+            validation2.puzzleSolved = false;
+        }*/
+
+
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
             if (robot != null && player != null && !player.IsJumping)
             {
-                //robot.StartDialogue(dialogueMessages, player);
+                if (spriteCharacter != null)
+                    robot.imageRobot.sprite = spriteCharacter;
+
+                if (!string.IsNullOrEmpty(nameofCharacter))
+                    robot.name.text = nameofCharacter;
+
+                robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
-                //pausarJogador = true;
+                validation = false;
             }
         }
-            else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1)
-            {
-                habilityScreen.SetActive(false);
-                destroy = true;
-                //pausarJogador = false;
-            }
+        else if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && !validation)
+        { 
+            habilityScreen.SetActive(true);
+        }
     }
 }

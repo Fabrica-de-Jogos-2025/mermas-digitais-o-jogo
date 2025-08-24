@@ -109,10 +109,21 @@ public class RobotMovement : MonoBehaviour
         if (((direction > 0) && moviment.x == -1) || moviment.x == -1)
         {
             maxDistance = Camera.main.ViewportToWorldPoint(new Vector3(0.75f, 0.5f, 0)).x;
+
+            float Y = player.transform.position.y;
             
             while (direction > 0 && transform.position.x < maxDistance)
             {
-                transform.position += Vector3.right * Mathf.Sign(direction) * Speed * Time.deltaTime; // Move o robo para a direita
+                //transform.position += Vector3.right * Mathf.Sign(direction) * Speed * Time.deltaTime; // Move o robo para a direita
+
+                float platformY = player.transform.position.y + 0.479862f; // Acompanha a altura da plataforma via personagem
+
+                transform.position = new Vector3(
+                    transform.position.x + Mathf.Sign(direction) * Speed * Time.deltaTime,
+                    platformY, // Robô segue a altura da plataforma
+                    transform.position.z
+                );
+
 
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
                 foreach (Collider2D enemy in enemies)
@@ -132,7 +143,16 @@ public class RobotMovement : MonoBehaviour
 
             while (direction <= 0 && transform.position.x > maxDistance)
             {
-                transform.position += Vector3.left * Mathf.Sign(-direction) * Speed * Time.deltaTime; // Move o robo para a esquerda
+                //transform.position += Vector3.left * Mathf.Sign(-direction) * Speed * Time.deltaTime; // Move o robo para a esquerda
+
+                float platformY = player.transform.position.y + 0.479862f; // Acompanha a altura da plataforma via personagem
+
+                transform.position = new Vector3(
+                    transform.position.x + Mathf.Sign(direction) * Speed * Time.deltaTime,
+                    platformY, // Robô segue a altura da plataforma
+                    transform.position.z
+                );
+
 
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
                 foreach (Collider2D enemy in enemies)

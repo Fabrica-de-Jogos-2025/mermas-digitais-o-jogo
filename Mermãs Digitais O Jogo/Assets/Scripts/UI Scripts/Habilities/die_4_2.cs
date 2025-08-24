@@ -13,12 +13,7 @@ public class die_4_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Dest.IsCorrectlyPlaced())
-        {
-            signalObjectRed.SetActive(false);
-            signalObjectYellow.SetActive(true);
-        }
-        
+
         if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced())
         {
             signalObjectYellow.SetActive(false);
@@ -26,6 +21,17 @@ public class die_4_2 : MonoBehaviour
             Destroy(cage.gameObject);
             StartCoroutine(DestroyAfterDelay());
         }
+        else if (Dest.IsCorrectlyPlaced() && !Dest2.IsCorrectlyPlaced() || !Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced())
+        {
+            signalObjectRed.SetActive(false);
+            signalObjectYellow.SetActive(true);
+        }
+        else if (signalObjectYellow.activeSelf)
+        {
+            signalObjectYellow.SetActive(false);
+            signalObjectRed.SetActive(true);
+        }
+        else { }
     }
 
     private System.Collections.IEnumerator DestroyAfterDelay()

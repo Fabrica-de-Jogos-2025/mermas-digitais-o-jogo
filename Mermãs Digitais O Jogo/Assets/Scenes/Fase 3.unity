@@ -1631,8 +1631,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 2012253083}
+  Enemy2: {fileID: 974805349}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &79033093
@@ -1933,6 +1933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &91351392
 BoxCollider2D:
@@ -4840,6 +4841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &276095948
 BoxCollider2D:
@@ -5721,7 +5723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 341483722}
   - component: {fileID: 341483724}
-  - component: {fileID: 341483723}
+  - component: {fileID: 341483725}
   m_Layer: 0
   m_Name: Use Hability 6
   m_TagString: Untagged
@@ -5744,38 +5746,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 207459225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341483723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341483721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeadd3dc5a6fd494e8d0c889192daa9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMessages:
-  - "Voc\xEA adquiriu o dispositivo de Shaw, intitulado: River Raid com fun\xE7\xF5es."
-  - "Acho que essa vai ser a habilidade mais simples de utilizar, vamos ver aqui\u2026
-    temos tr\xEAs alternativas e aparentemente apenas uma delas est\xE1 correta."
-  - "\xC9 tipo uma prova de m\xFAltipla escolha, voc\xEA deve fazer algo do tipo
-    na escola ou na faculdade, e aqui, temos que selecionar a fun\xE7\xE3o correta."
-  - "Fun\xE7\xF5es s\xE3o blocos de c\xF3digo que executam uma opera\xE7\xE3o. Basicamente
-    um local onde voc\xEA coloca um c\xF3digo, e a\xED basta chamar a fun\xE7\xE3o
-    no programa que ela ir\xE1 ser executada."
-  - "Tente ler as fun\xE7\xF5es e selecione a que est\xE1 sendo executada corretamente,
-    baseando-se em todos os conceitos que vimos na nossa jornada. Isso deve ajudar
-    a tirar essa nave daqui."
-  - "Nossa, mas t\xE3o r\xE1pido assim? Voc\xEA \xE9 boa!! Vamos l\xE1, creio que
-    nossa jornada est\xE1 perto do fim."
-  - "S\xF3 lembrando que\u2026 ah, deixa quieto, voc\xEA j\xE1 sabe. Confio em voc\xEA!!"
-  habilityScreen: {fileID: 1142687849}
-  images: []
-  pausarJogador: 0
-  spriteCharacter: {fileID: 0}
-  nameofCharacter: 
 --- !u!61 &341483724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5822,6 +5792,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &341483725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341483721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65af1082375ce0a4ab67f9c8f32e5fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMessages:
+  - "Voc\xEA adquiriu o dispositivo de Shaw, intitulado: River Raid com fun\xE7\xF5es."
+  - "Acho que essa vai ser a habilidade mais simples de utilizar, vamos ver aqui\u2026
+    temos tr\xEAs alternativas e aparentemente apenas uma delas est\xE1 correta."
+  - "\xC9 tipo uma prova de m\xFAltipla escolha, voc\xEA deve fazer algo do tipo
+    na escola ou na faculdade, e aqui, temos que selecionar a fun\xE7\xE3o correta."
+  - "Fun\xE7\xF5es s\xE3o blocos de c\xF3digo que executam uma opera\xE7\xE3o. Basicamente
+    um local onde voc\xEA coloca um c\xF3digo, e a\xED basta chamar a fun\xE7\xE3o
+    no programa que ela ir\xE1 ser executada."
+  - "Tente ler as fun\xE7\xF5es e selecione a que est\xE1 sendo executada corretamente,
+    baseando-se em todos os conceitos que vimos na nossa jornada. Isso deve ajudar
+    a tirar essa nave daqui."
+  - "Nossa, mas t\xE3o r\xE1pido assim? Voc\xEA \xE9 boa!! Vamos l\xE1, creio que
+    nossa jornada est\xE1 perto do fim."
+  - "S\xF3 lembrando que\u2026 ah, deixa quieto, voc\xEA j\xE1 sabe. Confio em voc\xEA!!"
+  habilityScreen: {fileID: 1142687849}
+  images: []
+  pausarJogador: 0
+  spriteCharacter: {fileID: 0}
+  nameofCharacter: 
+  status: []
 --- !u!1 &344370789
 GameObject:
   m_ObjectHideFlags: 0
@@ -6782,12 +6785,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 452996202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8ee2c6f58097c48b5b17a9720489ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eef189e0b266ac4ca399c7c46e066ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueMessages: []
   habilityScreen: {fileID: 662133646}
-  images: []
   pausarJogador: 0
 --- !u!1 &476787846
 GameObject:
@@ -34757,6 +34758,7 @@ GameObject:
   - component: {fileID: 595164849}
   - component: {fileID: 595164852}
   - component: {fileID: 595164853}
+  - component: {fileID: 595164854}
   m_Layer: 0
   m_Name: Use Hability 6_2
   m_TagString: Untagged
@@ -34889,13 +34891,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 595164848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8ee2c6f58097c48b5b17a9720489ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eef189e0b266ac4ca399c7c46e066ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueMessages: []
   habilityScreen: {fileID: 223847869}
-  images: []
   pausarJogador: 0
+--- !u!114 &595164854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595164848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2556b309fe777344bb09c7815858982b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  h: {fileID: 2093588627}
 --- !u!1 &604186717
 GameObject:
   m_ObjectHideFlags: 0
@@ -37771,8 +37784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 1209853722}
+  Enemy2: {fileID: 2086458285}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &803132076
@@ -38129,6 +38142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &814668598
 BoxCollider2D:
@@ -38277,6 +38291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &836483094
 BoxCollider2D:
@@ -39626,10 +39641,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dest: {fileID: 10632692}
   habilityCard: {fileID: 2116333822}
-  Enemy5: {fileID: 0}
-  Enemy6: {fileID: 0}
-  Enemy7: {fileID: 0}
-  Enemy8: {fileID: 0}
+  Enemy5: {fileID: 119143524}
+  Enemy6: {fileID: 682406502}
+  Enemy7: {fileID: 1910784830}
+  Enemy8: {fileID: 52773564}
 --- !u!114 &967513048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41723,6 +41738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &1104162118
 BoxCollider2D:
@@ -42131,12 +42147,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131359039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8ee2c6f58097c48b5b17a9720489ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eef189e0b266ac4ca399c7c46e066ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueMessages: []
   habilityScreen: {fileID: 967513046}
-  images: []
   pausarJogador: 0
 --- !u!1 &1131785868
 GameObject:
@@ -45587,6 +45601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &1369090501
 BoxCollider2D:
@@ -46046,8 +46061,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 550281767}
+  Enemy2: {fileID: 970499417}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &1387048864
@@ -48284,6 +48299,8 @@ MonoBehaviour:
   pausarJogador: 0
   spriteCharacter: {fileID: 0}
   nameofCharacter: 
+  status: []
+  habilityUITutorial: {fileID: 0}
 --- !u!61 &1580691009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48946,8 +48963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 1640983377}
+  Enemy2: {fileID: 1672659011}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &1632280856
@@ -49814,8 +49831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 1105329369}
+  Enemy2: {fileID: 1180524680}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &1672291667
@@ -55133,6 +55150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &2031548854
 BoxCollider2D:
@@ -56248,8 +56266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 19147391}
   H: {fileID: 2093588627}
-  Enemy1: {fileID: 0}
-  Enemy2: {fileID: 0}
+  Enemy1: {fileID: 106951764}
+  Enemy2: {fileID: 592713219}
   permissionEnemy: 1
   Grids: 0
 --- !u!212 &2087376625
