@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Controlador da UI")]
+    [SerializeField] private GameObject uiManagerController;
+    
     // Referências para os painéis que você já tem (Loja, Opções e Créditos)
     public GameObject telaLoja;
     public GameObject telaOpcoes;
@@ -25,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public Button voltarOpcoesBtn;
     public Button voltarCreditosBtn;
 
-    private ClickButtonEffect uiTitleScreen;
+    // private ClickButtonEffect uiTitleScreen;
     void Start()
     {
         // Configura os botões
@@ -54,6 +58,7 @@ public class MainMenu : MonoBehaviour
     // Desativa os painéis existentes
     void FecharTodasAsTelas()
     {
+        if (telaInput != null) telaInput.SetActive(false);
         if (telaLoja != null) telaLoja.SetActive(false);
         if (telaOpcoes != null) telaOpcoes.SetActive(false);
         if (telaCreditos != null) telaCreditos.SetActive(false);
@@ -72,6 +77,7 @@ public class MainMenu : MonoBehaviour
     {
         // Debug.Log("Botão História clicado. Tela não implementada.");
         telaMenu.SetActive(false);
+        uiManagerController.SetActive(false);
         telaInput.SetActive(true);
     }
 
@@ -128,5 +134,10 @@ public class MainMenu : MonoBehaviour
     {
         if (tela != null)
             tela.SetActive(false);
+    }
+
+    public void GoToCutscene()
+    {
+        SceneManager.LoadScene("Cutscene");
     }
 }
