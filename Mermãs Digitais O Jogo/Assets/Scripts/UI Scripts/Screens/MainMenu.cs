@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject telaOpcoes;
     public GameObject telaCreditos;
     public GameObject telaMenu;
+    public GameObject telaInput;
 
     // Referências dos botões
     public Button historiaBtn;
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public Button sairBtn;
     
     public Button voltarTituloBtn;
+    public Button voltarInputBtn;
     public Button voltarLojaBtn;
     public Button voltarOpcoesBtn;
     public Button voltarCreditosBtn;
@@ -37,6 +39,7 @@ public class MainMenu : MonoBehaviour
         if (voltarOpcoesBtn != null) voltarOpcoesBtn.onClick.AddListener(() => FecharTela(telaOpcoes));
         if (voltarCreditosBtn != null) voltarCreditosBtn.onClick.AddListener(() => FecharTela(telaCreditos));
         if (voltarTituloBtn != null) voltarTituloBtn.onClick.AddListener(() => FecharTela(telaMenu));
+        if (voltarInputBtn != null) voltarInputBtn.onClick.AddListener(() => FecharTela(telaInput));
 
         // Desativa todos os painéis inicialmente
         FecharTodasAsTelas();
@@ -67,7 +70,9 @@ public class MainMenu : MonoBehaviour
     // Ação para o botão História (não implementado)
     void AbrirHistoria()
     {
-        Debug.Log("Botão História clicado. Tela não implementada.");
+        // Debug.Log("Botão História clicado. Tela não implementada.");
+        telaMenu.SetActive(false);
+        telaInput.SetActive(true);
     }
 
     // Ação para o botão Sair
