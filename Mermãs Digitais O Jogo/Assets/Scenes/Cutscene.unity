@@ -393,7 +393,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8915119, y: -0.33726215}
+  m_Offset: {x: -0.45488906, y: -0.33726215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -403,7 +403,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 21.483788, y: 22.82234}
+  m_Size: {x: 9.694878, y: 22.82234}
   m_EdgeRadius: 0
 --- !u!212 &690497823
 SpriteRenderer:
@@ -796,6 +796,7 @@ MonoBehaviour:
   jumpForce: 7
   delayBeforeExit: 0.5
   exitPoint: {fileID: 708188552}
+  loader: {fileID: 2120035244}
 --- !u!1 &1262023401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1091,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2120035243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120035245}
+  - component: {fileID: 2120035244}
+  m_Layer: 0
+  m_Name: LoaderController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2120035244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120035243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd20e1f91a77e4342bde6d44bddf4b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2120035245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120035243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.439258, y: -2.4213705, z: -0.03948885}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1102,3 +1147,4 @@ SceneRoots:
   - {fileID: 1187734272}
   - {fileID: 1968937845}
   - {fileID: 708188552}
+  - {fileID: 2120035245}

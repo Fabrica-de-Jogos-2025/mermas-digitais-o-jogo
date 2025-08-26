@@ -140,4 +140,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Cutscene");
     }
+
+    public void VoltarParaMenu()
+    {
+        telaMenu.SetActive(true);
+    }
 }

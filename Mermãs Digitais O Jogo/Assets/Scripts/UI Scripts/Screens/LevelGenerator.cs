@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     public Button botaoFase2;
     public Button botaoFase3;
 
+    [SerializeField] private Loader loader;
     void Start()
     {
         if (botaoTurorial != null)
@@ -27,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
     void CarregarComLoading(string nomeCena)
     {
         Debug.Log("Passando pela tela de carregamento antes de: " + nomeCena);
-        Loader.CarregarFase(nomeCena); // Aqui ele chama o sistema de carregamento com animação
+        loader.CarregarFase(nomeCena); // Aqui ele chama o sistema de carregamento com animação
     }
 }
 

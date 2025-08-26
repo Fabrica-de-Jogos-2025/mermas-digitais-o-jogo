@@ -15,7 +15,7 @@ public class Loader : MonoBehaviour
         }
     }
 
-    public static void CarregarFase(string nomeCena)
+    public void CarregarFase(string nomeCena)
     {
         nomeDaCenaPraCarregar = nomeCena;
         carregandoFase = true;
@@ -24,7 +24,7 @@ public class Loader : MonoBehaviour
 
     private System.Collections.IEnumerator CarregarCena()
     {
-        yield return new WaitForSeconds(2f); // tempo pra mostrar a animação
+        yield return new WaitForSeconds(5f); // tempo pra mostrar a animação
         SceneManager.LoadScene(nomeDaCenaPraCarregar);
     }
 }

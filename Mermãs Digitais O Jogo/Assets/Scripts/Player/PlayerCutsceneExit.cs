@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCutsceneExit : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PlayerCutsceneExit : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb;
+    [SerializeField] private Loader loader;
     private bool exiting = false;
     private bool jumped = false;
 
@@ -57,5 +60,13 @@ public class PlayerCutsceneExit : MonoBehaviour
         anim.SetInteger("transition", 2); // animação de pulo
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // aplica força para cima
         // Aqui você pode acionar algo para encerrar a cutscene (desativar câmera, carregar cena, etc.)
+        // loader.StartCoroutine(loader.CarregarFase("Level Selector"));
+        StartCoroutine(TransitionScene());
+    }
+
+    private IEnumerator TransitionScene()
+    {
+        yield return new WaitForSeconds(3f);
+        loader.CarregarFase("Level Selector");
     }
 }
