@@ -347,7 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &18608489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &18821990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -707,7 +705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &20616239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -993,7 +990,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &34121380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1170,7 +1166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &52058215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2546,6 +2541,109 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &92884563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 92884567}
+  - component: {fileID: 92884566}
+  - component: {fileID: 92884565}
+  - component: {fileID: 92884564}
+  m_Layer: 5
+  m_Name: CanvasHabilityButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &92884564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92884563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &92884565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92884563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &92884566
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92884563}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &92884567
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92884563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1701240200}
+  - {fileID: 963582568}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &93163571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &93163574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2694,7 +2791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &97261866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3623,7 +3719,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &125036377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3725,7 +3820,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &148536839
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4005,7 +4099,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &189246759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4245,7 +4338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &199598286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4855,7 +4947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &228401202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4957,7 +5048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &230372745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5906,7 +5996,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &260860531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7250,8 +7339,8 @@ MonoBehaviour:
   habilityScreen: {fileID: 1142687849}
   images: []
   pausarJogador: 0
-  spriteCharacter: {fileID: 0}
-  nameofCharacter: 
+  spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
+  nameofCharacter: "Rob\xF4"
   status: []
 --- !u!1 &344370789
 GameObject:
@@ -7386,7 +7475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &350522410
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7560,7 +7648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &356377206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7950,7 +8037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &411072975
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8275,7 +8361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &432458467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8810,7 +8895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &481267627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35960,7 +36044,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &570047726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36062,7 +36145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &583710751
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36982,7 +37064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &609069342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38671,7 +38752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &718273633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38891,7 +38971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &721732096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39336,7 +39415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &768979558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40490,7 +40568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &810681862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41488,7 +41565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &871480376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41880,7 +41956,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &905705169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42118,7 +42193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &910384194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42220,7 +42294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &913917525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42322,7 +42395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &916986995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42424,7 +42496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &941355132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42734,6 +42805,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1262813492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &963582567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 963582568}
+  - component: {fileID: 963582570}
+  - component: {fileID: 963582569}
+  m_Layer: 5
+  m_Name: DialogueButtonH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &963582568
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963582567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 92884567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 47.78299, y: -5.99999}
+  m_SizeDelta: {x: 30, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &963582569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963582567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6394709171306028739, guid: 50d6cea4e2f734440938c2e06f09f039, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &963582570
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963582567}
+  m_CullTransparentMesh: 1
 --- !u!1 &967513046
 GameObject:
   m_ObjectHideFlags: 0
@@ -43345,7 +43491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &981633142
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43578,7 +43723,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &997315177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44397,7 +44541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1044568680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44737,7 +44880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1074247336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45062,7 +45204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1078313353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45164,7 +45305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1097852327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45743,7 +45883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1122098589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45845,7 +45984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1129379667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45947,7 +46085,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1130164937
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46177,7 +46314,7 @@ MonoBehaviour:
     pra voc\xEA!! "
   pausarJogador: 0
   spriteCharacter: {fileID: 947500879495320539, guid: f2b19c1c7d5a96a42bd8fa6efcf0497b, type: 3}
-  nameofCharacter: 
+  nameofCharacter: Margaret
   uiDialogueTutorial: {fileID: 660972511}
 --- !u!61 &1135871221
 BoxCollider2D:
@@ -46509,7 +46646,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1147181360
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46832,7 +46968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1178607598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47222,7 +47357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1186943883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47995,7 +48129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1209747689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48228,7 +48361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1214282640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48330,7 +48462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1220709752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48432,7 +48563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1231042061
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49193,7 +49323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1291121211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50308,7 +50437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1372492292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50826,7 +50954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1403112273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51015,7 +51142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1424048865
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51668,7 +51794,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1456102152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52047,7 +52172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1505587478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52149,7 +52273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1511822519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52361,7 +52484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1517097134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53468,10 +53590,10 @@ MonoBehaviour:
   habilityScreen: {fileID: 1432599936}
   images: []
   pausarJogador: 0
-  spriteCharacter: {fileID: 0}
-  nameofCharacter: 
+  spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
+  nameofCharacter: "Rob\xF4"
   status: []
-  habilityUITutorial: {fileID: 0}
+  habilityUITutorial: {fileID: 92884563}
 --- !u!61 &1580691009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53821,7 +53943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1594441956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53938,7 +54059,7 @@ MonoBehaviour:
   - "N\xE3o precisa me agradecer, adoro ser gentil com quem precisa!!"
   pausarJogador: 0
   spriteCharacter: {fileID: 8503083011736007763, guid: 6dd72112d15a52a439c118da32f22fe1, type: 3}
-  nameofCharacter: 
+  nameofCharacter: Carol
   uiDialogueTutorial: {fileID: 660972511}
 --- !u!61 &1601933933
 BoxCollider2D:
@@ -54087,7 +54208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1624315056
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55683,7 +55803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1688977805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56048,6 +56167,142 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &1701240199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701240200}
+  - component: {fileID: 1701240202}
+  - component: {fileID: 1701240201}
+  m_Layer: 5
+  m_Name: PressioneText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1701240200
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701240199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 92884567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4, y: -16}
+  m_SizeDelta: {x: 117.5662, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1701240201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701240199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Pressione
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: aef4f7eebd342cd4e9f1eb7b8a541c97, type: 2}
+  m_sharedMaterial: {fileID: -1213993974898154104, guid: aef4f7eebd342cd4e9f1eb7b8a541c97, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 18.23
+  m_fontSizeBase: 18.23
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 24.20549, w: 24.436886}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1701240202
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701240199}
+  m_CullTransparentMesh: 1
 --- !u!1 &1702963231
 GameObject:
   m_ObjectHideFlags: 0
@@ -56503,7 +56758,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1714778942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56746,7 +57000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1738060945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57279,7 +57532,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1789312324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57381,7 +57633,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1792902904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57483,7 +57734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1799212013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58276,7 +58526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1849907074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58779,7 +59028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1866074981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59354,7 +59602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1888320887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59456,7 +59703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1901775901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59558,7 +59804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1904794750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59831,7 +60076,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1909341830
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60628,7 +60872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &1966995795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61995,7 +62238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &2057045699
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63672,7 +63914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &2121475935
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63944,7 +64185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
-  parallaxEffectY: 0
 --- !u!212 &2130679757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64281,6 +64521,7 @@ SceneRoots:
   - {fileID: 156922999}
   - {fileID: 890978114}
   - {fileID: 486771761}
+  - {fileID: 92884567}
   - {fileID: 200701824}
   - {fileID: 1564810862}
   - {fileID: 261656881}
