@@ -9,6 +9,7 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
     public VideoPlayer video;
     public GameObject uiCanvas;
     public GameObject ship;
+    public GameObject hitbox;
     [SerializeField] private Image rightAnswer;
     [SerializeField] private Image wrongAnswer1;
     [SerializeField] private Image wrongAnswer2;
@@ -65,6 +66,7 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
         {
             verificationclick = true;
             UsoDaUltimaHabilidade = true;
+            Destroy(hitbox.gameObject);
             Destroy(ship);
         }
     }

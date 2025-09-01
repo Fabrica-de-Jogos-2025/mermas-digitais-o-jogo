@@ -15,6 +15,7 @@ TagManager:
   - Platform
   - Item
   - Padlock
+  - Ground
   layers:
   - Default
   - TransparentFX

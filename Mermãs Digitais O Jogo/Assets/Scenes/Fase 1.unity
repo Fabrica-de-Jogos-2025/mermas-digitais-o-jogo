@@ -113864,6 +113864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &779118353
 BoxCollider2D:
@@ -115446,10 +115447,7 @@ MonoBehaviour:
   habilityScreen: {fileID: 1188911373}
   images: []
   pausarJogador: 0
-  status:
-  - {fileID: 449410195}
-  - {fileID: 517422675}
-  - {fileID: 1484332402}
+  deactivatedHabilityUI: 0
   habilityUITutorial: {fileID: 1244903427}
 --- !u!114 &989640278
 MonoBehaviour:
@@ -120855,6 +120853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2674d4bc02622648b2826659b2ed2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorialPowerUp: 0
   robotPowered: {fileID: 0}
 --- !u!61 &1867532817
 BoxCollider2D:

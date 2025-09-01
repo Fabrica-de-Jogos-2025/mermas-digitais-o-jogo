@@ -8,7 +8,7 @@ public class Teste_Die_5_3 : MonoBehaviour
     private bool isDestroyed = false;
     //public GameObject rocket; // Referência ao foguete
     //[SerializeField] private GameObject rocketCollider; // Collider do foguete
-    public GameObject habilityCard, Enemy5, Enemy6, Enemy7, Enemy8;
+    public GameObject habilityCard, Enemy5, Enemy6, Enemy7, Enemy8, hitbox;
 
     
     void Update()
@@ -23,6 +23,8 @@ public class Teste_Die_5_3 : MonoBehaviour
             Destroy(Enemy6.gameObject);
             Destroy(Enemy7.gameObject);
             Destroy(Enemy8.gameObject);
+
+            Destroy(hitbox.gameObject);
 
             Destroy(this.gameObject);
             //Destroy(rocket.gameObject);
