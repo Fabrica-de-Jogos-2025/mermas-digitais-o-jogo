@@ -24,6 +24,18 @@ public class BossAttack : MonoBehaviour
 
     private float speedFactor;
 
+    private bool h_0 = true;
+    private bool h_1 = false;
+    private bool h_2 = false;
+    private bool h_3 = true;
+    private bool h_4 = false;    
+    private bool h_5 = true;
+    private bool h_6 = false;    
+    private bool h_7 = true;
+    private bool h_8 = false;    
+
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -41,41 +53,88 @@ public class BossAttack : MonoBehaviour
 
         if (k == 0)
         {
-            anim.SetInteger("transition", 1);
-            speedFactor = 0.06667f;
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-            {
-                permission = true;
-                k = 1;
+            if(h_3){
+                anim.SetInteger("transition", 4);
+                speedFactor = 0.06667f;
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+                
+                
+                //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {    
+                    h_3 = false;
+                    h_4 = true;
+                }
+            }else
+
+            if(h_4){
+                anim.SetInteger("transition", 1);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_3 = true;
+                    h_4 = false;
+                    permission = true;
+                    k = 1;
+                }
             }
         } 
         else if (k == 2)
         {
-            anim.SetInteger("transition", 1);
-            speedFactor = 0.06667f;
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-            {
-                speedFactor = 0f;
-                permission = true;
-                k = 3;
+            if(h_5){
+                anim.SetInteger("transition", 4);
+                speedFactor = 0.06667f;
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+                
+                //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {    
+                    h_5 = false;
+                    h_6 = true;
+                }
+                }else
+
+            if(h_6){
+                anim.SetInteger("transition", 1);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_5 = true;
+                    h_6 = false;
+                    speedFactor = 0f;
+                    permission = true;
+                    k = 3;
+                }
             }
         }
         else if (k == 4)
         {
-            anim.SetInteger("transition", 1);
-            speedFactor = 0.06667f;
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-            {
-                speedFactor = 0f;
-                permission = true;
-                k = 5;
+            if(h_7){
+                anim.SetInteger("transition", 4);
+                speedFactor = 0.06667f;
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+                //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_7 = false;
+                    h_8 = true;
+                }
+                }else
+
+            if(h_8){            
+                anim.SetInteger("transition", 1);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                //speedFactor = 0.06667f;
+                //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+                //{
+                h_7 = true;
+                    h_8 = false;
+                    speedFactor = 0f;
+                    permission = true;
+                    k = 5;
+                //}
             }
         }
         else if (k == 5)
         {
             if (i == 3)
             {
-                anim.SetInteger("transition", 2);
+                anim.SetInteger("transition", 10);
                 speedFactor = 0.7f;
 
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
@@ -97,15 +156,42 @@ public class BossAttack : MonoBehaviour
 
             if(h)
             {
-                anim.SetInteger("transition", 3);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("spitting"))
-                {
-                    Attack();
-                }
+                if(h_0){
+                    anim.SetInteger("transition", 0);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                    {
+                        h_0 = false;
+                        h_1 = true;
+                        //h_2 = false;
+                    }
+                }else
+
+                if(h_1){
+                    anim.SetInteger("transition", 8);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("spitting"))
+                    {
+                        h_0 = true;
+                        h_1 = false;
+                        Attack();
+                        //h_2 = true;
+                    }
+                }/*else
+
+                if(h_2){
+                    anim.SetInteger("transition", 3);    
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("spitting"))
+                    {
+                        h_0 = true;
+                        h_1 = false;
+                        h_2 = false;    
+                        Attack();
+                    }
+                }*/    
+                
             }
             else
             {
-                anim.SetInteger("transition", 0);
+                anim.SetInteger("transition", 9);
             }
         }
         else
@@ -132,7 +218,7 @@ public class BossAttack : MonoBehaviour
                 }
             }
 
-            anim.SetInteger("transition", 0);
+            anim.SetInteger("transition", 9);
         }
     }
 

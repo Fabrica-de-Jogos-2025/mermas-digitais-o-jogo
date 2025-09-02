@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b0982eb02c0d7214b946093fa3cfa525
+guid: 5537f47a4b45c9f448180e0ced0bc9f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -194684251170442009
-    second: "Len\xE7\xF3is _0"
+      213: 3831833017227836788
+    second: Fase 2 - Tamanho maior_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,12 +72,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 100
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -87,7 +87,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 12
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Len\xE7\xF3is _0"
+      name: Fase 2 - Tamanho maior_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 320
-        height: 106
+        width: 500
+        height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e47f9d74b75c4df0800000000000000
-      internalID: -194684251170442009
+      spriteID: 47d7a76c3d76d2530800000000000000
+      internalID: 3831833017227836788
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Len\xE7\xF3is _0": -194684251170442009
+      Fase 2 - Tamanho maior_0: 3831833017227836788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -55,11 +55,17 @@ public class RobotDialogue : MonoBehaviour
 
     void Update()
     {
-        if(dialogueActive && Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            EndDialogue();
+            return;
+        }
+
+        if (dialogueActive && Input.GetKeyDown(KeyCode.X))
         {
             if (isTyping)
             {
-                if(currentTypingCoroutine != null)
+                if (currentTypingCoroutine != null)
                 {
                     StopCoroutine(currentTypingCoroutine);
                     currentTypingCoroutine = null;
@@ -73,27 +79,28 @@ public class RobotDialogue : MonoBehaviour
             }
         }
     }
+    
 
     public void StartDialogue(string[] dialogue, PlayerMovement player)
     {
-        if(!dialogueActive)
+        if (!dialogueActive)
         {
             currentDialogue = dialogue;
             dialogueActive = true;
             uiPlayer.SetActive(false);
             dialoguePanel.SetActive(true);
             dialogueIndex = 0;
-            
+
             // Resetar estado de digitação
-            if(currentTypingCoroutine != null)
+            if (currentTypingCoroutine != null)
             {
                 StopCoroutine(currentTypingCoroutine);
             }
-            
+
             ShowMessage(dialogueIndex);
 
             currentPlayer = player;
-            if(currentPlayer != null)
+            if (currentPlayer != null)
             {
                 currentPlayer.FreezePlayer(true);
             }
