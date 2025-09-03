@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 
-public class Hability2OpenAndClose : MonoBehaviour
+public class HabilityCacto : MonoBehaviour
 {
     [TextArea(3, 10)]
     public string[] dialogueMessages;
@@ -15,14 +15,16 @@ public class Hability2OpenAndClose : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+    [SerializeField] private Hability1Use [] status;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
-    public Hability2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
-    public bool destroy = false;
+    private bool validation = true;
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && validation)
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
@@ -31,15 +33,24 @@ public class Hability2OpenAndClose : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && validation)
         {
             playerInTrigger = false;
         }
     }
 
+
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        /*if (validation.puzzleSolved && validation2.puzzleSolved)
+        {
+            Destroy(detroyer.gameObject);
+            validation.puzzleSolved = false;
+            validation2.puzzleSolved = false;
+        }*/
+
+
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
@@ -54,12 +65,8 @@ public class Hability2OpenAndClose : MonoBehaviour
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                validation = false;
             }
         }
-            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close)
-            {
-                habilityScreen.SetActive(false);
-                destroy = true;
-            }
     }
 }

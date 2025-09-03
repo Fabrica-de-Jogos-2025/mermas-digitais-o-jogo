@@ -23,9 +23,11 @@ public class Hability1 : MonoBehaviour
     //public GameObject detroyer;
     private bool validation = true;
 
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && validation)
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
@@ -42,7 +44,7 @@ public class Hability1 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && validation)
         {
             playerInTrigger = false;
             habilityUITutorial.SetActive(false);
@@ -75,6 +77,7 @@ public class Hability1 : MonoBehaviour
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
                 validation = false;
+                habilityUITutorial.SetActive(false);
             }
         }
     }

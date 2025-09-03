@@ -14,6 +14,7 @@ public class Hability1Use_1 : MonoBehaviour
     private Padlock padlock;
     public bool PuzzleSolved { get => puzzleSolved; set => puzzleSolved = value; }
     public bool destroy = false;
+    private int count = 0;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class Hability1Use_1 : MonoBehaviour
 
     public void VerifyPuzzle()
     {
-        
+
         if (booleanOperation == "Conjunção")
         {
             for (int i = 0; i < buttons.Length; i++)
@@ -48,8 +49,38 @@ public class Hability1Use_1 : MonoBehaviour
             if (puzzleSolved)
             {
                 habilityScreen.pausarJogador = false;
-                habilityScreen.HabilityScreen.SetActive(false);
                 destroy = true;
+                habilityScreen.HabilityScreen.SetActive(false);
+            }
+        }
+
+        else if (booleanOperation == "Implicação")
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i].sprite == correctImages[i])
+                {
+                    count++;
+                    if (count == buttons.Length)
+                    {
+                        count = 0;
+                        return;
+                    }
+                }
+            }
+            
+            count = 0;
+
+            if (buttons[buttons.Length - 1].sprite == correctImages[buttons.Length - 1])
+            {
+                puzzleSolved = true;
+
+                if (puzzleSolved)
+                {
+                    habilityScreen.pausarJogador = false;
+                    destroy = true;
+                    habilityScreen.HabilityScreen.SetActive(false);
+                }
             }
         }
     }

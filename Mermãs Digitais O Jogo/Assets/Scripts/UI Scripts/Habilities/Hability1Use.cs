@@ -15,6 +15,7 @@ public class Hability1Use : MonoBehaviour
     private Padlock padlock;
     public bool PuzzleSolved { get => puzzleSolved; set => puzzleSolved = value; }
     public PlayerMovement PM;
+    public bool destroy = false;
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class Hability1Use : MonoBehaviour
                 //Destroy(padlock.gameObject);
                 //padlock.gameObject.SetActive(false);
                 padlock.i = true;
+                destroy = true;
             }
         }
     }

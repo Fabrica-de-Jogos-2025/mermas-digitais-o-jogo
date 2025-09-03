@@ -1291,7 +1291,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &272165444
 GameObject:
@@ -1390,6 +1390,7 @@ MonoBehaviour:
   - {fileID: 272165445}
   - {fileID: 131954567}
   PM: {fileID: 0}
+  destroy: 0
 --- !u!114 &272165448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4451,12 +4452,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2901f65e595f1469967fa875e99312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  booleanOperation: 
+  booleanOperation: "Implica\xE7\xE3o"
   images:
   - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
   - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
-  correctImages: []
-  buttons: []
+  correctImages:
+  - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
+  - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
+  - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
+  buttons:
+  - {fileID: 873185386}
+  - {fileID: 965869789}
+  - {fileID: 1405332520}
   destroy: 0
 --- !u!114 &873185388
 MonoBehaviour:
@@ -4481,6 +4488,7 @@ MonoBehaviour:
   - {fileID: 873185386}
   - {fileID: 1405332520}
   PM: {fileID: 0}
+  destroy: 0
 --- !u!114 &873185389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5191,12 +5199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2901f65e595f1469967fa875e99312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  booleanOperation: 
+  booleanOperation: "Implica\xE7\xE3o"
   images:
   - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
   - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
-  correctImages: []
-  buttons: []
+  correctImages:
+  - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
+  - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
+  - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
+  buttons:
+  - {fileID: 873185386}
+  - {fileID: 965869789}
+  - {fileID: 1405332520}
   destroy: 0
 --- !u!114 &965869791
 MonoBehaviour:
@@ -5221,6 +5235,7 @@ MonoBehaviour:
   - {fileID: 965869789}
   - {fileID: 1405332520}
   PM: {fileID: 0}
+  destroy: 0
 --- !u!114 &965869792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6501,13 +6516,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2901f65e595f1469967fa875e99312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  booleanOperation: "Conjun\xE7\xE3o"
+  booleanOperation: "Implica\xE7\xE3o"
   images:
   - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
   - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
   correctImages:
   - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
+  - {fileID: 6155283429219620731, guid: 5e3f4466a2c863b4db49a1b47eb7f4f2, type: 3}
+  - {fileID: -7093643972573918368, guid: ee64acd5aa0e4cc4399891c175dc6820, type: 3}
   buttons:
+  - {fileID: 873185386}
+  - {fileID: 965869789}
   - {fileID: 1405332520}
   destroy: 0
 --- !u!114 &1405332518
@@ -6533,6 +6552,7 @@ MonoBehaviour:
   - {fileID: 1405332520}
   - {fileID: 873185386}
   PM: {fileID: 0}
+  destroy: 0
 --- !u!114 &1405332519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6724,6 +6744,7 @@ MonoBehaviour:
   - {fileID: 1439015588}
   - {fileID: 131954567}
   PM: {fileID: 0}
+  destroy: 0
 --- !u!114 &1439015591
 MonoBehaviour:
   m_ObjectHideFlags: 0

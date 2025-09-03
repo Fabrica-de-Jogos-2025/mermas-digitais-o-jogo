@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -42,8 +43,8 @@ public class PlayerMovement : MonoBehaviour
     private GroundCheck groundChecked;
     private Vector2 lastCheckpointPosition;
 
-    public CoinManager coinManager;
-    public Tilemap coinTilemap;
+    private CoinManager coinManager;
+    private Tilemap coinTilemap;
     public bool i = false;
     public bool TutoJumpAtiv = false;
 
@@ -51,11 +52,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         rig = GetComponent<Rigidbody2D>();
         //robot = FindAnyObjectByType<RobotMovement>();
         groundChecked = GetComponentInChildren<GroundCheck>();
         lastCheckpointPosition = transform.position;
+        coinManager = GameObject.FindWithTag("Coin").GetComponent<CoinManager>();
+        coinTilemap = GameObject.FindWithTag("Coin").GetComponent<Tilemap>();
+
+        FindCoinReferences();
     }
 
     // Update is called once per frame
@@ -112,6 +118,27 @@ public class PlayerMovement : MonoBehaviour
         isJumping = !groundChecked.IsGrounded();
     }
 
+    private void FindCoinReferences()
+    {
+        GameObject coinObj = GameObject.FindWithTag("Coin");
+        if (coinObj != null)
+        {
+            coinManager = coinObj.GetComponent<CoinManager>();
+            coinTilemap = coinObj.GetComponent<Tilemap>();
+        }
+        else
+        {
+            coinManager = null;
+            coinTilemap = null;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Sempre que mudar de cena, procura de novo o CoinManager e Tilemap
+        FindCoinReferences();
+    }
+
     private void CheckForCoin()
     {
         if (coinTilemap == null) return;
@@ -121,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         if (coinTilemap.HasTile(cellPosition)) // Se houver moeda nessa posição
         {
             coinTilemap.SetTile(cellPosition, null); // Remove a moeda
-            coinManager.AddCoin(); // Atualiza o contador
+            coinManager?.AddCoin(); // Atualiza o contador
         }
     }
 
@@ -212,6 +239,10 @@ public class PlayerMovement : MonoBehaviour
             transform.SetParent(null);
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 }
