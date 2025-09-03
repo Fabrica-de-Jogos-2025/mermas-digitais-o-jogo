@@ -1,11 +1,15 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
     public int coinCount;
-    public TextMeshProUGUI CoinsNumber;
+    private TextMeshProUGUI CoinsNumber;
+
+    private void Start()
+    {
+        CoinsNumber = GameObject.Find("CoinsNumber").GetComponent<TextMeshProUGUI>();
+    }
 
     public void AddCoin()
     {

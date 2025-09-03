@@ -85,7 +85,6 @@ public class TutorialTrigger : MonoBehaviour
     {
         uiTutorial.SetActive(true);
         tutorialAtivo = true;
-        Debug.Log($"[TutorialTrigger] Tipo: {tutorialType} | Teclas: {(teclasTutorial == null ? "null" : string.Join(", ", teclasTutorial))}");
     }
 
     void Update()

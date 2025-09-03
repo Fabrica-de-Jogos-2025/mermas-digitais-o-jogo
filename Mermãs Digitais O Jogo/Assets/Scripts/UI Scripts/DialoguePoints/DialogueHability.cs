@@ -43,9 +43,10 @@ public class DialogueHability : MonoBehaviour
 
             if (robot != null && player != null && !player.IsJumping)
             {
-                if (spriteCharacter != null)
-                    robot.imageRobot.sprite = spriteCharacter;
-
+                if (spriteCharacter != null) { 
+                robot.imageRobot.sprite = spriteCharacter;
+                robot.imageRobot.transform.localScale = new Vector3(0.5f, 1f, 0f);
+            }
 
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
