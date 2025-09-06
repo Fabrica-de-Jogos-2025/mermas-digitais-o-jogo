@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Padlock currentPadlock;
     public bool permissionDoor_a = false;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private PlayerStatus playerStatus;
 //    [SerializeField] private TutorialTrigger trigger;
     public bool IsJumping
     {
@@ -176,6 +177,23 @@ public class PlayerMovement : MonoBehaviour
         lastCheckpointPosition = newCheckpoint;
     }
 
+    public void Respawn()
+    {
+        // Zera velocidade para evitar "sair voando"
+        rig.linearVelocity = Vector2.zero;
+
+        // Teleporta para o último checkpoint salvo
+        transform.position = lastCheckpointPosition;
+        playerStatus.PlayerLife = playerStatus.Hearts.Length;
+        foreach (var heart in playerStatus.Hearts)
+        {
+            heart.enabled = true;
+        }
+
+        // Caso tenha animação de morte, você pode resetar ela aqui
+        // anim.SetTrigger("Idle"); 
+    }
+
     public void FreezePlayer(bool freeze)
     {
         isFrozen = freeze;
@@ -213,7 +231,13 @@ public class PlayerMovement : MonoBehaviour
         {
             currentDoor = collision.GetComponent<Door>();
         }
-    }
+
+        if (playerStatus.PlayerLife <= 0)
+        {
+            Respawn();
+        }
+    
+}
 
     private void OnTriggerExit2D(Collider2D collision)
     {

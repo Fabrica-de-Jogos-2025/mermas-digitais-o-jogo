@@ -5,12 +5,14 @@ public class Checkpoint : MonoBehaviour
 
     [SerializeField] private Sprite activatedCheckpoint;
     private bool isActivated = false;
-  
+
+    public bool IsActivated { get => isActivated; set => isActivated = value; }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!isActivated && other.CompareTag("Player"))
+        if(other.CompareTag("Player"))
         {
-            isActivated = true;
+            
             PlayerMovement player = other.GetComponent<PlayerMovement>();
 
             if(player != null)
@@ -18,7 +20,8 @@ public class Checkpoint : MonoBehaviour
                 player.SetLastCheckpoint(this.transform.position);
             }
 
-            if(activatedCheckpoint != null){
+            if(!isActivated && activatedCheckpoint != null){
+                isActivated = true;
                 GetComponent<SpriteRenderer>().sprite = activatedCheckpoint;
             }
         }

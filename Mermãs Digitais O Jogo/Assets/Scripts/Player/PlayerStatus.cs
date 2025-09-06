@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private Image[] hearts;
     [SerializeField] private int playerLife;
     [SerializeField] private int cards;
+    private Checkpoint checkpoint;
 
     public int PlayerLife { get => playerLife; set => playerLife = value; }
     public Image[] Hearts { get => hearts; set => hearts = value; }
@@ -16,10 +17,11 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         playerLife = hearts.Length;
+        checkpoint = FindFirstObjectByType<Checkpoint>();
     }
     public void Die()
     {
-        if (PlayerLife <= 0)
+        if (PlayerLife <= 0 && !checkpoint.IsActivated)
         {
             Destroy(this.gameObject);
             SceneManager.LoadScene("Tutorial");

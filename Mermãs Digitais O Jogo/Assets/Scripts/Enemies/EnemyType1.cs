@@ -10,7 +10,7 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask enemyLayer;
-
+    private Checkpoint checkpoint;
 
     private bool isRight;
     [SerializeField] private Transform groundCheck;
@@ -28,6 +28,7 @@ public class EnemyType1 : MonoBehaviour
         player = FindFirstObjectByType<PlayerMovement>();
         life = FindFirstObjectByType<PlayerStatus>();
         robot = FindFirstObjectByType<RobotMovement>();
+        checkpoint = FindFirstObjectByType<Checkpoint>();
     }
     // Update is called once per frame
     void Update()
@@ -86,10 +87,18 @@ public class EnemyType1 : MonoBehaviour
             life.Hearts[life.PlayerLife].enabled = false;
             if (life.PlayerLife <= 0)
             {
-                life.Die();
-                robot.Die();
+                if (!checkpoint.IsActivated)
+                {
+                    // Nenhum checkpoint ativo → reinicia cena
+                    life.Die();
+                    robot.Die();
+                }
+                else
+                {
+                    // Respawn no último checkpoint
+                    player.Respawn();
+                }
             }
         }
     }
-
 }
