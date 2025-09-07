@@ -29,19 +29,21 @@ public class RobotDialogue : MonoBehaviour
     private string[] currentDialogue;
     private string currentProcessedMessage;
     private string characterName;
-    private int dialogueIndex;
+    public int dialogueIndex;
     private bool dialogueActive;
     private bool isTyping;
     private Coroutine currentTypingCoroutine;
     private PlayerMovement currentPlayer;
+    public bool permissionToProceed;
+    public bool permission;
 
     void Start()
     {
         uiPlayer.SetActive(true);
         dialoguePanel.SetActive(false);
         dialogueIndex = 0;
-        
-        if(imageRobot != null && spriteRobot != null && name != null)
+
+        if (imageRobot != null && spriteRobot != null && name != null)
         {
             imageRobot.sprite = spriteRobot;
             name.text = characterName;
@@ -51,11 +53,13 @@ public class RobotDialogue : MonoBehaviour
         {
             dialogueText.supportRichText = true;
         }
+        permissionToProceed = true;
+        permission = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y) && permission)
         {
             EndDialogue();
             return;
@@ -73,7 +77,7 @@ public class RobotDialogue : MonoBehaviour
                 dialogueText.text = currentProcessedMessage ?? currentDialogue[dialogueIndex];
                 isTyping = false;
             }
-            else
+            else if (permissionToProceed)
             {
                 NextMessage();
             }
@@ -107,7 +111,7 @@ public class RobotDialogue : MonoBehaviour
         }
     }
 
-    void NextMessage()
+    public void NextMessage()
     {
         dialogueIndex++;
         
@@ -205,6 +209,8 @@ public class RobotDialogue : MonoBehaviour
         dialogueActive = false;
         dialogueIndex = 0;
         isTyping = false;
+
+        permission = true;
 
         if (currentTypingCoroutine != null)
         {

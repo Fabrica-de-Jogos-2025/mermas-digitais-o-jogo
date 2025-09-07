@@ -13,11 +13,12 @@ public class DialogueHability : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+    public bool permissionDialogueFigure = true;
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && permissionDialogueFigure)
         {
             playerInTrigger = true;
             player = other.GetComponent<PlayerMovement>();
@@ -27,7 +28,7 @@ public class DialogueHability : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && permissionDialogueFigure)
         {
             playerInTrigger = false;
             uiDialogueTutorial.SetActive(false);
@@ -36,7 +37,7 @@ public class DialogueHability : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.X))
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.X) && permissionDialogueFigure)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();

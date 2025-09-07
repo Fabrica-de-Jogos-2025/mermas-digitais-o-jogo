@@ -13,8 +13,8 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image rightAnswer;
     [SerializeField] private Image wrongAnswer1;
     [SerializeField] private Image wrongAnswer2;
-    public GameObject videoPanel; 
-    public RawImage videoDisplay; 
+    public GameObject videoPanel;
+    public RawImage videoDisplay;
     public RenderTexture renderTexture;
     public bool UsoDaUltimaHabilidade = false;
     private bool verificationclick = false;
@@ -57,7 +57,7 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
             }
 
             Destroy(rightAnswer.gameObject);
-            videoPanel.SetActive(true); 
+            videoPanel.SetActive(true);
             videoDisplay.gameObject.SetActive(true);
             video.Play();
         }
@@ -66,7 +66,7 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
         {
             verificationclick = true;
             UsoDaUltimaHabilidade = true;
-            Destroy(hitbox.gameObject);
+            //Destroy(hitbox.gameObject);
             Destroy(ship);
         }
     }

@@ -35940,6 +35940,7 @@ GameObject:
   - component: {fileID: 768072481}
   - component: {fileID: 768072484}
   - component: {fileID: 768072483}
+  - component: {fileID: 768072485}
   m_Layer: 0
   m_Name: Use Hability 4
   m_TagString: Untagged
@@ -36052,6 +36053,25 @@ MonoBehaviour:
   spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
   nameofCharacter: "Rob\xF4"
   status: []
+--- !u!114 &768072485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768072479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16510ef1c6b2f6345bb196d2ddf73e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 3
+  Dest: {fileID: 260526363}
+  valid: 0
+  dh: {fileID: 1665205105}
+  ds: -1
+  UI_habillity: {fileID: 1474372541}
 --- !u!1 &772991214
 GameObject:
   m_ObjectHideFlags: 0
@@ -38288,6 +38308,7 @@ GameObject:
   - component: {fileID: 899124556}
   - component: {fileID: 899124559}
   - component: {fileID: 899124558}
+  - component: {fileID: 899124560}
   m_Layer: 0
   m_Name: Use Hability 3
   m_TagString: Untagged
@@ -38402,6 +38423,25 @@ MonoBehaviour:
   spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
   nameofCharacter: "Rob\xF4"
   status: []
+--- !u!114 &899124560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899124554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773397f8160d0cf4481ab15f81eeafdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 4
+  Dest: {fileID: 506980544}
+  valid: 0
+  dh: {fileID: 964307310}
+  ds: -1
+  UI_habillity: {fileID: 894553860}
 --- !u!1 &906495205
 GameObject:
   m_ObjectHideFlags: 0
@@ -39279,6 +39319,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: -5857093484031334642, guid: 298c4eaeceb29704b8a046a2932ea63b, type: 3}
   nameofCharacter: Mary
   uiDialogueTutorial: {fileID: 71141698}
+  permissionDialogueFigure: 1
 --- !u!61 &964307311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50882,6 +50923,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: -5138535610447212688, guid: 97708854f73817f48a967147496a163a, type: 3}
   nameofCharacter: Hedy
   uiDialogueTutorial: {fileID: 71141698}
+  permissionDialogueFigure: 1
 --- !u!61 &1665205106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57007,7 +57049,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 290, y: -16, z: 0}
@@ -57455,7 +57497,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 93, y: -12, z: 0}
@@ -58143,7 +58185,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: -3, z: 0}
@@ -58543,7 +58585,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 31, y: -1, z: 0}

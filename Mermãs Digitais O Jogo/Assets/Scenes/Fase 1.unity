@@ -129124,6 +129124,7 @@ GameObject:
   - component: {fileID: 1236106467}
   - component: {fileID: 1236106466}
   - component: {fileID: 1236106465}
+  - component: {fileID: 1236106471}
   m_Layer: 0
   m_Name: ColliderBettyHolberton
   m_TagString: Untagged
@@ -129304,6 +129305,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236106471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236106464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f21df2ffe5ccb140a837eb9565400db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 2
+  CLOSE_1: {fileID: 578998757}
+  CLOSE_2: {fileID: 1774383104}
+  CLOSE_3: {fileID: 1412060278}
+  CLOSE_4: {fileID: 487919231}
+  valid: 0
+  dh: {fileID: 1940037124}
+  ds: -1
+  UI_habillity: {fileID: 333039345}
 --- !u!1 &1244903427
 GameObject:
   m_ObjectHideFlags: 0
@@ -131823,6 +131846,7 @@ GameObject:
   - component: {fileID: 1399057926}
   - component: {fileID: 1399057927}
   - component: {fileID: 1399057928}
+  - component: {fileID: 1399057929}
   m_Layer: 0
   m_Name: Door 1
   m_TagString: Door
@@ -132029,6 +132053,26 @@ MonoBehaviour:
   habilityUI: {fileID: 649625870}
   v1: {fileID: 1779128428}
   v2: {fileID: 1027542390}
+--- !u!114 &1399057929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399057920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec3f0f11753aca4084ccc8f332b35dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 1
+  v1: {fileID: 1779128428}
+  v2: {fileID: 1027542390}
+  valid: 0
+  dh: {fileID: 1661218705}
+  ds: -1
+  UI_habillity: {fileID: 2115774645}
 --- !u!1 &1399884017
 GameObject:
   m_ObjectHideFlags: 0
@@ -137461,7 +137505,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 213, y: -13, z: 0}
@@ -138037,7 +138081,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 187, y: -12, z: 0}
@@ -138213,7 +138257,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 217, y: -12, z: 0}
@@ -139045,7 +139089,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 120, y: -9, z: 0}
@@ -139493,7 +139537,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 124, y: -8, z: 0}
@@ -139605,7 +139649,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 2, y: -4, z: 0}
@@ -140133,7 +140177,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 24, y: -3, z: 0}
@@ -143151,6 +143195,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: -2079082722564690786, guid: cffdcc4d2324057438095feed3c9ff06, type: 3}
   nameofCharacter: Ada
   uiDialogueTutorial: {fileID: 275446909}
+  permissionDialogueFigure: 1
 --- !u!1 &1662037792
 GameObject:
   m_ObjectHideFlags: 0
@@ -147629,6 +147674,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: -1077609254757361365, guid: f872f3aa111d82848972923010a39a75, type: 3}
   nameofCharacter: Betty
   uiDialogueTutorial: {fileID: 275446909}
+  permissionDialogueFigure: 1
 --- !u!114 &1940037126
 MonoBehaviour:
   m_ObjectHideFlags: 0

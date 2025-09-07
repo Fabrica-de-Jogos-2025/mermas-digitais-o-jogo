@@ -5470,7 +5470,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 38, y: -1, z: 0}
@@ -5998,7 +5998,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 84, y: 0, z: 0}
@@ -6382,7 +6382,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 62, y: 1, z: 0}
@@ -6814,7 +6814,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 144, y: 4, z: 0}
@@ -11158,6 +11158,7 @@ GameObject:
   - component: {fileID: 341483724}
   - component: {fileID: 341483725}
   - component: {fileID: 341483726}
+  - component: {fileID: 341483727}
   m_Layer: 0
   m_Name: Use Hability 6
   m_TagString: Untagged
@@ -11272,6 +11273,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   habilityUITutorial: {fileID: 92884563}
+--- !u!114 &341483727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341483721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5326676fe3bfbf5429bad6ddcbe35c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 5
+  Dest: {fileID: 1052335139}
+  valid: 0
+  dh: {fileID: 1601933932}
+  ds: -1
+  UI_habillity: {fileID: 1142687849}
+  puzzleSolved: {fileID: 687605822}
 --- !u!1 &344370789
 GameObject:
   m_ObjectHideFlags: 0
@@ -50292,6 +50313,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: 947500879495320539, guid: f2b19c1c7d5a96a42bd8fa6efcf0497b, type: 3}
   nameofCharacter: Margaret
   uiDialogueTutorial: {fileID: 660972511}
+  permissionDialogueFigure: 1
 --- !u!61 &1135871221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57578,6 +57600,7 @@ GameObject:
   - component: {fileID: 1580691009}
   - component: {fileID: 1580691011}
   - component: {fileID: 1580691012}
+  - component: {fileID: 1580691013}
   m_Layer: 0
   m_Name: Use Hability 5
   m_TagString: Untagged
@@ -57690,6 +57713,25 @@ MonoBehaviour:
   spriteCharacter: {fileID: 5936865745590209869, guid: da4b5cab0d2d0e44a9efea99c665f4be, type: 3}
   nameofCharacter: "Rob\xF4"
   status: []
+--- !u!114 &1580691013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580691007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8390b411dbe89764b85031c857dc9db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDialogue: {fileID: 0}
+  dialogueStop: 3
+  Dest: {fileID: 10632688}
+  valid: 0
+  dh: {fileID: 1135871220}
+  ds: -1
+  UI_habillity: {fileID: 1432599936}
 --- !u!1 &1580700070
 GameObject:
   m_ObjectHideFlags: 0
@@ -58096,6 +58138,7 @@ MonoBehaviour:
   spriteCharacter: {fileID: 8503083011736007763, guid: 6dd72112d15a52a439c118da32f22fe1, type: 3}
   nameofCharacter: Carol
   uiDialogueTutorial: {fileID: 660972511}
+  permissionDialogueFigure: 1
 --- !u!61 &1601933933
 BoxCollider2D:
   m_ObjectHideFlags: 0
