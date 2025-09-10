@@ -18,6 +18,11 @@ public class Checkpoint : MonoBehaviour
             if(player != null)
             {
                 player.SetLastCheckpoint(this.transform.position);
+                PlayerPrefs.SetInt("CheckpointAtivo", 1);
+                PlayerPrefs.SetFloat("CheckpointX", transform.position.x);
+                PlayerPrefs.SetFloat("CheckpointY", transform.position.y);
+                PlayerPrefs.SetFloat("CheckpointZ", transform.position.z);
+                PlayerPrefs.Save();
             }
 
             if(!isActivated && activatedCheckpoint != null){

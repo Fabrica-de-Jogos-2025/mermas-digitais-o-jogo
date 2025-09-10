@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 
 public class PlayerMovement : MonoBehaviour
 {
+    // [SerializeField] private GameObject playerPrefab;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isJumping;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Door currentDoor;
     [SerializeField] private Padlock currentPadlock;
     public bool permissionDoor_a = false;
-    [SerializeField] private GameObject pauseScreen;
+    private GameObject pauseScreen;
     [SerializeField] private PlayerStatus playerStatus;
 //    [SerializeField] private TutorialTrigger trigger;
     public bool IsJumping
@@ -39,28 +39,53 @@ public class PlayerMovement : MonoBehaviour
     public bool IsFrozen { get => isFrozen; set => isFrozen = value; }
     public GameObject PauseScreen { get => pauseScreen; set => pauseScreen = value; }
     public bool IsPaused { get => isPaused; set => isPaused = value; }
+    public Vector3 LastCheckpointPosition { get => lastCheckpointPosition; set => lastCheckpointPosition = value; }
 
     private Rigidbody2D rig;
     private GroundCheck groundChecked;
-    private Vector2 lastCheckpointPosition;
+    private Vector3 lastCheckpointPosition;
+    private TryAgainScreen yesButton;
+    private Checkpoint checkpoint;
 
     private CoinManager coinManager;
     private Tilemap coinTilemap;
     public bool i = false;
     public bool TutoJumpAtiv = false;
 
+    private void Awake()
+    {
+        // Evita duplicação do Player
+        /*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }*/
+
+        // DontDestroyOnLoad(gameObject);
+        // Instantiate(playerPrefab, new Vector3(-6.88f, -2f, 0f), Quaternion.identity);
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // Instantiate(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         rig = GetComponent<Rigidbody2D>();
-        //robot = FindAnyObjectByType<RobotMovement>();
         groundChecked = GetComponentInChildren<GroundCheck>();
         lastCheckpointPosition = transform.position;
+
+        checkpoint = FindFirstObjectByType<Checkpoint>();
+
+        var pauseScreenController = GameObject.Find("CanvasPauseScreenController");
+        pauseScreen = pauseScreenController.transform.Find("CanvasPauseScreen").gameObject;
+
         coinManager = GameObject.FindWithTag("Coin").GetComponent<CoinManager>();
         coinTilemap = GameObject.FindWithTag("Coin").GetComponent<Tilemap>();
+        yesButton = GameObject.Find("Canvas").GetComponentInChildren<TryAgainScreen>();
 
         FindCoinReferences();
     }
@@ -134,8 +159,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+       SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+       SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        bool checkpointAtivo = PlayerPrefs.GetInt("CheckpointAtivo", 0) == 1;
+        Respawn(checkpointAtivo);
         // Sempre que mudar de cena, procura de novo o CoinManager e Tilemap
         FindCoinReferences();
     }
@@ -177,21 +214,38 @@ public class PlayerMovement : MonoBehaviour
         lastCheckpointPosition = newCheckpoint;
     }
 
-    public void Respawn()
+    public void Respawn(bool checkpointAtivo)
     {
-        // Zera velocidade para evitar "sair voando"
-        rig.linearVelocity = Vector2.zero;
+        // rig.linearVelocity = Vector3.zero;
 
-        // Teleporta para o último checkpoint salvo
-        transform.position = lastCheckpointPosition;
+        if (checkpointAtivo && PlayerPrefs.GetInt("CheckpointAtivo", 0) == 1)
+        {
+            float x = PlayerPrefs.GetFloat("CheckpointX", 0f);
+            float y = PlayerPrefs.GetFloat("CheckpointY", 0f);
+            float z = PlayerPrefs.GetFloat("CheckpointZ", 0f);
+            transform.position = new Vector3(x, y, z);
+        }
+        else
+        {
+            SpawnerController respawn = GameObject.Find("RespawnManagerPlayer").GetComponent<SpawnerController>();
+            transform.position = respawn.PlayerSpawnPoint.transform.position;
+            // transform.position = Vector2.zero; // posição inicial da fase
+        }
+
         playerStatus.PlayerLife = playerStatus.Hearts.Length;
         foreach (var heart in playerStatus.Hearts)
         {
             heart.enabled = true;
         }
 
-        // Caso tenha animação de morte, você pode resetar ela aqui
-        // anim.SetTrigger("Idle"); 
+        FreezePlayer(false);
+
+        if (playerStatus.Robot != null)
+        {
+            playerStatus.Robot.gameObject.SetActive(true);
+            playerStatus.gameObject.SetActive(true);
+            playerStatus.Robot.IsDead = false;
+        }
     }
 
     public void FreezePlayer(bool freeze)
@@ -234,7 +288,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerStatus.PlayerLife <= 0)
         {
-            Respawn();
+            SceneManager.LoadScene("Morte_Falha");
+
+            if (yesButton != null && yesButton.YesClicked)
+            {
+                Respawn(checkpoint.IsActivated);
+                yesButton.YesClicked = false;
+                playerStatus.Robot.IsDead = false;
+            }
         }
     
 }
@@ -268,5 +329,4 @@ public class PlayerMovement : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
 }

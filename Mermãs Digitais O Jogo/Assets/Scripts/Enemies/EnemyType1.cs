@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyType1 : MonoBehaviour
@@ -96,7 +95,7 @@ public class EnemyType1 : MonoBehaviour
                 else
                 {
                     // Respawn no último checkpoint
-                    player.Respawn();
+                    player.Respawn(checkpoint.IsActivated);
                 }
             }
         }

@@ -39,6 +39,11 @@ public class RobotDialogue : MonoBehaviour
 
     void Start()
     {
+        uiPlayer = GameObject.Find("Canvas");
+        dialoguePanel = GameObject.Find("DialoguePanel");
+        dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        
+
         uiPlayer.SetActive(true);
         dialoguePanel.SetActive(false);
         dialogueIndex = 0;
