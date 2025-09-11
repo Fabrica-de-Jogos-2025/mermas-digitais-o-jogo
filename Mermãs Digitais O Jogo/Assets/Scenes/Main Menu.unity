@@ -1001,6 +1001,7 @@ MonoBehaviour:
   voltarLojaBtn: {fileID: 1385163711}
   voltarOpcoesBtn: {fileID: 888421804}
   voltarCreditosBtn: {fileID: 1512542187}
+  inputNome: {fileID: 39860201}
 --- !u!1 &66579040
 GameObject:
   m_ObjectHideFlags: 0

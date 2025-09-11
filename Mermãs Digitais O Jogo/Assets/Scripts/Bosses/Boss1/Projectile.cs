@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
             if(authorization)
             {
                 authorization2 = false;
-                Transform player = GameObject.Find("Player").transform;
+                Transform player = GameObject.Find("Player(Clone)").transform;
                 temp.position = player.position;
                 temp0.position = player.position;
                 authorization = false;

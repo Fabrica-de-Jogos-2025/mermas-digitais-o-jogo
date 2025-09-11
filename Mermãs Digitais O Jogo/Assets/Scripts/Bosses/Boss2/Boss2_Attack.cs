@@ -28,6 +28,14 @@ public class Boss2_Attack : MonoBehaviour
     [SerializeField] private PlayerStatus life;
     [SerializeField] private RobotMovement robot;
     private BoxCollider2D boxCollider;
+    private bool h_3 = true;
+    private bool h_4 = false;    
+    private bool h_5 = true;
+    private bool h_6 = false;    
+    private bool h_7 = true;
+    private bool h_8 = false;
+    public int x = 0;
+    private bool x_1 = false;
 
     void Start()
     {
@@ -39,7 +47,7 @@ public class Boss2_Attack : MonoBehaviour
 
     void Update()
     { 
-        Transform player = GameObject.Find("Player").transform;  
+        Transform player = GameObject.Find("Player(Clone)").transform;  
         if (transform.position.x < player.position.x)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -59,29 +67,75 @@ public class Boss2_Attack : MonoBehaviour
 
         if (k == 0)
         {
-            anim.SetInteger("transition", 3);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+            if (h_3)
             {
-                permission = true;
-                k = 1;
+                anim.SetInteger("transition", 3);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+                {
+                    h_3 = false;
+                    h_4 = true;
+                }
             }
-        } 
+            else
+
+            if(h_4)
+            {
+                anim.SetInteger("transition", 6);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0005f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_3 = true;
+                    h_4 = false;
+                    permission = true;
+                    k = 1;
+                }
+            }
+        }
         else if (k == 2)
         {
-            anim.SetInteger("transition", 3);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+            if(h_5)
             {
-                permission = true;
-                k = 3;
+                anim.SetInteger("transition", 3);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+                {    
+                    h_5 = false;
+                    h_6 = true;
+                }
+            }else
+
+            if(h_6)
+            {
+                anim.SetInteger("transition", 6);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_5 = true;
+                    h_6 = false;
+                    permission = true;
+                    k = 3;
+                }
             }
         }
         else if (k == 4)
         {
-            anim.SetInteger("transition", 3);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+            if(h_7)
             {
-                permission = true;
-                k = 5;
+                anim.SetInteger("transition", 3);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005 && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+                {    
+                    h_7 = false;
+                    h_8 = true;
+                }
+            }else
+
+            if(h_8)
+            {
+                anim.SetInteger("transition", 6);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    h_7 = true;
+                    h_8 = false;
+                    permission = true;
+                    k = 5;
+                }
             }
         }
         else if (k == 5)
@@ -101,28 +155,51 @@ public class Boss2_Attack : MonoBehaviour
 
         else if ((z < 2) && permission)
         {
-            if(h)
+            if (h)
             {
-                if(Vector2.Distance(transform.position, player.position) >= StoppingDistance)
+                if (x == 0)
                 {
-                    anim.SetInteger("transition", 0);
-                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0005f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                    if (Vector2.Distance(transform.position, player.position) >= StoppingDistance)
+                    {
+                        anim.SetInteger("transition", 0);
+                        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0005f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                        {
+                            Vector3 atualCenter = boxCollider.offset;
+                            boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
+                            Attack();
+                        }
+                    }
+                    else
                     {
                         Vector3 atualCenter = boxCollider.offset;
                         boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
-                        Attack();
+                        h = false;
+                        x = 1;
                     }
                 }
-                else
+                else if (x == 1)
                 {
-                    Vector3 atualCenter = boxCollider.offset;
-                    boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
-                    h = false;
+                    if (Vector2.Distance(transform.position, player.position) >= StoppingDistance)
+                    {
+                        anim.SetInteger("transition", 5);
+                        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0005f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                        {
+                            Vector3 atualCenter = boxCollider.offset;
+                            boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
+                            Attack();
+                        }
+                    }
+                    else
+                    {
+                        Vector3 atualCenter = boxCollider.offset;
+                        boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
+                        h = false;
+                    }
                 }
             }
             else
             {
-                if(!preparing_attack && !w)
+                if (!preparing_attack && !w)
                 {
                     anim.SetInteger("transition", 1);
                     w = true;
@@ -132,46 +209,57 @@ public class Boss2_Attack : MonoBehaviour
                     preparing_attack = true;
                 }
 
-                if(preparing_attack && w)
+                if (preparing_attack && w)
                 {
                     anim.SetInteger("transition", 2);
                     w = false;
                 }
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005f && anim.GetCurrentAnimatorStateInfo(0).IsName("attacking") && preparing_attack)
+                if (x_1)
                 {
-                    Vector3 atualCenter = boxCollider.offset;
-                    boxCollider.offset = new Vector3(-1.002476f, atualCenter.y, atualCenter.z);
                     z++;
                     preparing_attack = false;
                     h = true;
-                    anim.SetInteger("transition", 0);
-                }  
+                    x_1 = false;    
+                }
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.005f && anim.GetCurrentAnimatorStateInfo(0).IsName("attacking") && preparing_attack)
+                {
+                    Vector3 atualCenter = boxCollider.offset;
+                    if (z == 0)
+                        boxCollider.offset = new Vector3(-1.002476f, atualCenter.y, atualCenter.z);
+                    if (z == 1)
+                        boxCollider.offset = new Vector3(-1.002476f, atualCenter.y, atualCenter.z);
+                    x_1 = true;
+                }
             }
         }
-        else if(Vector2.Distance(transform.position, Return.position) >= 0.5f)
+        else if (Vector2.Distance(transform.position, Return.position) >= 0.5f)
         {
+            if (z == 2)
+                {
+                    anim.SetInteger("transition", 5);
+                }
             Vector3 atualCenter = boxCollider.offset;
             boxCollider.offset = new Vector3(1.002476f, atualCenter.y, atualCenter.z);
             transform.position = Vector2.MoveTowards(transform.position, Return.position, Speed * Time.deltaTime);
         }
         else
         {
-            if(permission)
+            if (permission)
             {
                 z = 0;
                 permission = false;
                 arrowdown.SetActive(true);
-                if(c1)
+                if (c1)
                 {
                     colidder1.SetActive(true);
                     c1 = false;
                 }
-                else if(c2)
+                else if (c2)
                 {
                     colidder2.SetActive(true);
                     c2 = false;
                 }
-                else if(c3)
+                else if (c3)
                 {
                     colidder3.SetActive(true);
                     c3 = false;
@@ -183,17 +271,17 @@ public class Boss2_Attack : MonoBehaviour
 
     void Attack()
     {
-        Transform player = GameObject.Find("Player").transform;
+        Transform player = GameObject.Find("Player(Clone)").transform;
         temp.position = player.position;
         
         if(Vector2.Distance(transform.position, temp.position) >= StoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, temp.position, Speed * Time.deltaTime);
         }
-        else
+        /*else
         {
             h = false;            
-        }
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

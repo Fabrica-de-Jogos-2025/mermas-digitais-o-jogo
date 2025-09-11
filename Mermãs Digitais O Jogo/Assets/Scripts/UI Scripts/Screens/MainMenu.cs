@@ -3,36 +3,40 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+using TMPro;
+
 
 public class MainMenu : MonoBehaviour
 {
     [Header("Controlador da UI")]
     [SerializeField] private GameObject uiManagerController;
-    
-    // Referências para os painéis que você já tem (Loja, Opções e Créditos)
+
+    // Referï¿½ncias para os painï¿½is que vocï¿½ jï¿½ tem (Loja, Opï¿½ï¿½es e Crï¿½ditos)
     public GameObject telaLoja;
     public GameObject telaOpcoes;
     public GameObject telaCreditos;
     public GameObject telaMenu;
     public GameObject telaInput;
 
-    // Referências dos botões
+    // Referï¿½ncias dos botï¿½es
     public Button historiaBtn;
     public Button lojaBtn;
     public Button opcoesBtn;
     public Button creditosBtn;
     public Button sairBtn;
-    
+
     public Button voltarTituloBtn;
     public Button voltarInputBtn;
     public Button voltarLojaBtn;
     public Button voltarOpcoesBtn;
     public Button voltarCreditosBtn;
 
+    public TMP_InputField inputNome;
+
     // private ClickButtonEffect uiTitleScreen;
     void Start()
     {
-        // Configura os botões
+        // Configura os botï¿½es
         historiaBtn.onClick.AddListener(AbrirHistoria);
         lojaBtn.onClick.AddListener(() => AbrirTela(telaLoja));
         opcoesBtn.onClick.AddListener(() => AbrirTela(telaOpcoes));
@@ -45,7 +49,7 @@ public class MainMenu : MonoBehaviour
         if (voltarTituloBtn != null) voltarTituloBtn.onClick.AddListener(() => FecharTela(telaMenu));
         if (voltarInputBtn != null) voltarInputBtn.onClick.AddListener(() => FecharTela(telaInput));
 
-        // Desativa todos os painéis inicialmente
+        // Desativa todos os painï¿½is inicialmente
         FecharTodasAsTelas();
 
         AddEventTriggers(historiaBtn);
@@ -55,7 +59,7 @@ public class MainMenu : MonoBehaviour
         AddEventTriggers(sairBtn);
     }
 
-    // Desativa os painéis existentes
+    // Desativa os painï¿½is existentes
     void FecharTodasAsTelas()
     {
         if (telaInput != null) telaInput.SetActive(false);
@@ -64,7 +68,7 @@ public class MainMenu : MonoBehaviour
         if (telaCreditos != null) telaCreditos.SetActive(false);
     }
 
-    // Ativa o painel passado como parâmetro
+    // Ativa o painel passado como parï¿½metro
     void AbrirTela(GameObject tela)
     {
         FecharTodasAsTelas();
@@ -72,23 +76,23 @@ public class MainMenu : MonoBehaviour
             tela.SetActive(true);
     }
 
-    // Ação para o botão História (não implementado)
+    // Aï¿½ï¿½o para o botï¿½o Histï¿½ria (nï¿½o implementado)
     void AbrirHistoria()
     {
-        // Debug.Log("Botão História clicado. Tela não implementada.");
+        // Debug.Log("Botï¿½o Histï¿½ria clicado. Tela nï¿½o implementada.");
         telaMenu.SetActive(false);
         uiManagerController.SetActive(false);
         telaInput.SetActive(true);
     }
 
-    // Ação para o botão Sair
+    // Aï¿½ï¿½o para o botï¿½o Sair
     void SairDoJogo()
     {
         Debug.Log("Saindo do jogo...");
         Application.Quit();
     }
 
-    // Método que adiciona os eventos de PointerEnter e PointerExit pro botão
+    // Mï¿½todo que adiciona os eventos de PointerEnter e PointerExit pro botï¿½o
     void AddEventTriggers(Button btn)
     {
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
@@ -97,13 +101,13 @@ public class MainMenu : MonoBehaviour
             trigger = btn.gameObject.AddComponent<EventTrigger>();
         }
 
-        // Evento quando o mouse entra no botão
+        // Evento quando o mouse entra no botï¿½o
         EventTrigger.Entry entryEnter = new EventTrigger.Entry();
         entryEnter.eventID = EventTriggerType.PointerEnter;
         entryEnter.callback.AddListener((data) => { OnButtonPointerEnter(btn); });
         trigger.triggers.Add(entryEnter);
 
-        // Evento quando o mouse sai do botão
+        // Evento quando o mouse sai do botï¿½o
         EventTrigger.Entry entryExit = new EventTrigger.Entry();
         entryExit.eventID = EventTriggerType.PointerExit;
         entryExit.callback.AddListener((data) => { OnButtonPointerExit(btn); });
@@ -138,6 +142,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToCutscene()
     {
+        PlayerData.playerName = inputNome.text.Trim();
         SceneManager.LoadScene("Cutscene");
     }
 

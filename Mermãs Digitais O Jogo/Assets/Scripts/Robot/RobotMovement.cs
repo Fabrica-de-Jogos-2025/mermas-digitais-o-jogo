@@ -1,9 +1,9 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RobotMovement : MonoBehaviour
 {
+    // [SerializeField] private GameObject robotPrefab;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private float Speed;
     [SerializeField] private float StoppingDistance;
@@ -16,59 +16,83 @@ public class RobotMovement : MonoBehaviour
     private static Vector3 respawnpoint;
     private bool isUsingPowerUp = false;
     private bool isFreeze = false;
+    private bool isDead = false;
     public static Vector3 Respawnpoint 
     { 
       get { return respawnpoint; } 
       set { respawnpoint = value; } 
     }
+
+    public bool IsDead { get => isDead; set => isDead = value; }
+    public PlayerMovement Player { get => player; set => player = value; }
+
     public float direction;
     public Vector3 moviment;
     private Rigidbody2D rig;
-    
+
+    private void Awake()
+    {
+        /*GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
+        if (robots.Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }*/
+
+        // Instantiate(robotPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        // DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
+        // Instantiate(this.gameObject);
 
         playerStatus = GetComponent<PlayerStatus>();
         //robotPowered = FindAnyObjectByType<RobotPowerUp>();
         Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         rig = GetComponent<Rigidbody2D>();
+
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isUsingPowerUp && Vector2.Distance(transform.position, Target.position) >= StoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, Target.position + moviment, Speed * Time.deltaTime);
-        }
+        if (!isDead) {
+            if (!isUsingPowerUp && Vector2.Distance(transform.position, Target.position) >= StoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, Target.position + moviment, Speed * Time.deltaTime);
+            }
 
-        float rotation = Input.GetAxis("Horizontal");
+            float rotation = Input.GetAxis("Horizontal");
 
-        if (rotation > 0 && !player.IsFrozen)
-        {
-            transform.eulerAngles = new Vector2(0f, 0f);
-            moviment = new Vector3(-1f, 0.5f, 0f);
-        } else if (rotation < 0 && !player.IsFrozen)
-        {
-            transform.eulerAngles = new Vector2(0f, 180f);
-            moviment = new Vector3(1f, 0.5f, 0f);
-        } else if (player.IsFrozen)
-        {
-            IsPaused(true);
-        }
+            if (rotation > 0 && !player.IsFrozen)
+            {
+                transform.eulerAngles = new Vector2(0f, 0f);
+                moviment = new Vector3(-1f, 0.5f, 0f);
+            } else if (rotation < 0 && !player.IsFrozen)
+            {
+                transform.eulerAngles = new Vector2(0f, 180f);
+                moviment = new Vector3(1f, 0.5f, 0f);
+            } else if (player.IsFrozen)
+            {
+                IsPaused(true);
+            }
 
-        if (Vector2.Distance(transform.position, Target.position) <= 2)
-        {
-            PowerUp();
+            if (Vector2.Distance(transform.position, Target.position) <= 2)
+            {
+                PowerUp();
+            }
         }
     }
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        isDead = true;
     }
 
     void PowerUp()
@@ -167,27 +191,6 @@ public class RobotMovement : MonoBehaviour
             }
 
         }
-
-        /*while ((direction > 0 && transform.position.x < maxDistance) || (direction < 0 && transform.position.x > maxDistance))
-        {
-                transform.position += Vector3.right * Mathf.Sign(direction) * Speed * Time.deltaTime; // Move o rob� para a direita
-                yield return null;
-        }*/
-
-        /*Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 5f);
-        foreach (Collider2D enemy in enemies)
-        {
-            if (enemy.CompareTag("Enemy"))
-            {
-                Destroy(enemy.gameObject);
-            }
-        }*/
-
-        /*while (Vector2.Distance(transform.position, originalPosition) > 0.1f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, originalPosition, Speed * Time.deltaTime);
-            yield return null;
-        }*/
 
         isUsingPowerUp = false;
     }

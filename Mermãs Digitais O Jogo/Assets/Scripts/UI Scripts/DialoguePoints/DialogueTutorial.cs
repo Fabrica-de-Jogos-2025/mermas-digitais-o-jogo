@@ -48,7 +48,13 @@ public class TutorialTrigger : MonoBehaviour
                 if (tutorialType == TutorialType.Jump)
                 {
                     //tutorialJumpAtivo = true;
-                    PM.TutoJumpAtiv = true;
+                    // robot.OnDialogueEnd += () => { PM.TutoJumpAtiv = true; };
+                    PlayerMovement playerMov = other.GetComponent<PlayerMovement>();
+                    if (playerMov != null)
+                    {
+                        // Ativa só depois do diálogo do robô terminar
+                        robot.OnDialogueEnd += () => { playerMov.TutoJumpAtiv = true; };
+                    }
                 }
 
 

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+using UnityEngine.SceneManagement;
+
 public class RobotDialogue : MonoBehaviour
 {
     [System.Serializable]
@@ -39,8 +41,20 @@ public class RobotDialogue : MonoBehaviour
 
     void Start()
     {
+        uiPlayer = GameObject.Find("Canvas");
+        dialoguePanel = GameObject.Find("DialoguePanel");
+        //if (SceneManager.GetActiveScene().name == "Tutorial")
+        //{
+        dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        name = GameObject.Find("CharacterName").GetComponent<Text>();
+        imageRobot = GameObject.Find("ImageRobot").GetComponent<Image>();
+        //}
+
         uiPlayer.SetActive(true);
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
         dialogueIndex = 0;
 
         if (imageRobot != null && spriteRobot != null && name != null)
@@ -83,7 +97,7 @@ public class RobotDialogue : MonoBehaviour
             }
         }
     }
-    
+
 
     public void StartDialogue(string[] dialogue, PlayerMovement player)
     {
@@ -114,8 +128,8 @@ public class RobotDialogue : MonoBehaviour
     public void NextMessage()
     {
         dialogueIndex++;
-        
-        if(dialogueIndex < currentDialogue.Length)
+
+        if (dialogueIndex < currentDialogue.Length)
         {
             ShowMessage(dialogueIndex);
         }
@@ -127,7 +141,7 @@ public class RobotDialogue : MonoBehaviour
 
     void ShowMessage(int index)
     {
-        if(currentTypingCoroutine != null)
+        if (currentTypingCoroutine != null)
         {
             StopCoroutine(currentTypingCoroutine);
             currentTypingCoroutine = null;
@@ -146,7 +160,7 @@ public class RobotDialogue : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
-        
+
         float delay = 0.2f / charactersPerSecond;
 
         int i = 0;
@@ -218,7 +232,7 @@ public class RobotDialogue : MonoBehaviour
             currentTypingCoroutine = null;
         }
 
-        if(currentPlayer != null)
+        if (currentPlayer != null)
         {
             currentPlayer.FreezePlayer(false);
             currentPlayer = null;

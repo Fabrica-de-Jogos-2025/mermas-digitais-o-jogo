@@ -7,24 +7,90 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private Image[] hearts;
     [SerializeField] private int playerLife;
     [SerializeField] private int cards;
-    private Checkpoint checkpoint;
+    [SerializeField] private GameObject canvas;
+
+    // private Checkpoint checkpoint;
+    private string cenaAtual;
+    // private TryAgainScreen yesButton;
+    private RobotMovement robot;
+
 
     public int PlayerLife { get => playerLife; set => playerLife = value; }
     public Image[] Hearts { get => hearts; set => hearts = value; }
     public int Cards { get => cards; set => cards = value; }
+    public string CenaAtual { get => cenaAtual; set => cenaAtual = value; }
+    public RobotMovement Robot { get => robot; set => robot = value; }
+    public GameObject Canvas { get => canvas; set => canvas = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        canvas = GameObject.Find("Canvas");
+        GameObject heartsParent = GameObject.Find("Hearts");
+
+        if (heartsParent != null)
+        {
+            // Pega todos os Image filhos (inclusive os desativados se quiser)
+            hearts = heartsParent.GetComponentsInChildren<Image>(true);
+        }
+
         playerLife = hearts.Length;
-        checkpoint = FindFirstObjectByType<Checkpoint>();
+        // checkpoint = FindFirstObjectByType<Checkpoint>();
+        cenaAtual = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("LastScene", cenaAtual);
+
+        // yesButton = GameObject.Find("Canvas").GetComponentInChildren<TryAgainScreen>();
+        robot = GameObject.Find("Robot(Clone)").GetComponent<RobotMovement>();
     }
     public void Die()
     {
-        if (PlayerLife <= 0 && !checkpoint.IsActivated)
+        if (PlayerLife <= 0)
         {
+            /*SceneManager.LoadScene("Morte_Falha");
             Destroy(this.gameObject);
-            SceneManager.LoadScene("Tutorial");
+            if (yesButton.YesClicked) { 
+            SceneManager.LoadScene(cenaAtual);
+                robot.IsDead = false;
+            }*/
+
+            // Congela o player
+            /*GetComponent<PlayerMovement>().FreezePlayer(true);
+
+            // Chama a tela de morte
+            SceneManager.LoadScene("Morte_Falha");
+            canvas.SetActive(false);
+            */
+            // congela o player
+            GetComponent<PlayerMovement>().FreezePlayer(true);
+          
+            // guarda a info do checkpoint
+            /*bool checkpointAtivo = FindFirstObjectByType<Checkpoint>()?.IsActivated ?? false;
+            PlayerPrefs.SetInt("CheckpointAtivo", checkpointAtivo ? 1 : 0);
+
+            // guarda cena atual
+            PlayerPrefs.SetString("LastScene", cenaAtual);*/
+
+            // salva estado do checkpoint (se tiver)
+            if (GetComponent<PlayerMovement>().LastCheckpointPosition != Vector3.zero)
+            {
+                PlayerPrefs.SetInt("CheckpointAtivo", 1);
+                PlayerPrefs.SetFloat("CheckpointX", GetComponent<PlayerMovement>().LastCheckpointPosition.x);
+                PlayerPrefs.SetFloat("CheckpointY", GetComponent<PlayerMovement>().LastCheckpointPosition.y);
+                PlayerPrefs.SetFloat("CheckpointZ", GetComponent<PlayerMovement>().LastCheckpointPosition.z);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("CheckpointAtivo", 0);
+            }
+            PlayerPrefs.Save();
+
+            PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            Destroy(gameObject);
+            if (robot != null) Destroy(robot.gameObject);
+
+            // desativa HUD
+            canvas.SetActive(false);
+            SceneManager.LoadScene("Morte_Falha");
         }
     }
 }

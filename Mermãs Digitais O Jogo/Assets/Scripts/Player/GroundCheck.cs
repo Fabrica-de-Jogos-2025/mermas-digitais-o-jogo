@@ -6,7 +6,7 @@ public class GroundCheck : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public bool IsGrounded()

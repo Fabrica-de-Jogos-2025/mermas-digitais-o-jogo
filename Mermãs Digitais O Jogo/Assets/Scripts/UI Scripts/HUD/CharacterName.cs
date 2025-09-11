@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterName : MonoBehaviour
 {
@@ -6,22 +7,56 @@ public class CharacterName : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private Canvas canvas;
 
-    private Camera cam;
+    public Camera cam;
     private RectTransform rectTransform;
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-
         cam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
     }
+
+    void Awake()
+    {
+        // MantÃ©m esse objeto entre cenas
+        //DontDestroyOnLoad(gameObject);
+        // Escuta quando uma nova cena Ã© carregada
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene cena, LoadSceneMode modo)
+    {
+        Camera novaCamera = Camera.main;
+    }
+
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    void OnEnable()
+{
+    SceneManager.sceneLoaded += AtualizarCamera;
+}
+
+void OnDisable()
+{
+    SceneManager.sceneLoaded -= AtualizarCamera;
+}
+
+void AtualizarCamera(Scene cena, LoadSceneMode modo)
+{
+    cam = Camera.main;
+}
+
     private void Update()
     {
         if (cam == null)
         {
             cam = Camera.main;
-            if (cam == null) return; // ainda não foi atribuída
+            if (cam == null) return;
         }
 
         if (lookAt == null || canvas == null) return;
@@ -37,12 +72,5 @@ public class CharacterName : MonoBehaviour
         {
             rectTransform.anchoredPosition = screenPoint;
         }
-
-        /*Vector3 pos = cam.WorldToScreenPoint(lookAt.position + offset);
-
-        if (transform.position != pos)
-        {
-            transform.position = pos;
-        }*/
     }
 }

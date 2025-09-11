@@ -9,6 +9,7 @@ public class DialogueTutorial2 : MonoBehaviour
     public Sprite spriteCharacter;
     public string nameofCharacter;
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
