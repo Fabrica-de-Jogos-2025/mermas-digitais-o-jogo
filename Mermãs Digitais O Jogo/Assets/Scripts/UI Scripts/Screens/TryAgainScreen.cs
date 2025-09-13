@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,7 @@ public class TryAgainScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
+        // playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
         cenaAnterior = playerStatus.CenaAtual;
     }
 
@@ -89,6 +90,7 @@ public class TryAgainScreen : MonoBehaviour
 
         // recarrega a fase
         SceneManager.LoadScene(cenaAnterior);*/
+        // playerPrefab.IsDestroyed();
 
         string lastScene = PlayerPrefs.GetString("LastScene", SceneManager.GetActiveScene().name);
 

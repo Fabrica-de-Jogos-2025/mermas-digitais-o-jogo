@@ -950,8 +950,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yesBtn: {fileID: 646232670}
   noBtn: {fileID: 1921045445}
+  playerPrefab: {fileID: 8541702138076515429, guid: e0a1e68b75ac5da439a9a8417c17a9c4, type: 3}
+  robotPrefab: {fileID: 6366336000731563623, guid: 0675bde717e495d4ab9b2202b2b56d6a, type: 3}
   loader: {fileID: 1927563104}
-  playerStatus: {fileID: 0}
+  playerStatus: {fileID: 2673734274331479848, guid: e0a1e68b75ac5da439a9a8417c17a9c4, type: 3}
 --- !u!1 &1721132405
 GameObject:
   m_ObjectHideFlags: 0

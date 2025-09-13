@@ -13,10 +13,25 @@ public class SpawnerController : MonoBehaviour
 
     private void Awake()
     {
-        GameObject player = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
+        /*GameObject player = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
         Instantiate(robotPrefab, robotSpawnPoint.position, Quaternion.identity);
 
         if (vcam != null && player != null)
-        vcam.Follow = player.transform;
+        vcam.Follow = player.transform;*/
+
+        // Verifica se já existe um Player na cena
+        GameObject player = GameObject.FindWithTag("Player");
+        GameObject robot = GameObject.FindWithTag("Robot");
+        if (player == null && robot == null)
+        {
+            player = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
+            robot = Instantiate(robotPrefab, robotSpawnPoint.position, Quaternion.identity);
+        }
+
+        // Configura a câmera para seguir o Player
+        if (vcam != null && player != null && robot != null)
+        {
+            vcam.Follow = player.transform;
+        }
     }
 }

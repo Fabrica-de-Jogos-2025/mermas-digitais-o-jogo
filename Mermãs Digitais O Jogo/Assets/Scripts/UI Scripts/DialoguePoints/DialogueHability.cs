@@ -15,7 +15,6 @@ public class DialogueHability : MonoBehaviour
     private PlayerMovement player;
     public bool permissionDialogueFigure = true;
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && permissionDialogueFigure)
@@ -51,7 +50,7 @@ public class DialogueHability : MonoBehaviour
 
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
-                    robot.name.text = nameofCharacter;
+                    robot.characterNameText.text = nameofCharacter;
 
                 robot.StartDialogue(dialogueMessages, player);
             }

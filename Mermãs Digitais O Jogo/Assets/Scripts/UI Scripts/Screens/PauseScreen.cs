@@ -6,6 +6,13 @@ public class PauseScreen : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
     [SerializeField] private RobotMovement robot;
+    [SerializeField] private Loader loader;
+    [SerializeField] private Canvas canvas;
+
+    private void Start()
+    {
+        player = FindAnyObjectByType<PlayerMovement>();
+    }
     public void ResumeButton()
     {
         player.PauseScreen.SetActive(false);
@@ -24,6 +31,8 @@ public class PauseScreen : MonoBehaviour
 
     public void QuitButton()
     {
-
+        // SceneManager.LoadScene("Level Selector");
+        Destroy(canvas.gameObject);
+        loader.CarregarFase("Level Selector");
     }
 }
