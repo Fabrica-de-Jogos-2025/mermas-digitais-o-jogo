@@ -25,7 +25,7 @@ public class PlayerStatus : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
+        canvas = GameObject.Find("CanvasHUD");
         GameObject heartsParent = GameObject.Find("Hearts");
 
         if (heartsParent != null)
@@ -85,7 +85,7 @@ public class PlayerStatus : MonoBehaviour
             PlayerPrefs.Save();
 
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
-            Destroy(gameObject);
+            if (this.gameObject != null) Destroy(this.gameObject);
             if (robot != null) Destroy(robot.gameObject);
 
             // desativa HUD

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class RobotDialogue : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class RobotDialogue : MonoBehaviour
     public GameObject uiPlayer;
     public GameObject dialoguePanel;
     public Text dialogueText;
-    public Text name;
+    public Text characterNameText;
     public Image imageRobot;
     public Sprite spriteRobot;
     public float charactersPerSecond = 30f;
@@ -42,13 +43,54 @@ public class RobotDialogue : MonoBehaviour
     void Start()
     {
         uiPlayer = GameObject.Find("Canvas");
-        dialoguePanel = GameObject.Find("DialoguePanel");
+        /*GameObject dialogueParent = GameObject.Find("Dialogue");
+
+        if (dialogueParent != null)
+        {
+            Transform[] allChildren = dialogueParent.GetComponentsInChildren<Transform>(true);
+
+            foreach (Transform child in allChildren)
+            {
+                if (child != dialogueParent.transform) // ignora o próprio pai
+                {
+                    Debug.Log("Filho encontrado: " + child.gameObject.name);
+                }
+            }
+        }*/
+
+        GameObject dialogueParent = GameObject.Find("Dialogue");
+
+        if (dialogueParent != null)
+        {
+            Transform[] allChildren = dialogueParent.GetComponentsInChildren<Transform>(true);
+
+            foreach (Transform child in allChildren)
+            {
+                switch (child.name)
+                {
+                    case "DialoguePanel":
+                        dialoguePanel = child.gameObject;
+                        break;
+                    case "DialogueText":
+                        dialogueText = child.GetComponent<Text>();
+                        break;
+                    case "CharacterName":
+                        characterNameText = child.GetComponent<Text>();
+                        break;
+                    case "ImageRobot":
+                        imageRobot = child.GetComponent<Image>();
+                        break;
+                }
+            }
+        }
+
+        /*dialoguePanel = GameObject.Find("DialoguePanel");
         //if (SceneManager.GetActiveScene().name == "Tutorial")
         //{
         dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
-        name = GameObject.Find("CharacterName").GetComponent<Text>();
+        characterNameText = GameObject.Find("CharacterName").GetComponent<Text>();
         imageRobot = GameObject.Find("ImageRobot").GetComponent<Image>();
-        //}
+        //}*/
 
         uiPlayer.SetActive(true);
         if (dialoguePanel != null)
@@ -60,7 +102,7 @@ public class RobotDialogue : MonoBehaviour
         if (imageRobot != null && spriteRobot != null && name != null)
         {
             imageRobot.sprite = spriteRobot;
-            name.text = characterName;
+            characterNameText.text = characterName;
         }
 
         if (dialogueText != null)
@@ -205,7 +247,7 @@ public class RobotDialogue : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(item.palavra))
             {
-                string corHex = ColorUtility.ToHtmlStringRGB(item.cor);
+                string corHex = UnityEngine.ColorUtility.ToHtmlStringRGB(item.cor);
                 textoFormatado = textoFormatado.Replace(
                     item.palavra,
                     $"<color=#{corHex}>{item.palavra}</color>"

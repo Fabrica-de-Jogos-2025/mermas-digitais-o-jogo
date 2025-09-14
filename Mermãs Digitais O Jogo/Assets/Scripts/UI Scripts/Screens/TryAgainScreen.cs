@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,7 @@ public class TryAgainScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
+        // playerStatus = GameObject.Find("Player").GetComponent<PlayerStatus>();
         cenaAnterior = playerStatus.CenaAtual;
     }
 
@@ -34,7 +35,7 @@ public class TryAgainScreen : MonoBehaviour
         AddEventTriggers(noBtn);
     }
 
-    // Método que adiciona os eventos de PointerEnter e PointerExit pro botão
+    // Mï¿½todo que adiciona os eventos de PointerEnter e PointerExit pro botï¿½o
     void AddEventTriggers(Button btn)
     {
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
@@ -43,13 +44,13 @@ public class TryAgainScreen : MonoBehaviour
             trigger = btn.gameObject.AddComponent<EventTrigger>();
         }
 
-        // Evento quando o mouse entra no botão
+        // Evento quando o mouse entra no botï¿½o
         EventTrigger.Entry entryEnter = new EventTrigger.Entry();
         entryEnter.eventID = EventTriggerType.PointerEnter;
         entryEnter.callback.AddListener((data) => { OnButtonPointerEnter(btn); });
         trigger.triggers.Add(entryEnter);
 
-        // Evento quando o mouse sai do botão
+        // Evento quando o mouse sai do botï¿½o
         EventTrigger.Entry entryExit = new EventTrigger.Entry();
         entryExit.eventID = EventTriggerType.PointerExit;
         entryExit.callback.AddListener((data) => { OnButtonPointerExit(btn); });
@@ -89,6 +90,7 @@ public class TryAgainScreen : MonoBehaviour
 
         // recarrega a fase
         SceneManager.LoadScene(cenaAnterior);*/
+        // playerPrefab.IsDestroyed();
 
         string lastScene = PlayerPrefs.GetString("LastScene", SceneManager.GetActiveScene().name);
 
@@ -96,11 +98,11 @@ public class TryAgainScreen : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(lastScene);
 
-        // garante que Player e Robot já existem (DontDestroyOnLoad)
+        // garante que Player e Robot jï¿½ existem (DontDestroyOnLoad)
         /*PlayerMovement player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         PlayerStatus status = player.GetComponent<PlayerStatus>();
 
-        // respawn após a cena carregar
+        // respawn apï¿½s a cena carregar
         player.StartCoroutine(RespawnAfterLoad(player, status, checkpointAtivo));*/
     }
 
@@ -118,9 +120,18 @@ public class TryAgainScreen : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
 
         // Instancia Player
-        GameObject player = Instantiate(playerPrefab);
+        //GameObject player = Instantiate(playerPrefab);
+        GameObject player;
+        if (GameObject.FindWithTag("Player") == null)
+        {
+            player = Instantiate(playerPrefab);
+        }
+        else
+        {
+            player = GameObject.FindWithTag("Player");
+        }
 
-        // Se tinha checkpoint ativo, teleporta até lá
+        // Se tinha checkpoint ativo, teleporta atï¿½ lï¿½
         if (PlayerPrefs.GetInt("CheckpointAtivo", 0) == 1)
         {
             Vector3 checkpointPos = new Vector3(
@@ -132,12 +143,12 @@ public class TryAgainScreen : MonoBehaviour
         }
         else
         {
-            // Posição inicial padrão
+            // Posiï¿½ï¿½o inicial padrï¿½o
             player.transform.position = Vector3.zero;
         }
 
-        // Instancia Robô, se existir
-        if (robotPrefab != null)
+        // Instancia Robï¿½, se existir
+        if (robotPrefab != null && GameObject.FindWithTag("Robot") == null)
         {
             GameObject robot = Instantiate(robotPrefab);
 

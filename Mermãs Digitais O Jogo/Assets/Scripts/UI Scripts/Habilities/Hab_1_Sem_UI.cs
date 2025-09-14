@@ -58,7 +58,7 @@ public class Hab_1_Sem_UI : MonoBehaviour
                     robot.imageRobot.sprite = spriteCharacter;
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
-                    robot.name.text = nameofCharacter;
+                    robot.characterNameText.text = nameofCharacter;
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);

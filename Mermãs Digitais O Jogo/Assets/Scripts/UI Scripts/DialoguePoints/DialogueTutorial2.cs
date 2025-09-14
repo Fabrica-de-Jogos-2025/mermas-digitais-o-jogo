@@ -24,7 +24,7 @@ public class DialogueTutorial2 : MonoBehaviour
                     robot.imageRobot.sprite = spriteCharacter;
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
-                    robot.name.text = nameofCharacter;
+                    robot.characterNameText.text = nameofCharacter;
 
                 robot.StartDialogue(dialogueMessages, player);
                 
