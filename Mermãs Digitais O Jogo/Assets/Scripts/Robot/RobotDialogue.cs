@@ -42,7 +42,7 @@ public class RobotDialogue : MonoBehaviour
 
     void Start()
     {
-        uiPlayer = GameObject.Find("Canvas");
+        uiPlayer = GameObject.Find("CanvasHUD");
         /*GameObject dialogueParent = GameObject.Find("Dialogue");
 
         if (dialogueParent != null)

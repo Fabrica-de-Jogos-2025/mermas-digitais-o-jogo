@@ -27,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
 
     void CarregarComLoading(string nomeCena)
     {
-        Debug.Log("Passando pela tela de carregamento antes de: " + nomeCena);
+        // Debug.Log("Passando pela tela de carregamento antes de: " + nomeCena);
         loader.CarregarFase(nomeCena); // Aqui ele chama o sistema de carregamento com animação
     }
 }
