@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Hability1Use_1 : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private string booleanOperation;
     public Sprite[] images;
     [SerializeField] private Sprite[] correctImages;
@@ -18,6 +19,7 @@ public class Hability1Use_1 : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         habilityScreen = FindAnyObjectByType<Hability1_1>();
         imageButton = GetComponent<Image>();
         imageButton.sprite = images[currentIndex];
@@ -48,7 +50,8 @@ public class Hability1Use_1 : MonoBehaviour
 
             if (puzzleSolved)
             {
-                habilityScreen.pausarJogador = false;
+                // habilityScreen.pausarJogador = false;
+                player.IsFrozen = false;
                 destroy = true;
                 habilityScreen.HabilityScreen.SetActive(false);
             }
@@ -77,7 +80,8 @@ public class Hability1Use_1 : MonoBehaviour
 
                 if (puzzleSolved)
                 {
-                    habilityScreen.pausarJogador = false;
+                    // habilityScreen.pausarJogador = false;
+                    player.IsFrozen = false;
                     destroy = true;
                     habilityScreen.HabilityScreen.SetActive(false);
                 }

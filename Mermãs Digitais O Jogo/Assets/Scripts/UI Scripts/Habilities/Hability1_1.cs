@@ -8,7 +8,7 @@ public class Hability1_1 : MonoBehaviour
     public string[] dialogueMessages;
     [SerializeField] private GameObject habilityScreen;
     [SerializeField] private GameObject[] images;
-    public bool pausarJogador = false;
+    // public bool pausarJogador = false;
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
@@ -70,6 +70,7 @@ public class Hability1_1 : MonoBehaviour
             if (habilityScreen != null)
             {
                 habilityScreen.SetActive(true);
+                player.IsFrozen = true;
             }
         }
     }
