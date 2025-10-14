@@ -17075,7 +17075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 2120611155}
-  brightness: {fileID: 250906128}
 --- !u!1 &2129687665
 GameObject:
   m_ObjectHideFlags: 0

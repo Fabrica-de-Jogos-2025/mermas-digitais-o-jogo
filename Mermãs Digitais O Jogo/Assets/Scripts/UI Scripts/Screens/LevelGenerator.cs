@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public Button botaoFase3;
 
     [SerializeField] private Loader loader;
+    [SerializeField] private Button voltarButton;
     void Start()
     {
         if (botaoTurorial != null)
@@ -23,6 +24,9 @@ public class LevelGenerator : MonoBehaviour
 
         if (botaoFase3 != null)
             botaoFase3.onClick.AddListener(() => CarregarComLoading("Fase 3"));
+
+        if (voltarButton != null)
+            voltarButton.onClick.AddListener(() => CarregarComLoading("Main Menu"));
     }
 
     void CarregarComLoading(string nomeCena)

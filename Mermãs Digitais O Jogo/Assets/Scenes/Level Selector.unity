@@ -169,6 +169,7 @@ MonoBehaviour:
   botaoFase2: {fileID: 1081677182}
   botaoFase3: {fileID: 1584552797}
   loader: {fileID: 996898644}
+  voltarButton: {fileID: 360367352}
 --- !u!114 &1261144
 MonoBehaviour:
   m_ObjectHideFlags: 0

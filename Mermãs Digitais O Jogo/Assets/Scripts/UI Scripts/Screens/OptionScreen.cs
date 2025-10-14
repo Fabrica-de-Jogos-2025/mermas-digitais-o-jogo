@@ -19,6 +19,14 @@ public class OptionScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        brightness = PlayerPrefs.GetInt("brightness", 50);
+        soundEffects = PlayerPrefs.GetInt("soundEffects", 50);
+        music = PlayerPrefs.GetInt("music", 50);
+
+        brightText.text = brightness.ToString();
+        soundEffectText.text = soundEffects.ToString();
+        musicText.text = music.ToString();
+
         highAndLowButtons[0].onClick.AddListener(() => LowButtons(brightText, ref brightness, true));
         highAndLowButtons[1].onClick.AddListener(() => HighButtons(brightText, ref brightness, true));
         highAndLowButtons[2].onClick.AddListener(() => LowButtons(soundEffectText, ref soundEffects, false));
@@ -26,9 +34,9 @@ public class OptionScreen : MonoBehaviour
         highAndLowButtons[4].onClick.AddListener(() => LowButtons(musicText, ref music, false));
         highAndLowButtons[5].onClick.AddListener(() => HighButtons(musicText, ref music, false));
 
-        brightText.text = brightness.ToString();
+        /*brightText.text = brightness.ToString();
         soundEffectText.text = soundEffects.ToString();
-        musicText.text = music.ToString();
+        musicText.text = music.ToString();*/
     }
 
     public void LowButtons(TextMeshProUGUI text, ref int value, bool updateBrightness)
@@ -37,6 +45,7 @@ public class OptionScreen : MonoBehaviour
         {
             value -= 10;
             text.text = value.ToString();
+            SavePreferences();
 
             if (updateBrightness && brightnessController != null)
                 brightnessController.ApplyBrightness();
@@ -49,9 +58,18 @@ public class OptionScreen : MonoBehaviour
         {
             value += 10;
             text.text = value.ToString();
+            SavePreferences();
 
             if (updateBrightness && brightnessController != null)
                 brightnessController.ApplyBrightness();
         }
+    }
+
+    private void SavePreferences()
+    {
+        PlayerPrefs.SetInt("brightness", brightness);
+        PlayerPrefs.SetInt("soundEffects", soundEffects);
+        PlayerPrefs.SetInt("music", music);
+        PlayerPrefs.Save();
     }
 }
