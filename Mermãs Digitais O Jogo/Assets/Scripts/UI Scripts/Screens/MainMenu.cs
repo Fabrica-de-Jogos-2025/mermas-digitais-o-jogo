@@ -74,6 +74,11 @@ public class MainMenu : MonoBehaviour
         FecharTodasAsTelas();
         if (tela != null)
             tela.SetActive(true);
+
+        if (tela == telaLoja && CoinManager.instance != null)
+        {
+            CoinManager.instance.UpdateCoinUI();
+        }
     }
 
     // A��o para o bot�o Hist�ria (n�o implementado)

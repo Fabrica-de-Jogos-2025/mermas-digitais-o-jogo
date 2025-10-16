@@ -11,15 +11,36 @@ public class Transition : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        if (FindAnyObjectByType<Transition>().length > 1)
+        // var transitions = FindObjectsOfType<Transition>(FindObjectsSortMode.None);
+        /*if (FindObjectsByType<Transition>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
-        }
+        }*/
+
+        /*var transition0 = GameObject.Find("Transition0");
+            if (cenaAtiva == "Fase 1")
+            {
+                Destroy(transition0.gameObject);
+            }*/
     }
 
     private void Start()
     {
         cenaAtiva = SceneManager.GetActiveScene().name;
+
+        var transition0 = GameObject.Find("Transition0");
+        var transition1 = GameObject.Find("Transition1");
+        var transition2 = GameObject.Find("Transition2");
+        if (cenaAtiva == "Fase 1")
+        {
+            Destroy(transition0.gameObject);
+        } else if (cenaAtiva == "Fase 2")
+        {
+            Destroy(transition1.gameObject);
+        } else if (cenaAtiva == "Fase 3")
+        {
+            Destroy(transition2.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,9 +54,12 @@ public class Transition : MonoBehaviour
                 levelComplete[0] = true;
             } else if (cenaAtiva == "Fase 1")
             {
+                levelComplete[0] = true;
                 levelComplete[1] = true;
             } else if (cenaAtiva == "Fase 2")
             {
+                levelComplete[0] = true;
+                levelComplete[1] = true;
                 levelComplete[2] = true;
             }
 
