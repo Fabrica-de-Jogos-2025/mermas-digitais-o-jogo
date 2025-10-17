@@ -10,8 +10,11 @@ public class OptionScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI musicText;
 
     [SerializeField] private int brightness = 50;
-    [SerializeField] private int soundEffects = 50;
+    [SerializeField] private int soundEffects = 100;
     [SerializeField] private int music = 50;
+
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private GameplayAudio sfxClick;
 
     [SerializeField] private BrightnessLight2D brightnessController;
     public int Brightness { get => brightness; set => brightness = value; }
@@ -20,7 +23,7 @@ public class OptionScreen : MonoBehaviour
     void Start()
     {
         brightness = PlayerPrefs.GetInt("brightness", 50);
-        soundEffects = PlayerPrefs.GetInt("soundEffects", 50);
+        soundEffects = PlayerPrefs.GetInt("soundEffects", 100);
         music = PlayerPrefs.GetInt("music", 50);
 
         brightText.text = brightness.ToString();
@@ -41,6 +44,7 @@ public class OptionScreen : MonoBehaviour
 
     public void LowButtons(TextMeshProUGUI text, ref int value, bool updateBrightness)
     {
+        sfxClick.Audio(clip);
         if (value > 0)
         {
             value -= 10;
@@ -54,6 +58,7 @@ public class OptionScreen : MonoBehaviour
 
     public void HighButtons(TextMeshProUGUI text, ref int value, bool updateBrightness)
     {
+        sfxClick.Audio(clip);
         if (value < 100)
         {
             value += 10;

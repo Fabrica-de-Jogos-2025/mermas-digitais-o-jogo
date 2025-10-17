@@ -12,9 +12,14 @@ public class ClickButtonEffect : MonoBehaviour
     public float minAlpha = 0.3f;       // Opacidade mínima
     public float maxAlpha = 1f;         // Opacidade máxima
 
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip clip2;
+    [SerializeField] private GameplayAudio sfxClick;
     private TextMeshProUGUI buttonText;
     // [SerializeField] private MainMenu voltarButton;
     private float timer;
+
+    public AudioClip Clip2 { get => clip2; set => clip2 = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +32,7 @@ public class ClickButtonEffect : MonoBehaviour
     void Update()
     {
         // ---- Piscar o botão ----
-        if (buttonText != null)
+        if (uiTitle != null && uiTitle.activeSelf && buttonText != null)
         {
             timer += Time.deltaTime * blinkSpeed;
             float alpha = Mathf.Lerp(minAlpha, maxAlpha, (Mathf.Sin(timer) + 1) / 2f);
@@ -38,8 +43,9 @@ public class ClickButtonEffect : MonoBehaviour
         }
 
         // ---- Detectar clique em qualquer lugar da tela ----
-        if (Input.GetMouseButtonDown(0)) // Clique esquerdo ou toque na tela
+        if (Input.GetMouseButtonDown(0) && uiTitle != null && uiTitle.activeSelf) // Clique esquerdo ou toque na tela
         {
+            sfxClick.Audio(clip);
             uiTitle.SetActive(false);
             grounds[0].SetActive(false);
             grounds[1].SetActive(false);
@@ -49,6 +55,7 @@ public class ClickButtonEffect : MonoBehaviour
 
     public void VoltarTelaInicial()
     {
+        sfxClick.Audio(clip);
         uiTitle.SetActive(true);
         grounds[0].SetActive(true);
         grounds[1].SetActive(true);

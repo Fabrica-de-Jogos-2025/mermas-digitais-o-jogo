@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastCheckpointPosition;
     private TryAgainScreen yesButton;
     private Checkpoint checkpoint;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip walk;
 
     private CoinManager coinManager;
     private Tilemap coinTilemap;
@@ -104,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isFrozen) return;
-
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         OnMove();
@@ -122,11 +123,23 @@ public class PlayerMovement : MonoBehaviour
     void OnMove()
     {
         if (isFrozen) return;
+        
 
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * playerSpeed;
+        // transform.position += movement * Time.deltaTime * playerSpeed;
 
         float rotation = Input.GetAxis("Horizontal");
+
+        if (Mathf.Abs(rotation) > 0.1f && groundChecked.IsGrounded())
+        {
+            sfxAcess.LoopAudio(walk);
+        }
+        else
+        {
+            sfxAcess.StopAudio();
+        }
+
+        transform.position += movement * Time.deltaTime * playerSpeed;
 
         if (rotation > 0)
         {
@@ -264,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (freeze)
         {
+            sfxAcess.StopAudio();
             rig.linearVelocity = Vector2.zero;
             rig.simulated = false;
         }

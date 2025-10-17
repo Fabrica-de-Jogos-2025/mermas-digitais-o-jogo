@@ -14,7 +14,16 @@ public class PadlockUI : MonoBehaviour
     {
         transition = FindAnyObjectByType<Transition>();
         coursesImages = GetComponent<Image[]>();
+        
+        var padlockObjects = GameObject.FindGameObjectsWithTag("Padlock");
+
+        padlocks = new GameObject[padlockObjects.Length];
+        for (int i = 0; i < padlockObjects.Length; i++)
+        {
+            padlocks[i] = padlockObjects[i];
+        }
     }
+
     void Update()
     {
         if (transition != null)

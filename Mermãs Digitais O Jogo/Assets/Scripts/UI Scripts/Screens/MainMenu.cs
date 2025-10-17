@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 using TMPro;
+using System.Collections;
+using Unity.VisualScripting;
+using static Unity.Collections.Unicode;
 
 
 public class MainMenu : MonoBehaviour
@@ -32,6 +35,11 @@ public class MainMenu : MonoBehaviour
     public Button voltarCreditosBtn;
 
     public TMP_InputField inputNome;
+
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private ClickButtonEffect clip2;
+    [SerializeField] private GameplayAudio sfxClick;
+
 
     // private ClickButtonEffect uiTitleScreen;
     void Start()
@@ -62,6 +70,7 @@ public class MainMenu : MonoBehaviour
     // Desativa os pain�is existentes
     void FecharTodasAsTelas()
     {
+        sfxClick.Audio(clip);
         if (telaInput != null) telaInput.SetActive(false);
         if (telaLoja != null) telaLoja.SetActive(false);
         if (telaOpcoes != null) telaOpcoes.SetActive(false);
@@ -71,13 +80,14 @@ public class MainMenu : MonoBehaviour
     // Ativa o painel passado como par�metro
     void AbrirTela(GameObject tela)
     {
+        sfxClick.Audio(clip);
         FecharTodasAsTelas();
         if (tela != null)
             tela.SetActive(true);
 
         if (tela == telaLoja && CoinManager.instance != null)
         {
-            CoinManager.instance.UpdateCoinUI();
+            CoinObjectValue.instance.UpdateCoinUI();
         }
     }
 
@@ -85,15 +95,17 @@ public class MainMenu : MonoBehaviour
     void AbrirHistoria()
     {
         // Debug.Log("Bot�o Hist�ria clicado. Tela n�o implementada.");
+        // sfxClick.Audio(clip);
         telaMenu.SetActive(false);
-        uiManagerController.SetActive(false);
+        // uiManagerController.SetActive(false);
         telaInput.SetActive(true);
     }
 
     // A��o para o bot�o Sair
     void SairDoJogo()
     {
-        Debug.Log("Saindo do jogo...");
+        sfxClick.Audio(clip);
+        // Debug.Log("Saindo do jogo...");
         Application.Quit();
     }
 
@@ -141,18 +153,48 @@ public class MainMenu : MonoBehaviour
 
     void FecharTela(GameObject tela)
     {
+        sfxClick.Audio(clip);
         if (tela != null)
             tela.SetActive(false);
     }
 
     public void GoToCutscene()
     {
+        // sfxClick.Audio(longClick.Clip2);
+        GameObject executor = new GameObject("CoroutineExecutor");
+        var runner = executor.AddComponent<CoroutineRunner>();
+        StartCoroutine(GoToCutsceneAfterDelay(runner));
+        runner.StartCoroutine(GoToCutsceneAfterDelay(runner));
+        /*StartCoroutine(WaitButtonSound());
+        PlayerData.playerName = inputNome.text.Trim();
+        SceneManager.LoadScene("Cutscene");*/
+    }
+
+    private IEnumerator GoToCutsceneAfterDelay(CoroutineRunner runner)
+    {
+        // Toca o som do clique
+        sfxClick.Audio(clip2.Clip2);
+
+        // Aguarda 2 segundos para o som terminar
+        yield return new WaitForSeconds(0.5f);
+
+        // Salva o nome do jogador e carrega a próxima cena
         PlayerData.playerName = inputNome.text.Trim();
         SceneManager.LoadScene("Cutscene");
+        Destroy(runner.gameObject);
     }
 
     public void VoltarParaMenu()
     {
+        sfxClick.Audio(clip);
         telaMenu.SetActive(true);
     }
+
+    // public class CoroutineRunner : MonoBehaviour { }
+
+    /*private IEnumerator WaitButtonSound()
+    {
+        yield return new WaitForSeconds(0.2f);
+        // GoToCutscene();
+    }*/
 }

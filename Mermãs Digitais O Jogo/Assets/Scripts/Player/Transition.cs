@@ -5,9 +5,9 @@ public class Transition : MonoBehaviour
 {
     // [SerializeField] private string sceneName;
     private string cenaAtiva;
-    [SerializeField] private bool[] levelComplete;
+    [SerializeField] private bool[] levelComplete = new bool[3];
     public bool[] LevelComplete { get => levelComplete; set => levelComplete = value; }
-    private int length = 1;
+    // private int length = 1;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -31,6 +31,7 @@ public class Transition : MonoBehaviour
         var transition0 = GameObject.Find("Transition0");
         var transition1 = GameObject.Find("Transition1");
         var transition2 = GameObject.Find("Transition2");
+        
         if (cenaAtiva == "Fase 1")
         {
             Destroy(transition0.gameObject);
@@ -48,6 +49,11 @@ public class Transition : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             cenaAtiva = SceneManager.GetActiveScene().name;
+
+            if (levelComplete == null || levelComplete.Length < 3)
+            {
+                levelComplete = new bool[3];
+            }
 
             if (cenaAtiva == "Tutorial")
             {
