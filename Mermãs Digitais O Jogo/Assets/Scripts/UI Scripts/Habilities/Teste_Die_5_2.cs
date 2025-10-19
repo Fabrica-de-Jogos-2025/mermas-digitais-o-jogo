@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Teste_Die_5_2 : MonoBehaviour
 {
-
+    private PlayerMovement player;
     public Teste_Hability5_2 Dest;
     //public float destroyInSec = 3f;
     private bool isDestroyed = false;
@@ -10,7 +10,11 @@ public class Teste_Die_5_2 : MonoBehaviour
     [SerializeField] private GameObject rocketCollider; // Collider do foguete
     [SerializeField] private GameObject hitbox; // Collider da habilidade
 
-    
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+    }
+
     void Update()
     {
         if (!isDestroyed && Dest.puzzleSolved)
@@ -19,6 +23,7 @@ public class Teste_Die_5_2 : MonoBehaviour
             isDestroyed = true; // Evita chamadas repetidas da coroutine
             //isDestroyed = true;
             Destroy(this.gameObject);
+            player.IsFrozen = false;
             //Destroy(rocket.gameObject);
             Destroy(rocketCollider.gameObject);
             Destroy(hitbox.gameObject);

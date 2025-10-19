@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Hability1Use_Boss1 : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private string booleanOperation;
     public Sprite[] images;
     [SerializeField] private Sprite[] correctImages;
@@ -17,6 +18,7 @@ public class Hability1Use_Boss1 : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         habilityScreen = FindAnyObjectByType<Hability1_1>();
         imageButton = GetComponent<Image>();
         imageButton.sprite = images[currentIndex];
@@ -53,7 +55,8 @@ public class Hability1Use_Boss1 : MonoBehaviour
 
             if (puzzleSolved)
             {
-                habilityScreen.pausarJogador = false;
+                // habilityScreen.pausarJogador = false;
+                player.IsFrozen = false;
                 habilityScreen.HabilityScreen.SetActive(false);
                 destroy = true;
             }

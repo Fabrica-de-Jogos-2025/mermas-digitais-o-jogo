@@ -37,6 +37,7 @@ public class Hability4_2 : MonoBehaviour
             if (habilityScreen != null)
             {
                 habilityScreen.SetActive(true);
+                player.IsFrozen = true;
             }
         }
     }

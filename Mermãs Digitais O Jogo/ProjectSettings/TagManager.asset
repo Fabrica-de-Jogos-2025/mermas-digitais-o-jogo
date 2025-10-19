@@ -16,6 +16,7 @@ TagManager:
   - Item
   - Padlock
   - Ground
+  - LevelImage
   layers:
   - Default
   - TransparentFX

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class die_4_2 : MonoBehaviour
 {
-
+    private PlayerMovement player;
     public Hability4 Dest;
     public Hability4_1 Dest2;
     public GameObject signalObjectRed;
@@ -11,6 +11,11 @@ public class die_4_2 : MonoBehaviour
     public GameObject cage;
     public float destroyInSec = 3f;
     // Update is called once per frame
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+    }
     void Update()
     {
 
@@ -38,5 +43,6 @@ public class die_4_2 : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyInSec);
         Destroy(this.gameObject);
+        player.IsFrozen = false;
     }
 }

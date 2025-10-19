@@ -30,6 +30,8 @@ public class RobotDialogue : MonoBehaviour
     public Action OnDialogueEnd;
 
     private string[] currentDialogue;
+    [SerializeField] private AudioClip dialogueSFX;
+    [SerializeField] private GameplayAudio sfxAcess;
     private string currentProcessedMessage;
     private string characterName;
     public int dialogueIndex;
@@ -42,7 +44,7 @@ public class RobotDialogue : MonoBehaviour
 
     void Start()
     {
-        uiPlayer = GameObject.Find("Canvas");
+        uiPlayer = GameObject.Find("CanvasHUD");
         /*GameObject dialogueParent = GameObject.Find("Dialogue");
 
         if (dialogueParent != null)
@@ -203,6 +205,13 @@ public class RobotDialogue : MonoBehaviour
         isTyping = true;
         dialogueText.text = "";
 
+        if (dialogueSFX != null && sfxAcess != null)
+        {
+            // Garante que não toque várias vezes
+            sfxAcess.StopAudio();
+            sfxAcess.LoopAudio(dialogueSFX); // <-- inicia o loop
+        }
+
         float delay = 0.2f / charactersPerSecond;
 
         int i = 0;
@@ -234,6 +243,9 @@ public class RobotDialogue : MonoBehaviour
                 yield return new WaitForSeconds(delay);
             }
         }
+
+        if (sfxAcess != null)
+            sfxAcess.StopAudio();
 
         isTyping = false;
         currentTypingCoroutine = null;
@@ -282,5 +294,6 @@ public class RobotDialogue : MonoBehaviour
 
         OnDialogueEnd?.Invoke();
         OnDialogueEnd = null;
+        sfxAcess.StopAudio();
     }
 }
