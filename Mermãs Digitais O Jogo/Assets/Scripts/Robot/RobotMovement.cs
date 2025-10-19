@@ -7,6 +7,8 @@ public class RobotMovement : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private float Speed;
     [SerializeField] private float StoppingDistance;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip fly;
 
     [SerializeField] private PlayerStatus playerStatus;
     private Transform Target;
@@ -193,5 +195,17 @@ public class RobotMovement : MonoBehaviour
         }
 
         isUsingPowerUp = false;
+    }
+
+    public void SetDialogueState(bool inDialogue)
+    {
+        if (inDialogue)
+        {
+            sfxAcess.StopAudio(); // pausa o som de voo
+        }
+        else
+        {
+            sfxAcess.LoopAudio(fly); // retoma o som ao fim do diálogo
+        }
     }
 }

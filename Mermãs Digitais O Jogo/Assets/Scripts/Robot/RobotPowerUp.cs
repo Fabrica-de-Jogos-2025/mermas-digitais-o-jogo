@@ -9,6 +9,8 @@ public class RobotPowerUp : MonoBehaviour
     //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
 
     [SerializeField] private bool isTutorialPowerUp;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip powerupClíp;
     public RobotMovement robotPowered;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,10 +30,12 @@ public class RobotPowerUp : MonoBehaviour
             if (!isTutorialPowerUp)
             {
                 Destroy(gameObject);
+                sfxAcess.Audio(powerupClíp);
                 robotPowered.HasPowerUp = true;
             }
             else
             {
+                sfxAcess.Audio(powerupClíp);
                 robotPowered.HasPowerUp = true;
             }
         }

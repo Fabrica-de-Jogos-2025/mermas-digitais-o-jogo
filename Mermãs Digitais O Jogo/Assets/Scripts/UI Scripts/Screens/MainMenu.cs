@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
     public TMP_InputField inputNome;
 
     [SerializeField] private AudioClip clip;
-    [SerializeField] private ClickButtonEffect clip2;
+    [SerializeField] private AudioClip clip2;
     [SerializeField] private GameplayAudio sfxClick;
 
 
@@ -96,7 +96,7 @@ public class MainMenu : MonoBehaviour
     {
         // Debug.Log("Bot�o Hist�ria clicado. Tela n�o implementada.");
         // sfxClick.Audio(clip);
-        telaMenu.SetActive(false);
+        // telaMenu.SetActive(false);
         // uiManagerController.SetActive(false);
         telaInput.SetActive(true);
     }
@@ -173,10 +173,10 @@ public class MainMenu : MonoBehaviour
     private IEnumerator GoToCutsceneAfterDelay(CoroutineRunner runner)
     {
         // Toca o som do clique
-        sfxClick.Audio(clip2.Clip2);
+        sfxClick.Audio(clip2);
 
         // Aguarda 2 segundos para o som terminar
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         // Salva o nome do jogador e carrega a próxima cena
         PlayerData.playerName = inputNome.text.Trim();

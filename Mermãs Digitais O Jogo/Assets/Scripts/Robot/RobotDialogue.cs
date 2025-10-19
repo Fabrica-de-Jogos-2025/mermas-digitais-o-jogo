@@ -39,12 +39,14 @@ public class RobotDialogue : MonoBehaviour
     private bool isTyping;
     private Coroutine currentTypingCoroutine;
     private PlayerMovement currentPlayer;
+    private RobotMovement robo;
     public bool permissionToProceed;
     public bool permission;
 
     void Start()
     {
         uiPlayer = GameObject.Find("CanvasHUD");
+        robo = FindAnyObjectByType<RobotMovement>();
         /*GameObject dialogueParent = GameObject.Find("Dialogue");
 
         if (dialogueParent != null)
@@ -145,6 +147,9 @@ public class RobotDialogue : MonoBehaviour
 
     public void StartDialogue(string[] dialogue, PlayerMovement player)
     {
+        if (robo != null)
+            robo.SetDialogueState(true);
+
         if (!dialogueActive)
         {
             currentDialogue = dialogue;
@@ -295,5 +300,8 @@ public class RobotDialogue : MonoBehaviour
         OnDialogueEnd?.Invoke();
         OnDialogueEnd = null;
         sfxAcess.StopAudio();
+
+        if (robo != null)
+            robo.SetDialogueState(false);
     }
 }

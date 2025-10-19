@@ -109,6 +109,8 @@ MonoBehaviour:
   player: {fileID: 4258623746148510536, guid: e0a1e68b75ac5da439a9a8417c17a9c4, type: 3}
   Speed: 5
   StoppingDistance: -1.3
+  sfxAcess: {fileID: 4485658016289868224}
+  fly: {fileID: 8300000, guid: ed8bd8c235526fa4e83389ddfafd824d, type: 3}
   playerStatus: {fileID: 2673734274331479848, guid: e0a1e68b75ac5da439a9a8417c17a9c4, type: 3}
   HasPowerUp: 0
   direction: 0
@@ -296,7 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3e484190e6838479bd6790f14952ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 6463104398264698402}
+  loopSource: {fileID: 6463104398264698402}
+  sfxSource: {fileID: 6463104398264698402}
 --- !u!82 &6463104398264698402
 AudioSource:
   m_ObjectHideFlags: 0

@@ -48,11 +48,13 @@ public class PlayerMovement : MonoBehaviour
     private Checkpoint checkpoint;
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip walk;
+    [SerializeField] private AudioClip jump;
 
     private CoinManager coinManager;
     private Tilemap coinTilemap;
     public bool i = false;
     public bool TutoJumpAtiv = false;
+    private bool hasPlayedJumpSound = false;
 
     private void Awake()
     {
@@ -159,12 +161,27 @@ public class PlayerMovement : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping && TutoJumpAtiv) //trigger.tutorialJumpAtivo
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+            if (!hasPlayedJumpSound)
+            {
+                sfxAcess.Audio(jump);
+                hasPlayedJumpSound = true;
+            }
         }
     }
 
     void CheckInGrounded()
     {
-        isJumping = !groundChecked.IsGrounded();
+        // isJumping = !groundChecked.IsGrounded();
+        // sfxAcess.StopAudio();
+        bool grounded = groundChecked.IsGrounded();
+
+        if (grounded && isJumping)
+        {
+            // Ao tocar o chão novamente, libera o som do próximo salto
+            hasPlayedJumpSound = false;
+        }
+
+        isJumping = !grounded;
     }
 
     private void FindCoinReferences()
