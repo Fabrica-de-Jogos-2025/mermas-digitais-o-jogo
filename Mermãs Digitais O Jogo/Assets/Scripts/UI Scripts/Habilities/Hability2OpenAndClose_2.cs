@@ -15,10 +15,17 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
 
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public AudioClip Feedback { get => feedback; set => feedback = value; }
+
     public Hability2_2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
     public bool destroy = false;
     public GameObject habilityUITutorial;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip feedback;
+
+    private bool feedbackPlayed = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -54,11 +61,14 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
                 //robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
                 player.IsFrozen = true;
+                sfxAcess.Audio(hability);
                 //pausarJogador = true;
             }
         }
-            else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1)
+            else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1 && !feedbackPlayed)
             {
+                feedbackPlayed = true;
+                sfxAcess.Audio(feedback);
                 habilityScreen.SetActive(false);
                 player.IsFrozen = false;
                 destroy = true;

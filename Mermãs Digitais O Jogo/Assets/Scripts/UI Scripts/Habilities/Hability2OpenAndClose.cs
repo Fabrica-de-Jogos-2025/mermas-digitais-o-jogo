@@ -15,10 +15,15 @@ public class Hability2OpenAndClose : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
-
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip feedback;
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public AudioClip Feedback { get => feedback; set => feedback = value; }
+
     public Hability2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
     public bool destroy = false;
+    private bool feedbackPlayed = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -54,10 +59,14 @@ public class Hability2OpenAndClose : MonoBehaviour
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                sfxAcess.Audio(hability);
             }
         }
-            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close)
+            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close && !feedbackPlayed)
             {
+            // sfxAcess.Audio(feedback);
+                feedbackPlayed = true;
+                sfxAcess.Audio(feedback);
                 habilityScreen.SetActive(false);
                 destroy = true;
             }

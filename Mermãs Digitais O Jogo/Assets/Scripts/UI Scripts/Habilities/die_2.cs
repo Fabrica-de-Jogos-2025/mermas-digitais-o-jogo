@@ -8,7 +8,7 @@ public class die_2 : MonoBehaviour
     {
         if (Dest.destroy)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, Dest.Feedback.length);
         }
     }
 }

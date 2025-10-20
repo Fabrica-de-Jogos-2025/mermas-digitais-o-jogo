@@ -1,11 +1,32 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
     private PlayerMovement player;
     private RobotAnimation robotAnimation;
     private Animator anim;
+    public InputController controls;
+    private InputAction move;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    void OnEnable()
+    {
+        move = controls.Player.Move;
+        move.Enable();
+    }
+
+    void OnDisable()
+    {
+        move.Disable();
+    }
+
+
     void Start()
     {
         player = FindFirstObjectByType<PlayerMovement>();
@@ -21,7 +42,14 @@ public class PlayerAnimation : MonoBehaviour
 
     void Walking()
     {
-        if (player.Direction.sqrMagnitude > 0 && !player.IsFrozen)
+        float keyboardInput = Input.GetAxisRaw("Horizontal");
+        float controllerInput = move.ReadValue<Vector2>().x;
+
+        float horizontal = Mathf.Abs(controllerInput) > Mathf.Abs(keyboardInput)
+        ? controllerInput
+        : keyboardInput;
+
+        if (Mathf.Abs(horizontal) > 0 && !player.IsFrozen)
         {
             anim.SetInteger("transition", 1);
         }
@@ -31,12 +59,12 @@ public class PlayerAnimation : MonoBehaviour
             anim.SetInteger("transition", 0);
         }
 
-        if (player.Direction.x > 0)
+        if (horizontal > 0)
         {
             transform.eulerAngles = new Vector2(0, 0);
         }
 
-        if (player.Direction.x < 0)
+        if (horizontal < 0)
         {
             transform.eulerAngles = new Vector2(0, 180);
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 // using static TutorialTrigger;
 
 public class TutorialTrigger : MonoBehaviour
@@ -25,6 +26,35 @@ public class TutorialTrigger : MonoBehaviour
 //    public bool tutorialJumpAtivo = false;
     public TutorialType tutorialType;
     public PlayerMovement PM;
+
+    private InputController controls;
+    private InputAction move;
+    private InputAction jump;
+    private InputAction powerUp;
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        move = controls.Player.Move;
+        move.Enable();
+
+        jump = controls.Player.Jump;
+        jump.Enable();
+
+        powerUp = controls.Player.Attack;
+        powerUp.Enable();
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+        jump.Disable();
+        powerUp.Disable();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -95,7 +125,43 @@ public class TutorialTrigger : MonoBehaviour
 
     void Update()
     {
-        if (tutorialAtivo && teclasTutorial != null)
+        if (!tutorialAtivo || teclasTutorial == null)
+            return;
+
+        foreach (var tecla in teclasTutorial)
+        {
+            if (Input.GetKey(tecla))
+            {
+                FecharTutorial();
+                return;
+            }
+        }
+
+        switch (tutorialType)
+        {
+            case TutorialType.Introduction:
+                if (Mathf.Abs(move.ReadValue<Vector2>().x) > 0.1f)
+                {
+                    FecharTutorial();
+                }
+                break;
+
+            case TutorialType.Jump:
+                if (jump != null && jump.WasPerformedThisFrame())
+                {
+                    FecharTutorial();
+                }
+                break;
+
+            case TutorialType.PowerUp:
+                if (powerUp != null && powerUp.WasPerformedThisFrame())
+                {
+                    FecharTutorial();
+                }
+                break;
+        }
+
+        /*if (tutorialAtivo && teclasTutorial != null)
         {
             foreach (var tecla in teclasTutorial)
             {
@@ -111,6 +177,17 @@ public class TutorialTrigger : MonoBehaviour
                     break;
                 }
             }
-        }
+        }*/
+    }
+
+    void FecharTutorial()
+    {
+        if (uiTutorial != null)
+            Destroy(uiTutorial.gameObject);
+
+        tutorialAtivo = false;
+
+        if (triggerOnce)
+            Destroy(gameObject);
     }
 }

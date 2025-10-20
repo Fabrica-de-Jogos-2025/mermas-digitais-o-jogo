@@ -23,6 +23,9 @@ public class Hability1 : MonoBehaviour
     //public GameObject detroyer;
     private bool validation = true;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -76,6 +79,7 @@ public class Hability1 : MonoBehaviour
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                sfxAcess.Audio(hability);
                 validation = false;
                 habilityUITutorial.SetActive(false);
             }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
@@ -47,8 +48,10 @@ public class PlayerMovement : MonoBehaviour
     private TryAgainScreen yesButton;
     private Checkpoint checkpoint;
     [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private GameplayAudio sfxDoorAcess;
     [SerializeField] private AudioClip walk;
     [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip door;
 
     private CoinManager coinManager;
     private Tilemap coinTilemap;
@@ -56,18 +59,27 @@ public class PlayerMovement : MonoBehaviour
     public bool TutoJumpAtiv = false;
     private bool hasPlayedJumpSound = false;
 
+    public InputController controls;
+    private InputAction move;
+    private InputAction jumping;
+
     private void Awake()
     {
-        // Evita duplicação do Player
-        /*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length > 1)
-        {
-            Destroy(gameObject);
-            return;
-        }*/
+        controls = new InputController();
 
-        // DontDestroyOnLoad(gameObject);
-        // Instantiate(playerPrefab, new Vector3(-6.88f, -2f, 0f), Quaternion.identity);
+        /*controls.Player.Move.performed += ctx => direction = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => direction = Vector2.zero;*/
+
+        /*controls.Player.Move.performed += ctx =>
+        {
+            float value = ctx.ReadValue<float>();
+            // Ajuste manualmente o direction.x conforme o botão
+            if (ctx.control.name == "left")
+                direction = Vector2.left * value;
+            else if (ctx.control.name == "right")
+                direction = Vector2.right * value;
+        };
+        controls.Player.Move.canceled += ctx => direction = Vector2.zero;*/
     }
 
 
@@ -109,7 +121,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        // direction = move.ReadValue<Vector2>();
+        // float horizontal = move.ReadValue<Vector2>().x;
 
+        ReadMovementInput();
         OnMove();
         Jumping();
         CheckInGrounded();
@@ -122,17 +137,40 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void ReadMovementInput()
+    {
+        // 🔹 Se o jogador NÃO estiver movendo o controle
+        // então lê o teclado normalmente
+        if (Mathf.Abs(direction.x) < 0.1f)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+
+            if (Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f)
+                direction = new Vector2(horizontal, vertical);
+            else
+                direction = Vector2.zero;
+        }
+    }
+
     void OnMove()
     {
         if (isFrozen) return;
-        
 
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        float keyboardInput = Input.GetAxis("Horizontal");
+        float controllerInput = move.ReadValue<Vector2>().x;
+
+        float horizontal = Mathf.Abs(controllerInput) > Mathf.Abs(keyboardInput)
+        ? controllerInput
+        : keyboardInput;
+
+        Vector3 movement = new Vector3(horizontal, 0f, 0f);
         // transform.position += movement * Time.deltaTime * playerSpeed;
 
-        float rotation = Input.GetAxis("Horizontal");
+        // float rotation = Input.GetAxis("Horizontal");
+        // movement.x = move.ReadValue<float>();
 
-        if (Mathf.Abs(rotation) > 0.1f && groundChecked.IsGrounded())
+        if (Mathf.Abs(horizontal) > 0.1f && groundChecked.IsGrounded())
         {
             sfxAcess.LoopAudio(walk);
         }
@@ -143,12 +181,12 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += movement * Time.deltaTime * playerSpeed;
 
-        if (rotation > 0)
+        if (horizontal > 0)
         {
             transform.eulerAngles = new Vector2(0f, 0f);
         }
 
-        if (rotation < 0)
+        if (horizontal < 0)
         {
             transform.eulerAngles = new Vector2(0f, 180f);
         }
@@ -158,9 +196,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && !isJumping && TutoJumpAtiv) //trigger.tutorialJumpAtivo
+        bool keyboardJump = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
+
+        // float controllerJump = jumping.ReadValue<float>();
+        // jumpForce = jumping.ReadValue<float>();
+        bool controllerPressed = jumping.ReadValue<float>() >= 0.3f; // se o valor for maior que 0.5, considera pressionado
+        // Debug.Log(controllerJump);
+        // 🔹 Escolhe o input ativo (teclado OU controle)
+        bool jumpPressed = keyboardJump || controllerPressed;
+        if (jumpPressed && !isJumping && TutoJumpAtiv) //trigger.tutorialJumpAtivo
         {
-            rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+            // rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+            rig.linearVelocity = new Vector2(rig.linearVelocity.x, 0f);
+            rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
             if (!hasPlayedJumpSound)
             {
                 sfxAcess.Audio(jump);
@@ -201,12 +249,19 @@ public class PlayerMovement : MonoBehaviour
 
     void OnEnable()
     {
-       SceneManager.sceneLoaded += OnSceneLoaded;
+        move = controls.Player.Move;
+        move.Enable();
+
+        jumping = controls.Player.Jump;
+        jumping.Enable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-       SceneManager.sceneLoaded -= OnSceneLoaded;
+        move.Disable();
+        jumping.Disable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -236,6 +291,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentDoor != null)
         {
             currentDoor.PlayAnimation();
+            sfxAcess.Audio(door);
             StartCoroutine(TeleportAfterAnimation());
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RobotMovement : MonoBehaviour
 {
@@ -32,19 +33,24 @@ public class RobotMovement : MonoBehaviour
     public Vector3 moviment;
     private Rigidbody2D rig;
 
+    public InputController controls;
+    private InputAction powerUp;
+
     private void Awake()
     {
-        /*GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
-        if (robots.Length > 1)
-        {
-            Destroy(gameObject);
-            return;
-        }*/
-
-        // Instantiate(robotPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        // DontDestroyOnLoad(gameObject);
+        controls = new InputController();
     }
 
+    private void OnEnable()
+    {
+        powerUp = controls.Player.Attack;
+        powerUp.Enable();
+    }
+
+    private void OnDisable()
+    {
+        powerUp.Disable();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -99,9 +105,12 @@ public class RobotMovement : MonoBehaviour
 
     void PowerUp()
     {
+        bool keyboardJump = Input.GetKeyDown(KeyCode.Space);
+        bool powerUpPressed = powerUp.ReadValue<float>() > 0f;
+        bool powerUpControl = keyboardJump || powerUpPressed;
         if (HasPowerUp && !isUsingPowerUp)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (powerUpControl)
             {
                 StartCoroutine(UsePowerUp());
             }
