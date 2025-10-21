@@ -121,22 +121,37 @@ public class Transition : MonoBehaviour
             {
                 levelComplete[0] = true;
             }
-            else if (cenaAtiva == "Fase 1" && GameObject.Find("Transition2") == null)
+            else if (cenaAtiva == "Boss Fase 1" && GameObject.Find("Transition2") == null)
             //else if (cenaAtiva == "Fase 1")
             {
                 levelComplete[0] = true;
                 levelComplete[1] = true;
             }
-            else if (cenaAtiva == "Fase 2")
+            else if (cenaAtiva == "Boss Fase 2")
             {
                 levelComplete[0] = true;
                 levelComplete[1] = true;
                 levelComplete[2] = true;
             }
-            
-            verificarMaiorTransition();
 
-            SceneManager.LoadScene("Level Complete");
+            verificarMaiorTransition();
+            
+            if (cenaAtiva == "Fase 1")
+            {
+                SceneManager.LoadScene("Boss Fase 1");
+            }
+            else if (cenaAtiva == "Fase 2")
+            {
+                SceneManager.LoadScene("Boss Fase 2");
+            }
+            else if (cenaAtiva == "Fase 3")
+            {
+                SceneManager.LoadScene("Boss Fase 3");
+            }
+            else
+            {
+                SceneManager.LoadScene("Level Complete");
+            }
         }
     }
     
@@ -174,10 +189,16 @@ public class Transition : MonoBehaviour
         // Se existe um maior, e não é este objeto, ativa ele e desativa este
         if (highestTransition != null)
         {
-            if (highestTransition != gameObject)
+            if ((highestTransition != gameObject) && (cenaAtiva != "Tutorial" || cenaAtiva != "Fase 1" || cenaAtiva != "Fase 2" || cenaAtiva != "Fase 3"))
             {
-                highestTransition.SetActive(true);
+                gameObject.SetActive(false);
                 Debug.Log($"Ativando {highestTransition.name} e desativando {gameObject.name}");
+                highestTransition.SetActive(true);
+            }
+
+            else if(cenaAtiva == "Tutorial" || cenaAtiva == "Fase 1" || cenaAtiva == "Fase 2" || cenaAtiva == "Fase 3")
+            {
+                Debug.Log("2");
                 gameObject.SetActive(false);
             }
             else

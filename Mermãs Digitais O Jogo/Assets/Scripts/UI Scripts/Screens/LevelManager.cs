@@ -38,7 +38,15 @@ public class LevelManager : MonoBehaviour
     {
         sfxClick.Audio(clip);
         yield return new WaitForSeconds(0.5f);
-        loader.CarregarFase("Level Animation");
+
+        if (nomeCena == "Main Menu")
+        {
+            loader.CarregarFase("Main Menu");
+        }
+        else
+        {
+            loader.CarregarFase("Level Animation");
+        }
         // yield return new WaitForSeconds(1f);
 
         /*var tituloFase = GameObject.Find("LevelTitle")?.GetComponent<TextMeshProUGUI>();

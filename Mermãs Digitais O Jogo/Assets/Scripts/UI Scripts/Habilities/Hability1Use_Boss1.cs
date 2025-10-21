@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,10 @@ public class Hability1Use_Boss1 : MonoBehaviour
     public bool PuzzleSolved { get => puzzleSolved; set => puzzleSolved = value; }
     public bool destroy = false;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip click;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
@@ -26,7 +31,7 @@ public class Hability1Use_Boss1 : MonoBehaviour
 
     public void SwitchImage()
     {
-
+        sfxAcess.Audio(click);
         currentIndex = (currentIndex + 1) % images.Length; 
         imageButton.sprite = images[currentIndex];
 
@@ -35,7 +40,7 @@ public class Hability1Use_Boss1 : MonoBehaviour
 
     public void VerifyPuzzle()
     {
-        
+
         if (booleanOperation == "Disjunção")
         {
             for (int i = 0; i < 2; i++)
@@ -56,10 +61,24 @@ public class Hability1Use_Boss1 : MonoBehaviour
             if (puzzleSolved)
             {
                 // habilityScreen.pausarJogador = false;
-                player.IsFrozen = false;
-                habilityScreen.HabilityScreen.SetActive(false);
-                destroy = true;
+                //player.IsFrozen = false;
+                //habilityScreen.HabilityScreen.SetActive(false);
+                //destroy = true;
+                StartCoroutine(HandlePuzzleSolved());
             }
         }
+    }
+    
+    private IEnumerator HandlePuzzleSolved()
+    {
+        sfxAcess.Audio(hability); // Toca o som primeiro
+        player.IsFrozen = false;
+        destroy = true;
+
+        // Espera o som terminar antes de desativar a tela
+        yield return new WaitForSeconds(hability.length);
+
+        // Agora pode desativar a tela sem cortar o áudio
+        habilityScreen.HabilityScreen.SetActive(false);
     }
 }

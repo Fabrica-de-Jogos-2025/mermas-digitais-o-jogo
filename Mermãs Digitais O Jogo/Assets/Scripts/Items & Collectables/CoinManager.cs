@@ -5,6 +5,8 @@ public class CoinManager : MonoBehaviour
 {
     public int coinCount;
     public static CoinManager instance;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip coin;
     private TextMeshProUGUI CoinsNumber;
     private TextMeshProUGUI CoinsQuantity;
 
@@ -31,6 +33,7 @@ public class CoinManager : MonoBehaviour
 
     public void AddCoin()
     {
+        sfxAcess.Audio(coin);
         coinCount++;
         CoinsNumber.text = coinCount.ToString();
         PlayerPrefs.SetInt("TotalCoins", coinCount);

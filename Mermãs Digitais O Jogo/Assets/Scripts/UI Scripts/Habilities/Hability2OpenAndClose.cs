@@ -15,10 +15,34 @@ public class Hability2OpenAndClose : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
-
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip feedback;
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
+    public AudioClip Feedback { get => feedback; set => feedback = value; }
+
     public Hability2 CLOSE_1, CLOSE_2, CLOSE_3, CLOSE_4;
     public bool destroy = false;
+    private bool feedbackPlayed = false;
+
+    public InputController controls;
+    private InputAction openHability;
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        openHability = controls.Player.UseHability;
+        openHability.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openHability.Disable();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,7 +63,10 @@ public class Hability2OpenAndClose : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+        bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+        bool habilityControl = keyboardHability || habilityPressed;
+        if (playerInTrigger && habilityControl)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
@@ -54,10 +81,14 @@ public class Hability2OpenAndClose : MonoBehaviour
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                sfxAcess.Audio(hability);
             }
         }
-            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close)
+            else if (CLOSE_1.close && CLOSE_2.close && CLOSE_3.close && CLOSE_4.close && !feedbackPlayed)
             {
+            // sfxAcess.Audio(feedback);
+                feedbackPlayed = true;
+                sfxAcess.Audio(feedback);
                 habilityScreen.SetActive(false);
                 destroy = true;
             }

@@ -32,7 +32,10 @@ public class BossAttack : MonoBehaviour
     private bool h_5 = true;
     private bool h_6 = false;    
     private bool h_7 = true;
-    private bool h_8 = false;    
+    private bool h_8 = false;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hit;    
 
 
 
@@ -57,10 +60,10 @@ public class BossAttack : MonoBehaviour
                 anim.SetInteger("transition", 4);
                 speedFactor = 0.06667f;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-                
-                
+
                 //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
-                {    
+                {
+                    sfxAcess.Audio(hit);    
                     h_3 = false;
                     h_4 = true;
                 }
@@ -83,9 +86,10 @@ public class BossAttack : MonoBehaviour
                 anim.SetInteger("transition", 4);
                 speedFactor = 0.06667f;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-                
+
                 //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
-                {    
+                {
+                    sfxAcess.Audio(hit);    
                     h_5 = false;
                     h_6 = true;
                 }
@@ -111,6 +115,7 @@ public class BossAttack : MonoBehaviour
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.06667 * speedFactor && anim.GetCurrentAnimatorStateInfo(0).IsName("hit"))
                 //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
                 {
+                    sfxAcess.Audio(hit);
                     h_7 = false;
                     h_8 = true;
                 }

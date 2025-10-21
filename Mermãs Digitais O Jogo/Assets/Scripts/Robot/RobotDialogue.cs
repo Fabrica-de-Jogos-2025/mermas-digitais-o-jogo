@@ -6,6 +6,8 @@ using System;
 
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+using UnityEditor.ShaderGraph.Internal;
 
 public class RobotDialogue : MonoBehaviour
 {
@@ -39,12 +41,38 @@ public class RobotDialogue : MonoBehaviour
     private bool isTyping;
     private Coroutine currentTypingCoroutine;
     private PlayerMovement currentPlayer;
+    private RobotMovement robo;
     public bool permissionToProceed;
     public bool permission;
+
+    public InputController controls;
+    private InputAction dialogProceed;
+    private InputAction dialogSkip;
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    void OnEnable()
+    {
+        dialogProceed = controls.Player.ProceedDialogue;
+        dialogProceed.Enable();
+
+        dialogSkip = controls.Player.JumpDialogue;
+        dialogSkip.Enable();
+    }
+
+    void OnDisable()
+    {
+        dialogProceed.Disable();
+        dialogSkip.Disable();
+    }
 
     void Start()
     {
         uiPlayer = GameObject.Find("CanvasHUD");
+        robo = FindAnyObjectByType<RobotMovement>();
         /*GameObject dialogueParent = GameObject.Find("Dialogue");
 
         if (dialogueParent != null)
@@ -117,23 +145,26 @@ public class RobotDialogue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y) && permission)
+        bool skipPressed = Input.GetKeyDown(KeyCode.Y) || dialogSkip.WasPerformedThisFrame();
+        if (skipPressed && permission)
         {
             EndDialogue();
             return;
         }
 
-        if (dialogueActive && Input.GetKeyDown(KeyCode.X))
+        bool proceedPressed = Input.GetKeyDown(KeyCode.X) || dialogProceed.WasPerformedThisFrame();
+        if (proceedPressed)
         {
             if (isTyping)
             {
-                if (currentTypingCoroutine != null)
+                StopTypingInstantly();
+                /*if (currentTypingCoroutine != null)
                 {
                     StopCoroutine(currentTypingCoroutine);
                     currentTypingCoroutine = null;
                 }
                 dialogueText.text = currentProcessedMessage ?? currentDialogue[dialogueIndex];
-                isTyping = false;
+                isTyping = false;*/
             }
             else if (permissionToProceed)
             {
@@ -145,6 +176,9 @@ public class RobotDialogue : MonoBehaviour
 
     public void StartDialogue(string[] dialogue, PlayerMovement player)
     {
+        if (robo != null)
+            robo.SetDialogueState(true);
+
         if (!dialogueActive)
         {
             currentDialogue = dialogue;
@@ -251,6 +285,21 @@ public class RobotDialogue : MonoBehaviour
         currentTypingCoroutine = null;
     }
 
+    private void StopTypingInstantly()
+    {
+        if (currentTypingCoroutine != null)
+        {
+            StopCoroutine(currentTypingCoroutine);
+            currentTypingCoroutine = null;
+        }
+
+        dialogueText.text = currentProcessedMessage;
+        isTyping = false;
+
+        if (sfxAcess != null)
+            sfxAcess.StopAudio();
+    }
+
     string ApplyColors(string textoOriginal)
     {
         string textoFormatado = textoOriginal;
@@ -295,5 +344,8 @@ public class RobotDialogue : MonoBehaviour
         OnDialogueEnd?.Invoke();
         OnDialogueEnd = null;
         sfxAcess.StopAudio();
+
+        if (robo != null)
+            robo.SetDialogueState(false);
     }
 }

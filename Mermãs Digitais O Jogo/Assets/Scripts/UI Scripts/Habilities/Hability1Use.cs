@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,10 @@ public class Hability1Use : MonoBehaviour
     public PlayerMovement PM;
     public bool destroy = false;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip click;
+
     void Start()
     {
         padlock = FindAnyObjectByType<Padlock>();
@@ -27,7 +32,7 @@ public class Hability1Use : MonoBehaviour
 
     public void SwitchImage()
     {
-
+        sfxAcess.Audio(click);
         currentIndex = (currentIndex + 1) % images.Length; 
         imageButton.sprite = images[currentIndex];
 
@@ -50,15 +55,31 @@ public class Hability1Use : MonoBehaviour
 
             if (puzzleSolved)
             {
+                /*sfxAcess.Audio(hability);
                 padlock.Anim.SetInteger("transition", 0);
                 habilityScreen.HabilityScreen.SetActive(false);
                 //Destroy(habilityScreen.gameObject);
                 //Destroy(padlock.gameObject);
                 //padlock.gameObject.SetActive(false);
                 padlock.i = true;
-                destroy = true;
+                destroy = true;*/
+                StartCoroutine(HandlePuzzleSolved());
             }
         }
+    }
+
+    private IEnumerator HandlePuzzleSolved()
+    {
+        sfxAcess.Audio(hability); // Toca o som primeiro
+        padlock.Anim.SetInteger("transition", 0);
+        padlock.i = true;
+        destroy = true;
+
+        // Espera o som terminar antes de desativar a tela
+        yield return new WaitForSeconds(hability.length);
+
+        // Agora pode desativar a tela sem cortar o áudio
+        habilityScreen.HabilityScreen.SetActive(false);
     }
 }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,10 @@ public class Hability1Use_1 : MonoBehaviour
     public bool destroy = false;
     private int count = 0;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    [SerializeField] private AudioClip click;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
@@ -27,7 +32,7 @@ public class Hability1Use_1 : MonoBehaviour
 
     public void SwitchImage()
     {
-
+        sfxAcess.Audio(click);
         currentIndex = (currentIndex + 1) % images.Length; 
         imageButton.sprite = images[currentIndex];
 
@@ -51,9 +56,10 @@ public class Hability1Use_1 : MonoBehaviour
             if (puzzleSolved)
             {
                 // habilityScreen.pausarJogador = false;
-                player.IsFrozen = false;
+                /*player.IsFrozen = false;
                 destroy = true;
-                habilityScreen.HabilityScreen.SetActive(false);
+                habilityScreen.HabilityScreen.SetActive(false);*/
+                StartCoroutine(HandlePuzzleSolved());
             }
         }
 
@@ -81,11 +87,25 @@ public class Hability1Use_1 : MonoBehaviour
                 if (puzzleSolved)
                 {
                     // habilityScreen.pausarJogador = false;
-                    player.IsFrozen = false;
+                    /*player.IsFrozen = false;
                     destroy = true;
-                    habilityScreen.HabilityScreen.SetActive(false);
+                    habilityScreen.HabilityScreen.SetActive(false);*/
+                    StartCoroutine(HandlePuzzleSolved());
                 }
             }
         }
+    }
+
+    private IEnumerator HandlePuzzleSolved()
+    {
+        sfxAcess.Audio(hability); // Toca o som primeiro
+        player.IsFrozen = false;
+        destroy = true;
+
+        // Espera o som terminar antes de desativar a tela
+        yield return new WaitForSeconds(hability.length);
+
+        // Agora pode desativar a tela sem cortar o áudio
+        habilityScreen.HabilityScreen.SetActive(false);
     }
 }

@@ -9,7 +9,11 @@ public class RobotPowerUp : MonoBehaviour
     //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
 
     [SerializeField] private bool isTutorialPowerUp;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip powerupClip;
     public RobotMovement robotPowered;
+
+    private bool collected = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,19 +25,35 @@ public class RobotPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collected) return;
+
         if (collision.CompareTag("Player"))
+        {
+            collected = true;
+            sfxAcess.Audio(powerupClip); // toca o som primeiro
+            robotPowered.HasPowerUp = true;
+
+            if (!isTutorialPowerUp)
+            {
+                // destrói o PowerUp depois de um pequeno atraso
+                Destroy(gameObject, powerupClip.length);
+            }
+        }
+        /*if (collision.CompareTag("Player"))
         {
 
             //Destroy(gameObject);
             if (!isTutorialPowerUp)
             {
                 Destroy(gameObject);
+                sfxAcess.Audio(powerupClíp);
                 robotPowered.HasPowerUp = true;
             }
             else
             {
+                sfxAcess.Audio(powerupClíp);
                 robotPowered.HasPowerUp = true;
             }
-        }
+        }*/
     }
 }

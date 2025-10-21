@@ -9,6 +9,8 @@ public class DialogueTutorial2 : MonoBehaviour
     public Sprite spriteCharacter;
     public string nameofCharacter;
 
+    [SerializeField] private CollectableCard card;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,7 +33,7 @@ public class DialogueTutorial2 : MonoBehaviour
 
                 if (triggerOnce)
                 {
-                    Destroy(gameObject);
+                    Destroy(gameObject, card.Card.length);
                 }
             }
         }

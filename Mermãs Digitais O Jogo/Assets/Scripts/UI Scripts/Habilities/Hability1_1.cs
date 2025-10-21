@@ -18,6 +18,25 @@ public class Hability1_1 : MonoBehaviour
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
     public GameObject habilityUITutorial;
 
+    public InputController controls;
+    private InputAction openHability;
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        openHability = controls.Player.UseHability;
+        openHability.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openHability.Disable();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -47,7 +66,10 @@ public class Hability1_1 : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+        bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+        bool habilityControl = keyboardHability || habilityPressed;
+        if (playerInTrigger && habilityControl)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             //RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();

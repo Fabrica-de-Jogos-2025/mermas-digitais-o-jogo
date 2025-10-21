@@ -3,6 +3,10 @@ using UnityEngine;
 public class CollectableCard : MonoBehaviour
 {
     private PlayerStatus quantityCards;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip card;
+
+    public AudioClip Card { get => card; set => card = value; }
 
     private void Start()
     {
@@ -14,7 +18,8 @@ public class CollectableCard : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             quantityCards.Cards++;
-            Destroy(gameObject);
+            sfxAcess.Audio(card);
+            Destroy(gameObject, card.length);
         }
     }
 }

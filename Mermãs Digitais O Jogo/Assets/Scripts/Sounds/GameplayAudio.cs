@@ -2,24 +2,26 @@ using UnityEngine;
 
 public class GameplayAudio : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource loopSource;
+    [SerializeField] private AudioSource sfxSource;
     public void Audio(AudioClip clip)
     {
-        audioSource.PlayOneShot(clip);
+        if (clip == null || sfxSource == null) return;
+        sfxSource.PlayOneShot(clip);
     }
 
     public void LoopAudio(AudioClip clip)
     {
-        if (clip == null || audioSource == null) return;
-        if (audioSource.clip == clip && audioSource.isPlaying) return;
-        audioSource.clip = clip;
-        audioSource.loop = true;
-        audioSource.Play();
+        if (clip == null || loopSource == null) return;
+        if (loopSource.clip == clip && loopSource.isPlaying) return;
+        loopSource.clip = clip;
+        loopSource.loop = true;
+        loopSource.Play();
     }
 
     public void StopAudio()
     {
-        if (audioSource.isPlaying)
-            audioSource.Stop();
+        if (loopSource != null && loopSource.isPlaying)
+            loopSource.Stop();
     }
 }

@@ -24,7 +24,7 @@ public class Loader : MonoBehaviour
 
     private System.Collections.IEnumerator CarregarCena()
     {
-        yield return new WaitForSeconds(5f); // tempo pra mostrar a animação
+        yield return new WaitForSeconds(5f); // tempo pra mostrar a animaï¿½ï¿½o
         SceneManager.LoadScene(nomeDaCenaPraCarregar);
     }
 }
