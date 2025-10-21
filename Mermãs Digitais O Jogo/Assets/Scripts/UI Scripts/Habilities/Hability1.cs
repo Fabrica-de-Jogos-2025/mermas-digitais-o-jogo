@@ -26,7 +26,25 @@ public class Hability1 : MonoBehaviour
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip hability;
 
+    public InputController controls;
+    private InputAction openHability;
 
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        openHability = controls.Player.UseHability;
+        openHability.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openHability.Disable();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,7 +56,11 @@ public class Hability1 : MonoBehaviour
             {
                 habilityUITutorial.SetActive(true);
             }
-            if (Input.GetKeyDown(KeyCode.H) || (status[0].PuzzleSolved && status[1].PuzzleSolved))
+
+            bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+            bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+            bool habilityControl = keyboardHability || habilityPressed;
+            if (habilityControl || (status[0].PuzzleSolved && status[1].PuzzleSolved))
             {
                 habilityUITutorial.SetActive(false);
             }
@@ -63,8 +85,10 @@ public class Hability1 : MonoBehaviour
             validation2.puzzleSolved = false;
         }*/
 
-
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
+        bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+        bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+        bool habilityControl = keyboardHability || habilityPressed;
+        if (playerInTrigger && habilityControl && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();

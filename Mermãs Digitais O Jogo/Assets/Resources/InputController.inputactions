@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Start Dialogue",
+                    "type": "Button",
+                    "id": "f043b823-9b56-49f4-94c2-18e40c974b95",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Enter Door",
+                    "type": "Button",
+                    "id": "2f7c1b99-437d-45ba-a502-4d4509d46b17",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -95,7 +113,7 @@
                 {
                     "name": "",
                     "id": "95765e74-78cb-4162-915f-77df2f0cec29",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -117,7 +135,7 @@
                 {
                     "name": "",
                     "id": "002452fe-b1fd-4f34-a291-70f63da8ad62",
-                    "path": "<XInputController>/rightShoulder",
+                    "path": "<XInputController>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -155,6 +173,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49e980a6-96e8-4155-be1f-8b97a2a77163",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6c80b29-3d67-46f8-8ad5-aa14be9e1e29",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter Door",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

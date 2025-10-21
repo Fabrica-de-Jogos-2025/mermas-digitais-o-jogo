@@ -61,7 +61,6 @@ public class RobotDialogue : MonoBehaviour
 
         dialogSkip = controls.Player.JumpDialogue;
         dialogSkip.Enable();
-       
     }
 
     void OnDisable()

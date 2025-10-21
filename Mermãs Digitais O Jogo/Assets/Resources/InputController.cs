@@ -89,6 +89,24 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start Dialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""f043b823-9b56-49f4-94c2-18e40c974b95"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter Door"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f7c1b99-437d-45ba-a502-4d4509d46b17"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -117,7 +135,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""95765e74-78cb-4162-915f-77df2f0cec29"",
-                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -139,7 +157,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""002452fe-b1fd-4f34-a291-70f63da8ad62"",
-                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""path"": ""<XInputController>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -179,6 +197,28 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49e980a6-96e8-4155-be1f-8b97a2a77163"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6c80b29-3d67-46f8-8ad5-aa14be9e1e29"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter Door"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -194,6 +234,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_Player_ProceedDialogue = m_Player.FindAction("Proceed Dialogue", throwIfNotFound: true);
         m_Player_JumpDialogue = m_Player.FindAction("Jump Dialogue", throwIfNotFound: true);
         m_Player_UseHability = m_Player.FindAction("Use Hability", throwIfNotFound: true);
+        m_Player_StartDialogue = m_Player.FindAction("Start Dialogue", throwIfNotFound: true);
+        m_Player_EnterDoor = m_Player.FindAction("Enter Door", throwIfNotFound: true);
     }
 
     ~@InputController()
@@ -267,6 +309,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ProceedDialogue;
     private readonly InputAction m_Player_JumpDialogue;
     private readonly InputAction m_Player_UseHability;
+    private readonly InputAction m_Player_StartDialogue;
+    private readonly InputAction m_Player_EnterDoor;
     public struct PlayerActions
     {
         private @InputController m_Wrapper;
@@ -278,6 +322,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public InputAction @ProceedDialogue => m_Wrapper.m_Player_ProceedDialogue;
         public InputAction @JumpDialogue => m_Wrapper.m_Player_JumpDialogue;
         public InputAction @UseHability => m_Wrapper.m_Player_UseHability;
+        public InputAction @StartDialogue => m_Wrapper.m_Player_StartDialogue;
+        public InputAction @EnterDoor => m_Wrapper.m_Player_EnterDoor;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +354,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @UseHability.started += instance.OnUseHability;
             @UseHability.performed += instance.OnUseHability;
             @UseHability.canceled += instance.OnUseHability;
+            @StartDialogue.started += instance.OnStartDialogue;
+            @StartDialogue.performed += instance.OnStartDialogue;
+            @StartDialogue.canceled += instance.OnStartDialogue;
+            @EnterDoor.started += instance.OnEnterDoor;
+            @EnterDoor.performed += instance.OnEnterDoor;
+            @EnterDoor.canceled += instance.OnEnterDoor;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -333,6 +385,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @UseHability.started -= instance.OnUseHability;
             @UseHability.performed -= instance.OnUseHability;
             @UseHability.canceled -= instance.OnUseHability;
+            @StartDialogue.started -= instance.OnStartDialogue;
+            @StartDialogue.performed -= instance.OnStartDialogue;
+            @StartDialogue.canceled -= instance.OnStartDialogue;
+            @EnterDoor.started -= instance.OnEnterDoor;
+            @EnterDoor.performed -= instance.OnEnterDoor;
+            @EnterDoor.canceled -= instance.OnEnterDoor;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -359,5 +417,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         void OnProceedDialogue(InputAction.CallbackContext context);
         void OnJumpDialogue(InputAction.CallbackContext context);
         void OnUseHability(InputAction.CallbackContext context);
+        void OnStartDialogue(InputAction.CallbackContext context);
+        void OnEnterDoor(InputAction.CallbackContext context);
     }
 }

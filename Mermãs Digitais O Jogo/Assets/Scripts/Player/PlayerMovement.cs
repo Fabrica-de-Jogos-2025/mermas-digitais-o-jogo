@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isJumping;
     private bool isFrozen = false;
     private bool isPaused = false;
+    private bool doorJustOpened = false;
+    private bool pauseButtonHeld = false;
     private Vector2 direction;
     [SerializeField] private Door currentDoor;
     [SerializeField] private Padlock currentPadlock;
@@ -62,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
     public InputController controls;
     private InputAction move;
     private InputAction jumping;
+    private InputAction pause;
+    private InputAction doorOpen;
 
     private void Awake()
     {
@@ -131,7 +135,10 @@ public class PlayerMovement : MonoBehaviour
         CheckForCoin();
         PauseGame();
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        bool keyboardDoor = Input.GetKeyDown(KeyCode.RightShift);
+        bool doorPressed = doorOpen.ReadValue<float>() > 0.1f;
+        bool doorControl = keyboardDoor || doorPressed;
+        if (doorControl)
         {
             EnterDoor();
         }
@@ -254,6 +261,12 @@ public class PlayerMovement : MonoBehaviour
 
         jumping = controls.Player.Jump;
         jumping.Enable();
+
+        pause = controls.Player.Pause;
+        pause.Enable();
+
+        doorOpen = controls.Player.EnterDoor;
+        doorOpen.Enable();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -261,6 +274,8 @@ public class PlayerMovement : MonoBehaviour
     {
         move.Disable();
         jumping.Disable();
+        pause.Disable();
+        doorOpen.Disable();
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -288,8 +303,9 @@ public class PlayerMovement : MonoBehaviour
     public void EnterDoor()
     {
 
-        if (currentDoor != null)
+        if (currentDoor != null && !doorJustOpened)
         {
+            doorJustOpened = true;
             currentDoor.PlayAnimation();
             sfxAcess.Audio(door);
             StartCoroutine(TeleportAfterAnimation());
@@ -362,17 +378,32 @@ public class PlayerMovement : MonoBehaviour
 
     public void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && !isPaused)
+        bool keyboardPause = Input.GetKeyDown(KeyCode.KeypadEnter);
+
+        float controllerValue = pause.ReadValue<float>();
+        bool controllerPressed = controllerValue >= 0.5f;
+        bool pausePressed = keyboardPause || (controllerPressed && !pauseButtonHeld);
+        pauseButtonHeld = controllerPressed;
+
+        /*if (pausePressed && !isPaused)
         {
             isPaused = true;
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
         }
-        else if (isPaused && Input.GetKeyDown(KeyCode.KeypadEnter))
+        else if (isPaused && pausePressed)
         {
             isPaused = false;
             Time.timeScale = 1;
             pauseScreen.SetActive(false);
+        }*/
+
+        if (pausePressed)
+        {
+            isPaused = !isPaused;
+
+            Time.timeScale = isPaused ? 0 : 1;
+            pauseScreen.SetActive(isPaused);
         }
     }
 
@@ -402,6 +433,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Door"))
         {
             currentDoor = null;
+            doorJustOpened = false;
         }
     }
 

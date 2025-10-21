@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueHability : MonoBehaviour
 {
@@ -14,6 +15,25 @@ public class DialogueHability : MonoBehaviour
     private bool playerInTrigger = false;
     private PlayerMovement player;
     public bool permissionDialogueFigure = true;
+
+    private InputController controls;
+    private InputAction dialog;
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        dialog = controls.Player.StartDialogue;
+        dialog.Enable();
+    }
+
+    private void OnDisable()
+    {
+        dialog.Disable();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,7 +56,10 @@ public class DialogueHability : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.X) && permissionDialogueFigure)
+        bool keyboardDialog = Input.GetKeyDown(KeyCode.X);
+        bool dialogPressed = dialog.ReadValue<float>() > 0.1f;
+        bool dialogControl = keyboardDialog || dialogPressed;
+        if (playerInTrigger && dialogControl && permissionDialogueFigure)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();

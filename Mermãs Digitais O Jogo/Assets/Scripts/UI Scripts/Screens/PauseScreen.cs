@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour
@@ -8,31 +10,49 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] private RobotMovement robot;
     [SerializeField] private Loader loader;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip click;
+    [SerializeField] private float clickDelay = 0.25f;
 
     private void Start()
     {
         player = FindAnyObjectByType<PlayerMovement>();
     }
+
     public void ResumeButton()
     {
-        player.PauseScreen.SetActive(false);
-        player.IsPaused = false;
-        Time.timeScale = 1;
+        StartCoroutine(HandleButtonAction(() =>
+        {
+            player.IsPaused = false;
+            Time.timeScale = 1;
+            player.PauseScreen.SetActive(false);
+        }));
     }
     public void ResetButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
-        player.PauseScreen.SetActive(false);
-        player.IsPaused = false;
-        Destroy(player.gameObject);
-        Destroy(robot.gameObject);
+        StartCoroutine(HandleButtonAction(() =>
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }));
     }
 
     public void QuitButton()
     {
-        // SceneManager.LoadScene("Level Selector");
-        Destroy(canvas.gameObject);
-        loader.CarregarFase("Level Selector");
+        StartCoroutine(HandleButtonAction(() =>
+        {
+            loader.CarregarFase("Level Selector");
+            Destroy(canvas.gameObject);
+        }));
+    }
+
+    private IEnumerator HandleButtonAction(System.Action action)
+    {
+        // Toca o som de click e espera um pouco antes da ação
+        sfxAcess.Audio(click);
+        yield return new WaitForSecondsRealtime(clickDelay);
+
+        // Executa a ação correspondente
+        action.Invoke();
     }
 }

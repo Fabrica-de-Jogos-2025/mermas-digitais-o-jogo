@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,27 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
     [SerializeField] private AudioClip feedback;
 
     private bool feedbackPlayed = false;
+    private bool habilityJustOpened = false;
+
+    public InputController controls;
+    private InputAction openHability;
+    
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        openHability = controls.Player.UseHability;
+        openHability.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openHability.Disable();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -46,19 +68,24 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         {
             playerInTrigger = false;
             habilityUITutorial.SetActive(false);
+            habilityJustOpened = false;
         }
     }
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+        bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+        bool habilityControl = keyboardHability || habilityPressed;
+        if (playerInTrigger && habilityControl)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
 
-            if (robot != null && player != null && !player.IsJumping)
+            if (robot != null && player != null && !player.IsJumping && !habilityJustOpened)
             {
                 //robot.StartDialogue(dialogueMessages, player);
+                habilityJustOpened = true;
                 habilityScreen.SetActive(true);
                 player.IsFrozen = true;
                 sfxAcess.Audio(hability);
