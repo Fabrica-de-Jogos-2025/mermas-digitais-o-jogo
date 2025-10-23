@@ -1684,6 +1684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2eab57ba01654191c5ee6ef101add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxAcess: {fileID: 0}
+  card: {fileID: 0}
 --- !u!61 &56276588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2594,6 +2596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &91351392
 BoxCollider2D:
@@ -4004,6 +4008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCount: 0
+  sfxAcess: {fileID: 0}
+  coin: {fileID: 0}
 --- !u!50 &123218129
 Rigidbody2D:
   serializedVersion: 5
@@ -6024,7 +6030,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 41, y: 0, z: 0}
@@ -6408,7 +6414,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 120, y: 0, z: 0}
@@ -6568,7 +6574,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 59, y: 1, z: 0}
@@ -6888,7 +6894,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 121, y: 1, z: 0}
@@ -7112,7 +7118,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 200, y: 4, z: 0}
@@ -7288,7 +7294,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 137, y: 5, z: 0}
@@ -7368,7 +7374,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 198, y: 5, z: 0}
@@ -7768,7 +7774,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -8813,6 +8819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2eab57ba01654191c5ee6ef101add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxAcess: {fileID: 0}
+  card: {fileID: 0}
 --- !u!61 &206495245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10938,6 +10946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &276095948
 BoxCollider2D:
@@ -13187,7 +13197,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -57.914486, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -46245,6 +46255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &814668598
 BoxCollider2D:
@@ -46394,6 +46406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &836483094
 BoxCollider2D:
@@ -51341,6 +51355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &1104162118
 BoxCollider2D:
@@ -56586,6 +56602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &1369090501
 BoxCollider2D:
@@ -66886,6 +66904,9 @@ MonoBehaviour:
   robot: {fileID: 0}
   loader: {fileID: 0}
   canvas: {fileID: 0}
+  sfxAcess: {fileID: 0}
+  click: {fileID: 0}
+  clickDelay: 0.25
 --- !u!1 &1888320884
 GameObject:
   m_ObjectHideFlags: 0
@@ -69298,6 +69319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorialPowerUp: 0
+  sfxAcess: {fileID: 0}
+  powerupClip: {fileID: 0}
   robotPowered: {fileID: 0}
 --- !u!61 &2031548854
 BoxCollider2D:
@@ -71275,6 +71298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2eab57ba01654191c5ee6ef101add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxAcess: {fileID: 0}
+  card: {fileID: 0}
 --- !u!61 &2116333825
 BoxCollider2D:
   m_ObjectHideFlags: 0
