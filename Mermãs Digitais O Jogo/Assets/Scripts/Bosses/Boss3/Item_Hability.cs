@@ -3,10 +3,11 @@ using UnityEngine;
 public class Item_Hability : MonoBehaviour
 {
     public GameObject Hability;
+    private PlayerMovement player;
     
     void Start()
     {
-        
+        player = FindFirstObjectByType<PlayerMovement>();
     }
 
 
@@ -19,6 +20,7 @@ public class Item_Hability : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player.IsFrozen = true;
             Hability.SetActive(true);
             Destroy(gameObject);
         }

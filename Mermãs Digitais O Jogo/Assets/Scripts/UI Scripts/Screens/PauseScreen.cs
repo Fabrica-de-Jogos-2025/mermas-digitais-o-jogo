@@ -13,10 +13,12 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip click;
     [SerializeField] private float clickDelay = 0.25f;
+    public Transition t;
 
     private void Start()
     {
         player = FindAnyObjectByType<PlayerMovement>();
+        t = FindAnyObjectByType<Transition>();
     }
 
     public void ResumeButton()
@@ -39,11 +41,20 @@ public class PauseScreen : MonoBehaviour
 
     public void QuitButton()
     {
-        StartCoroutine(HandleButtonAction(() =>
+       StartCoroutine(HandleButtonAction(() =>
         {
+            t.validacaoPorStart = true;
+            t.verificarMaiorTransition();
+            Time.timeScale = player.isPaused ? 1 : 0;
             loader.CarregarFase("Level Selector");
-            //Destroy(canvas.gameObject);
+            Destroy(canvas.gameObject);
         }));
+
+        //StartCoroutine(HandleButtonAction(() =>
+        //{
+        //    loader.CarregarFase("Level Selector");
+        //    Destroy(canvas.gameObject);
+        //}));
     }
 
     private IEnumerator HandleButtonAction(System.Action action)

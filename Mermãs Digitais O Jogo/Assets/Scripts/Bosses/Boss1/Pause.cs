@@ -6,10 +6,11 @@ public class Pause : MonoBehaviour
     public bool pausarjogador = false;
     private bool i = true;
     public bool valid = false;
+    private PlayerMovement player;
     
     void Start()
     {
-        
+        player = FindFirstObjectByType<PlayerMovement>();
     }
         void Update()
     {
@@ -20,6 +21,7 @@ public class Pause : MonoBehaviour
         }
         else if (!hability.activeSelf && !i)
         {
+            player.IsFrozen = false;
             pausarjogador = false;
             i = true;
             valid = true;

@@ -3,11 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
-
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 using UnityEngine.InputSystem;
-using UnityEditor.ShaderGraph.Internal;
 
 public class RobotDialogue : MonoBehaviour
 {

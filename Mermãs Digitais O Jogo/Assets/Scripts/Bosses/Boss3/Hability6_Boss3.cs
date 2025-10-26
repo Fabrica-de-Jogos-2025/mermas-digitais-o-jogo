@@ -17,12 +17,15 @@ public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
     public RenderTexture renderTexture;
     public bool UsoDaUltimaHabilidade = false;
     public Boss3_Attack Z;
+    private PlayerMovement player;
 
     private void Start()
     {
+        player = FindFirstObjectByType<PlayerMovement>(); 
+
         if (video == null)
         {
-            video = FindObjectOfType<VideoPlayer>(); 
+            video = FindObjectOfType<VideoPlayer>();
         }
 
         if (video == null)
@@ -74,8 +77,10 @@ public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
         {
             uiCanvas.SetActive(false);
         }
+        
         videoPanel.SetActive(false);
         videoDisplay.gameObject.SetActive(false);
         Z.z = true;
+        player.IsFrozen = false;
     }
 }

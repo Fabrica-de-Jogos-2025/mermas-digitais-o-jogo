@@ -21,6 +21,7 @@ public class Boss3_Attack : MonoBehaviour
     public bool z = false;
     public bool z_1 = false;
     public GameObject Hability6;
+    public GameObject saida;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class Boss3_Attack : MonoBehaviour
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.833f && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
                 {
                     Destroy(this.gameObject);
+                    saida.SetActive(true);
                 }
         }
         else if(h)

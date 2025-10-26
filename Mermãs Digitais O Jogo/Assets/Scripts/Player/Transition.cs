@@ -8,25 +8,22 @@ public class Transition : MonoBehaviour
     [SerializeField] private bool[] levelComplete = new bool[3];
     public bool[] LevelComplete { get => levelComplete; set => levelComplete = value; }
     // private int length = 1;
+    public bool levelConcluido = false;
+    public bool tutorialCompletado = false;
+    public bool fase1Completada = false;
+    public bool fase2Completada = false;
+    public bool fase3Completada = false;
+    public bool validacaoPorStart = false;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        // var transitions = FindObjectsOfType<Transition>(FindObjectsSortMode.None);
-        //if (FindObjectsByType<Transition>(FindObjectsSortMode.None).Length > 1)
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //var transition0 = GameObject.Find("Transition0");
-        //    if (cenaAtiva == "Fase 1")
-        //    {
-        //        Destroy(transition0.gameObject);
-        //    }
     }
 
     private void Start()
     {
+        VerificacaoDoQueJaFoiConcluido();
+        
         int count = 0;
         GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
 
@@ -84,25 +81,6 @@ public class Transition : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        /*cenaAtiva = SceneManager.GetActiveScene().name;
-
-        //var transition0 = GameObject.Find("Transition0");
-        //var transition1 = GameObject.Find("Transition1");
-        //var transition2 = GameObject.Find("Transition2");
-
-        if (transition1 != null || transition2 != null)
-        {
-            Destroy(transition0.gameObject);
-        }
-        else if (transition1 != null || transition2 != null)
-        {
-            Destroy(transition1.gameObject);
-        }
-        else if (cenaAtiva == "Fase 3" && transition2 != null)
-        {
-            Destroy(transition2.gameObject);
-        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,22 +94,32 @@ public class Transition : MonoBehaviour
                 levelComplete = new bool[3];
             }
 
-            if (cenaAtiva == "Tutorial" && GameObject.Find("Transition1") == null && GameObject.Find("Transition2") == null)
+            if (cenaAtiva == "Tutorial" && GameObject.Find("Transition1") == null && GameObject.Find("Transition2") == null && GameObject.Find("Transition3") == null)
             //if (cenaAtiva == "Tutorial")
             {
                 levelComplete[0] = true;
+                tutorialCompletado = true;
             }
-            else if (cenaAtiva == "Boss Fase 1" && GameObject.Find("Transition2") == null)
+            else if (cenaAtiva == "Boss Fase 1" && GameObject.Find("Transition2") == null && GameObject.Find("Transition3") == null)
             //else if (cenaAtiva == "Fase 1")
             {
                 levelComplete[0] = true;
                 levelComplete[1] = true;
+                fase1Completada = true;
             }
-            else if (cenaAtiva == "Boss Fase 2")
+            else if (cenaAtiva == "Boss Fase 2" && GameObject.Find("Transition3") == null)
             {
                 levelComplete[0] = true;
                 levelComplete[1] = true;
                 levelComplete[2] = true;
+                fase2Completada = true;
+            }
+            else if (cenaAtiva == "Boss Fase 3")
+            {
+                levelComplete[0] = true;
+                levelComplete[1] = true;
+                levelComplete[2] = true;
+                fase3Completada = true;
             }
 
             verificarMaiorTransition();
@@ -150,12 +138,13 @@ public class Transition : MonoBehaviour
             }
             else
             {
+                levelConcluido = true;
                 SceneManager.LoadScene("Level Complete");
             }
         }
     }
-    
-    private void verificarMaiorTransition()
+
+    public void verificarMaiorTransition()
     {
         GameObject transition1 = null;
         GameObject transition2 = null;
@@ -186,6 +175,28 @@ public class Transition : MonoBehaviour
             highestTransition = transition1;
         }
 
+        if (validacaoPorStart)
+        {
+            if (fase3Completada)
+            {
+                Debug.Log("fase3Completada true");
+            }
+            else if (fase2Completada)
+            {
+                Debug.Log("fase2Completada true");
+            }
+            else if (fase1Completada)
+            {
+                Debug.Log("fase1Completada true");
+            }
+            else if (tutorialCompletado)
+            {
+                Debug.Log("tutorialCompletado true");
+            }
+
+            validacaoPorStart = false;
+        }
+        else
         // Se existe um maior, e não é este objeto, ativa ele e desativa este
         if (highestTransition != null)
         {
@@ -196,9 +207,9 @@ public class Transition : MonoBehaviour
                 highestTransition.SetActive(true);
             }
 
-            else if(cenaAtiva == "Tutorial" || cenaAtiva == "Fase 1" || cenaAtiva == "Fase 2" || cenaAtiva == "Fase 3")
+            else if (cenaAtiva == "Tutorial" || cenaAtiva == "Fase 1" || cenaAtiva == "Fase 2" || cenaAtiva == "Fase 3")
             {
-                Debug.Log("2");
+                Debug.Log("cena ativa é Tutorial ou Fase 1 ou Fase 2 ou Fase 3");
                 gameObject.SetActive(false);
             }
             else
@@ -211,4 +222,58 @@ public class Transition : MonoBehaviour
             Debug.LogWarning("Nenhum Transition (1, 2 ou 3) foi encontrado.");
         }
     }
+    
+    void VerificacaoDoQueJaFoiConcluido()
+    {
+        GameObject[] allTransitions = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject transition in allTransitions)
+        {
+            
+            // Tenta pegar o componente Transition do GameObject
+            Transition t = transition.GetComponent<Transition>();
+            if (t == null) continue; // se não tiver o script Transition, pula
+
+            if (transition.name == "Transition0")
+            {
+                if (t.tutorialCompletado)
+                {
+                    tutorialCompletado = true;
+                    levelComplete[0] = true;
+                }
+            }
+            else
+            if (transition.name == "Transition1")
+            {
+                if (t.fase1Completada)
+                {
+                    fase1Completada = true;
+                    levelComplete[0] = true;
+                    levelComplete[1] = true;
+                }
+            }
+            else
+            if (transition.name == "Transition2")
+            {
+                if (t.fase2Completada)
+                {
+                    fase2Completada = true;
+                    levelComplete[0] = true;
+                    levelComplete[1] = true;
+                    levelComplete[2] = true;
+                }
+            }
+            else
+            if (transition.name == "Transition3")
+            {
+                if (t.fase3Completada)
+                {
+                    fase3Completada = true;
+                    levelComplete[0] = true;
+                    levelComplete[1] = true;
+                    levelComplete[2] = true;
+                }
+            }
+        }
+    }   
 }

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isJumping;
     private bool isFrozen = false;
-    private bool isPaused = false;
+    public bool isPaused = false;
     private bool doorJustOpened = false;
     private bool pauseButtonHeld = false;
     private Vector2 direction;
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastCheckpointPosition;
     private TryAgainScreen yesButton;
     private Checkpoint checkpoint;
-    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] public GameplayAudio sfxAcess;
     [SerializeField] private GameplayAudio sfxDoorAcess;
     [SerializeField] private AudioClip walk;
     [SerializeField] private AudioClip jump;
@@ -123,7 +123,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFrozen) return;
+        if (isFrozen)
+        {
+            sfxAcess.StopAudio();
+            return;
+        }
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         // direction = move.ReadValue<Vector2>();
         // float horizontal = move.ReadValue<Vector2>().x;
@@ -133,7 +137,14 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
         CheckInGrounded();
         CheckForCoin();
-        PauseGame();
+        //PauseGame();
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            isPaused = !isPaused;
+            Time.timeScale = isPaused ? 0 : 1;
+            pauseScreen.SetActive(isPaused);
+        }
 
         bool keyboardDoor = Input.GetKeyDown(KeyCode.RightShift);
         bool doorPressed = doorOpen.ReadValue<float>() > 0.1f;
