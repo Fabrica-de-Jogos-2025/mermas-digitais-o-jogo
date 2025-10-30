@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hability3 : MonoBehaviour
@@ -8,17 +10,11 @@ public class Hability3 : MonoBehaviour
     public bool puzzleSolved = false;
     public bool cardAppear = false;
     private bool i = false;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         numberInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void NumberCaption() {

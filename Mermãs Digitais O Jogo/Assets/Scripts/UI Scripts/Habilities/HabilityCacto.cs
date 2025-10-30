@@ -20,6 +20,28 @@ public class HabilityCacto : MonoBehaviour
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
     private bool validation = true;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+
+    public InputController controls;
+    private InputAction openHability;
+
+
+    private void Awake()
+    {
+        controls = new InputController();
+    }
+
+    private void OnEnable()
+    {
+        openHability = controls.Player.UseHability;
+        openHability.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openHability.Disable();
+    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,9 +70,11 @@ public class HabilityCacto : MonoBehaviour
             validation.puzzleSolved = false;
             validation2.puzzleSolved = false;
         }*/
+        bool keyboardHability = Input.GetKeyDown(KeyCode.H);
+        bool habilityPressed = openHability.ReadValue<float>() > 0.1f;
+        bool habilityControl = keyboardHability || habilityPressed;
 
-
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
+        if (playerInTrigger && habilityControl && validation/* && !validation.puzzleSolved && !validation2.puzzleSolved*/)
         {
             //RobotDialogue robot = FindObjectOfType<RobotDialogue>();
             RobotDialogue robot = FindFirstObjectByType<RobotDialogue>();
@@ -65,6 +89,7 @@ public class HabilityCacto : MonoBehaviour
 
                 robot.StartDialogue(dialogueMessages, player);
                 habilityScreen.SetActive(true);
+                sfxAcess.Audio(hability);
                 validation = false;
             }
         }

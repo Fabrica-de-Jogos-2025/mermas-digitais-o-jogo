@@ -9,7 +9,11 @@ public class die_4_2 : MonoBehaviour
     public GameObject signalObjectYellow;
     public GameObject signalObjectGreen;
     public GameObject cage;
-    public float destroyInSec = 3f;
+    // public float destroyInSec = 3f;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
     // Update is called once per frame
 
     private void Start()
@@ -19,8 +23,9 @@ public class die_4_2 : MonoBehaviour
     void Update()
     {
 
-        if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced())
+        if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced() && !hasPlayed)
         {
+            hasPlayed = true;
             signalObjectYellow.SetActive(false);
             signalObjectGreen.SetActive(true);
             Destroy(cage.gameObject);
@@ -41,7 +46,8 @@ public class die_4_2 : MonoBehaviour
 
     private System.Collections.IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(destroyInSec);
+        sfxAcess.Audio(hability);
+        yield return new WaitForSeconds(hability.length);
         Destroy(this.gameObject);
         player.IsFrozen = false;
     }
