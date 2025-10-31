@@ -7,6 +7,7 @@ public class Teste_Hability5 : MonoBehaviour
 {
     [SerializeField] private TMP_InputField numberInput;
     public bool puzzleSolved = false;
+
     
     void Start()
     {

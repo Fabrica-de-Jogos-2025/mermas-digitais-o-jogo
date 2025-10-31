@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,6 +18,10 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
     public RenderTexture renderTexture;
     public bool UsoDaUltimaHabilidade = false;
     private bool verificationclick = false;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    // private bool hasPlayed = false;
 
     private void Start()
     {
@@ -56,10 +60,12 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
                 Destroy(wrongAnswer2.gameObject);
             }
 
-            Destroy(rightAnswer.gameObject);
+            /*Destroy(rightAnswer.gameObject, hability.length);
             videoPanel.SetActive(true);
             videoDisplay.gameObject.SetActive(true);
-            video.Play();
+            video.Play();*/
+
+            StartCoroutine(VideoPlayerController());
         }
 
         if (ship != null)
@@ -79,5 +85,17 @@ public class Hability6 : MonoBehaviour, IPointerClickHandler
         }
         videoPanel.SetActive(false);
         videoDisplay.gameObject.SetActive(false);
+    }
+
+    private IEnumerator VideoPlayerController()
+    {
+        sfxAcess.Audio(hability);
+        Destroy(rightAnswer.gameObject, hability.length);
+        
+        yield return new WaitForSeconds(0f);
+        
+        videoPanel.SetActive(true);
+        videoDisplay.gameObject.SetActive(true);
+        video.Play();
     }
 }
