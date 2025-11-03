@@ -12,6 +12,10 @@ public class RobotControlDialogue_6 : MonoBehaviour
     public GameObject UI_habillity;
     public GameObject puzzleSolved;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,8 +44,10 @@ public class RobotControlDialogue_6 : MonoBehaviour
 
     void Update()
     {
-        if (UI_habillity.activeSelf)
+        if (UI_habillity.activeSelf && !hasPlayed)
         {
+            hasPlayed = true;
+            sfxAcess.Audio(hability);
             valid = true;
             robotDialogue.permission = false;
         }

@@ -44,6 +44,7 @@ public class RobotDialogue : MonoBehaviour
     public InputController controls;
     private InputAction dialogProceed;
     private InputAction dialogSkip;
+    public bool dialogoExecutadoNoBoss = false;
 
     private void Awake()
     {
@@ -161,6 +162,11 @@ public class RobotDialogue : MonoBehaviour
                 }
                 dialogueText.text = currentProcessedMessage ?? currentDialogue[dialogueIndex];
                 isTyping = false;*/
+            }
+            else if (dialogoExecutadoNoBoss)
+            {
+                dialogoExecutadoNoBoss = false;
+                EndDialogue();
             }
             else if (permissionToProceed)
             {
@@ -315,7 +321,7 @@ public class RobotDialogue : MonoBehaviour
         return textoFormatado;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         uiPlayer.SetActive(true);
         dialoguePanel.SetActive(false);

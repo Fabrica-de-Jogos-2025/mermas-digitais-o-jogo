@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Collections;
 
 public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
 {
@@ -18,6 +19,9 @@ public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
     public bool UsoDaUltimaHabilidade = false;
     public Boss3_Attack Z;
     private PlayerMovement player;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip finalizationSound;
 
     private void Start()
     {
@@ -57,11 +61,8 @@ public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
                 Destroy(wrongAnswer2.gameObject);
             }
 
-            Destroy(rightAnswer.gameObject);
-            videoPanel.SetActive(true); 
-            videoDisplay.gameObject.SetActive(true);
-            video.Play();
-            video.loopPointReached += OnVideoEnd;
+            
+            StartCoroutine(desabilitarAposFinalizarAudio());
         }
 
         if (ship != null)
@@ -77,10 +78,21 @@ public class Hability6_Boss3 : MonoBehaviour, IPointerClickHandler
         {
             uiCanvas.SetActive(false);
         }
-        
         videoPanel.SetActive(false);
         videoDisplay.gameObject.SetActive(false);
         Z.z = true;
         player.IsFrozen = false;
+    }
+    
+    private IEnumerator desabilitarAposFinalizarAudio()
+    {
+        sfxAcess.Audio(finalizationSound);
+        yield return new WaitForSeconds(finalizationSound.length);
+        
+        Destroy(rightAnswer.gameObject);
+        videoPanel.SetActive(true); 
+        videoDisplay.gameObject.SetActive(true);
+        video.Play();
+        video.loopPointReached += OnVideoEnd;
     }
 }

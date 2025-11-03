@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Die4_Boss2 : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class Die4_Boss2 : MonoBehaviour
     public GameObject signalObjectYellow;
     public GameObject signalObjectGreen;
     public GameObject cage;
-    public float destroyInSec = 3f;
-    // Update is called once per frame
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip finalizationSound;
+    
     void Update()
     {
         if (Dest.IsCorrectlyPlaced())
@@ -20,17 +23,17 @@ public class Die4_Boss2 : MonoBehaviour
         
         if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced())
         {
-            signalObjectYellow.SetActive(false);
-            signalObjectGreen.SetActive(true);
-            Destroy(cage.gameObject);
             StartCoroutine(DestroyAfterDelay());
         }
     }
 
-    private System.Collections.IEnumerator DestroyAfterDelay()
+    private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(destroyInSec);
-        //Destroy(this.gameObject);
+        sfxAcess.Audio(finalizationSound);
+        yield return new WaitForSeconds(finalizationSound.length);        
+        signalObjectYellow.SetActive(false);
+        signalObjectGreen.SetActive(true);
+        Destroy(cage.gameObject);
         this.gameObject.SetActive(false);
     }
 }

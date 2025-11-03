@@ -71,14 +71,10 @@ public class Hability1Use_Boss1 : MonoBehaviour
     
     private IEnumerator HandlePuzzleSolved()
     {
-        sfxAcess.Audio(hability); // Toca o som primeiro
+        sfxAcess.Audio(hability);
+        yield return new WaitForSeconds(hability.length);
         player.IsFrozen = false;
         destroy = true;
-
-        // Espera o som terminar antes de desativar a tela
-        yield return new WaitForSeconds(hability.length);
-
-        // Agora pode desativar a tela sem cortar o áudio
         habilityScreen.HabilityScreen.SetActive(false);
     }
 }

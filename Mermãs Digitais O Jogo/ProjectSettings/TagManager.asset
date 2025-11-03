@@ -17,6 +17,7 @@ TagManager:
   - Padlock
   - Ground
   - LevelImage
+  - Hability4
   layers:
   - Default
   - TransparentFX

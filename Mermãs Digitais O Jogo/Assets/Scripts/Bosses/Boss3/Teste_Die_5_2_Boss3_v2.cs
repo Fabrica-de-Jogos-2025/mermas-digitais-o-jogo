@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Teste_Die_5_2_Boss3_v2 : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Teste_Die_5_2_Boss3_v2 : MonoBehaviour
     private bool isDestroyed = false;
     public Boss3_Attack Z;
     private PlayerMovement player;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip finalizationSound;
+    private bool pemissao = false;
     
     void Start()
     {
@@ -15,12 +20,20 @@ public class Teste_Die_5_2_Boss3_v2 : MonoBehaviour
 
     void Update()
     {
-        if (!isDestroyed && Dest.puzzleSolved)
+        if (!isDestroyed && Dest.puzzleSolved && !pemissao)
         {
-            player.IsFrozen = false;
-            isDestroyed = true;
-            Z.z = true;
-            Destroy(this.gameObject);
+            pemissao = true;
+            StartCoroutine(desabilitarAposFinalizarAudio());
         }
+    }
+
+    private IEnumerator desabilitarAposFinalizarAudio()
+    {
+        sfxAcess.Audio(finalizationSound);
+        yield return new WaitForSeconds(finalizationSound.length);
+        player.IsFrozen = false;
+        isDestroyed = true;
+        Z.z = true;
+        Destroy(this.gameObject);
     }
 }

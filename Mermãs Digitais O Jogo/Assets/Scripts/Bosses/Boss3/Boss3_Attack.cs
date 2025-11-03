@@ -23,6 +23,12 @@ public class Boss3_Attack : MonoBehaviour
     public GameObject Hability6;
     public GameObject saida;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hit;
+
+    public bool iniciarBossFight = false;
+    private bool q = true;
+
     void Start()
     {
         life = FindFirstObjectByType<PlayerStatus>();
@@ -32,85 +38,97 @@ public class Boss3_Attack : MonoBehaviour
     
     void Update()
     {
-        if(l == 5)
+        if (iniciarBossFight == true)
         {
-            anim.SetInteger("transition", 4);
+            if (q)
+            {
+                anim.SetInteger("transition", 6);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        q = false;
+                    }
+            }
+            else if (l == 5)
+            {
+                anim.SetInteger("transition", 4);
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.833f && anim.GetCurrentAnimatorStateInfo(0).IsName("defeated"))
                 {
                     Destroy(this.gameObject);
                     saida.SetActive(true);
                 }
-        }
-        else if(h)
-        {
-            if(h_1)
+            }
+            else if (h)
             {
-                anim.SetInteger("transition", 1);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1333f && anim.GetCurrentAnimatorStateInfo(0).IsName("preparingToAttack"))
+                if (h_1)
                 {
-                    h_1 = false;
-                    h_2 = true;
-                }
-            }
-            else if(h_2)
-            {
-                anim.SetInteger("transition", 2);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_Item"))
-                {
-                    h_2 = false;
-                    h_3 = true;
-                }
-            }
-            else if (h_3)
-            {
-                Attack();
-            }
-            else
-            {               
-                anim.SetInteger("transition", 7);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_Item"))
-                {
-                    h = false;
-                }
-            }
-        }
-        else if(z)
-        {
-            if ((l == 3) && (Hability6.activeSelf))
-            {
-                Destroy(Hability6);
-            }
-            if(z_1)
-            {
-                anim.SetInteger("transition", 6);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                {
-                    z_1 = false;
-                }
-            }
-            else
-            {
-                anim.SetInteger("transition", 3);
-                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
-                {
-                    if (l == 4)
+                    anim.SetInteger("transition", 1);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1333f && anim.GetCurrentAnimatorStateInfo(0).IsName("preparingToAttack"))
                     {
-                        l = 5;
+                        h_1 = false;
+                        h_2 = true;
                     }
-                    anim.SetInteger("transition", 8);
-                    z = false;
-                    h = true;
-                    h_1 = true;
+                }
+                else if (h_2)
+                {
+                    anim.SetInteger("transition", 2);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_Item"))
+                    {
+                        h_2 = false;
+                        h_3 = true;
+                    }
+                }
+                else if (h_3)
+                {
+                    Attack();
+                }
+                else
+                {
+                    anim.SetInteger("transition", 7);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("Attack_Item"))
+                    {
+                        h = false;
+                    }
                 }
             }
-
-        }
-        else
-        {
-            anim.SetInteger("transition", 0);
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1333f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+            else if (z)
             {
-                z_1 = true;
+                if ((l == 3) && (Hability6.activeSelf))
+                {
+                    Destroy(Hability6);
+                }
+                if (z_1)
+                {
+                    anim.SetInteger("transition", 6);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+                    {
+                        z_1 = false;
+                    }
+                }
+                else
+                {
+                    anim.SetInteger("transition", 3);
+                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.0667f && anim.GetCurrentAnimatorStateInfo(0).IsName("hitted"))
+                    {
+                        sfxAcess.Audio(hit);
+                        if (l == 4)
+                        {
+                            l = 5;
+                        }
+                        anim.SetInteger("transition", 8);
+                        z = false;
+                        h = true;
+                        h_1 = true;
+                    }
+                }
+
+            }
+            else
+            {
+                anim.SetInteger("transition", 0);
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1333f && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                {
+                    z_1 = true;
+                }
             }
         }
     }

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,9 @@ public class Hability1_1 : MonoBehaviour
 
     public InputController controls;
     private InputAction openHability;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip open;
 
     private void Awake()
     {
@@ -81,7 +83,7 @@ public class Hability1_1 : MonoBehaviour
                 //pausarJogador = true;
             }*/
 
-            // Desativa a tela de tutorial se ainda não foi desativada
+            // Desativa a tela de tutorial se ainda nï¿½o foi desativada
             if (!deactivatedHabilityUI)
             {
                 habilityUITutorial.SetActive(false);
@@ -91,6 +93,10 @@ public class Hability1_1 : MonoBehaviour
             // Ativa a tela de habilidade
             if (habilityScreen != null)
             {
+                if (sfxAcess != null && open != null)
+                {
+                    sfxAcess.Audio(open);
+                }
                 habilityScreen.SetActive(true);
                 player.IsFrozen = true;
             }

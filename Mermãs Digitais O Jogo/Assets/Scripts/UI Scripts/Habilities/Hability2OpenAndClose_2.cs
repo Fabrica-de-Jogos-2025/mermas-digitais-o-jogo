@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Hability2OpenAndClose_2 : MonoBehaviour
 {
@@ -90,14 +91,20 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
                 //pausarJogador = true;
             }
         }
-            else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1 && !feedbackPlayed)
-            {
-                feedbackPlayed = true;
-                sfxAcess.Audio(feedback);
-                habilityScreen.SetActive(false);
-                player.IsFrozen = false;
-                destroy = true;
-                //pausarJogador = false;
-            }
+        else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1 && !feedbackPlayed)
+        {
+            StartCoroutine(HandlePuzzleSolved());
+            //pausarJogador = false;
+        }
+    }
+    
+    private IEnumerator HandlePuzzleSolved()
+    {
+        sfxAcess.Audio(feedback);
+        yield return new WaitForSeconds(feedback.length);
+        feedbackPlayed = true;
+        player.IsFrozen = false;
+        destroy = true;
+        habilityScreen.SetActive(false);
     }
 }

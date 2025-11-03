@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public GameplayAudio sfxAcess;
     [SerializeField] private GameplayAudio sfxDoorAcess;
     [SerializeField] private AudioClip walk;
+    [SerializeField] private AudioClip walkSand;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip door;
 
@@ -190,7 +191,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(horizontal) > 0.1f && groundChecked.IsGrounded())
         {
-            sfxAcess.LoopAudio(walk);
+            string cena = SceneManager.GetActiveScene().name;
+
+            if (cena == "Fase 2" || cena == "Boss Fase 2")
+            {
+                sfxAcess.LoopAudio(walkSand);
+            } else
+                sfxAcess.LoopAudio(walk);
         }
         else
         {

@@ -10,14 +10,20 @@ public class Teste_Die_5 : MonoBehaviour
     [SerializeField] private GameObject rocketCollider; // Collider do foguete
     [SerializeField] private GameObject hitbox; // Collider da habilidade
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
+
     void Update()
     {
-        if (!isDestroyed && Dest.puzzleSolved)
+        if (!isDestroyed && Dest.puzzleSolved && !hasPlayed)
         {
             //StartCoroutine(DestroyAfterDelay());
+            hasPlayed = true;
             isDestroyed = true; // Evita chamadas repetidas da coroutine
             //isDestroyed = true;
-            Destroy(this.gameObject);
+            sfxAcess.Audio(hability);
+            Destroy(this.gameObject, hability.length);
             //Destroy(rocket.gameObject);
             Destroy(rocketCollider.gameObject);
             Destroy(hitbox.gameObject);

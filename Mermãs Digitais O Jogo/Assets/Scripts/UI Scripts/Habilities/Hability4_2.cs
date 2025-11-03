@@ -9,6 +9,9 @@ public class Hability4_2 : MonoBehaviour
 
     private bool playerInTrigger = false;
     private PlayerMovement player;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
 
     public GameObject HabilityScreen { get => habilityScreen; set => habilityScreen = value; }
 
@@ -31,11 +34,13 @@ public class Hability4_2 : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.H))
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.H) && !hasPlayed)
         {
+            hasPlayed = true;
             // Ativa a tela de habilidade
             if (habilityScreen != null)
             {
+                sfxAcess.Audio(hability);
                 habilityScreen.SetActive(true);
                 player.IsFrozen = true;
             }

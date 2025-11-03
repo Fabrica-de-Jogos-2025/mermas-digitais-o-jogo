@@ -10,6 +10,10 @@ public class Teste_Die_5_3 : MonoBehaviour
     //[SerializeField] private GameObject rocketCollider; // Collider do foguete
     public GameObject habilityCard, Enemy5, Enemy6, Enemy7, Enemy8, hitbox;
 
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
@@ -17,10 +21,12 @@ public class Teste_Die_5_3 : MonoBehaviour
 
     void Update()
     {
-        if (!isDestroyed && Dest.puzzleSolved)
+        if (!isDestroyed && Dest.puzzleSolved && !hasPlayed)
         {
+            hasPlayed = true;
             //StartCoroutine(DestroyAfterDelay());
             isDestroyed = true; // Evita chamadas repetidas da coroutine
+            sfxAcess.Audio(hability);
             player.IsFrozen = false;
             habilityCard.SetActive(true);
             //isDestroyed = true;
@@ -31,7 +37,7 @@ public class Teste_Die_5_3 : MonoBehaviour
 
             Destroy(hitbox.gameObject);
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, hability.length);
             //Destroy(rocket.gameObject);
             //Destroy(rocketCollider.gameObject);
         }

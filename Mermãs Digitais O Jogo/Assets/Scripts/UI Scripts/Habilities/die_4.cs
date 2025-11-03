@@ -7,12 +7,17 @@ public class die_4 : MonoBehaviour
     public GameObject signalObjectRed;
     public GameObject signalObjectGreen;
     public GameObject wind;
-    public float destroyInSec = 3f;
+    // public float destroyInSec = 3f;
+
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip hability;
+    private bool hasPlayed = false;
     // Update is called once per frame
     void Update()
     {
-        if (Dest.IsCorrectlyPlaced())
+        if (Dest.IsCorrectlyPlaced() && !hasPlayed)
         {
+            hasPlayed = true;
             signalObjectRed.SetActive(false);
             Destroy(wind.gameObject);
             signalObjectGreen.SetActive(true);
@@ -22,7 +27,8 @@ public class die_4 : MonoBehaviour
 
     private System.Collections.IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(destroyInSec);
+        sfxAcess.Audio(hability);
+        yield return new WaitForSeconds(hability.length);
         Destroy(this.gameObject);
     }
 }
