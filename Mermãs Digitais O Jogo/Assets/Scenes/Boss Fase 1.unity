@@ -9705,7 +9705,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: c59da287e71185d48b904443d6cd5a8f, type: 3}
   m_Resource: {fileID: 8300000, guid: c59da287e71185d48b904443d6cd5a8f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11475,7 +11475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Trojan Horse
+  m_Text: Cavalo de Troia
 --- !u!222 &1711804357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16796,9 +16796,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "N\xE3o se preocupa comigo, eu sou t\xE3o leg\xEDtimo que irei roubar seus dados!!"
-  spriteCharacter: {fileID: -3262727692230212577, guid: db79531927c12ed4a848cb0ff3fdf802, type: 3}
+  spriteCharacter: {fileID: 2227753619514621671, guid: bbcdc1366c808884b9ff72a2d3b576e2, type: 3}
   nameofCharacter: Trojan Horse
   permissionDialogueFigure: 1
+  bossAttack: {fileID: 0}
   Dialogo: {fileID: 1590568219}
 --- !u!1 &2140921268
 GameObject:

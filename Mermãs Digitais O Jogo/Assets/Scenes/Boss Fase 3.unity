@@ -9767,7 +9767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "Fa\xE7a o favor de checar o anexo CARTA DE AMOR enviado por mim. Eu te amo."
-  spriteCharacter: {fileID: 8503034467486250504, guid: 38b4696d5c78eeb4998a4bd613dfdaea, type: 3}
+  spriteCharacter: {fileID: -1655476266694013219, guid: 2cbb2bef0b341d64599b6529204912ad, type: 3}
   nameofCharacter: ILoveYou
   permissionDialogueFigure: 1
   bossAttack: {fileID: 0}

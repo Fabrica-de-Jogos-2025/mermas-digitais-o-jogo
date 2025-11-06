@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - Eu sou o Creeper, me pegue se for capaz.
-  spriteCharacter: {fileID: 8793639957104055765, guid: c17518cc8588a294da933cca3eb9b63c, type: 3}
+  spriteCharacter: {fileID: 4494795099815138289, guid: 6225fd6757624144c8823a11f2165170, type: 3}
   nameofCharacter: Creeper
   permissionDialogueFigure: 1
   bossAttack: {fileID: 0}
