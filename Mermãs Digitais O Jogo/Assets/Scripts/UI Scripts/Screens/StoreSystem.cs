@@ -53,8 +53,9 @@ public class StoreSystem : MonoBehaviour
 
             if (isPurchased)
             {
-                itemTexts[i].text = isEquipped ? "DESEQUIPAR" : "EQUIPAR";
-                coinIcons[i].SetActive(isEquipped);
+                itemTexts[i].text = isEquipped ? "REMOVER" : "EQUIPAR";
+                // coinIcons[i].SetActive(isEquipped);
+                Destroy(coinIcons[i]);
             }
             else
             {
@@ -69,12 +70,10 @@ public class StoreSystem : MonoBehaviour
         bool isPurchased = PlayerPrefs.GetInt($"ItemPurchased_{index}", 0) == 1;
         bool isEquipped = PlayerPrefs.GetInt($"ItemEquipped_{index}", 0) == 1;
 
-        // Se o item ainda não foi comprado
         if (!isPurchased)
         {
             if (totalCoins >= itemCost)
             {
-                // Compra o item
                 sfxAcess.Audio(moneyClip);
                 CoinController.Instance.SpendCoins(itemCost);
                 PlayerPrefs.SetInt($"ItemPurchased_{index}", 1);
@@ -84,16 +83,14 @@ public class StoreSystem : MonoBehaviour
             else
             {
                 sfxAcess.Audio(click);
-                // Debug.Log("Moedas insuficientes!");
             }
         }
         else
         {
-            // Alterna entre Equipar e Desequipar
             bool newEquipState = !isEquipped;
             PlayerPrefs.SetInt($"ItemEquipped_{index}", newEquipState ? 1 : 0);
 
-            // Opcional: Desequipa os outros
+            // Desequipa os outros
             if (newEquipState)
             {
                 for (int i = 0; i < itemTexts.Length; i++)
@@ -101,12 +98,21 @@ public class StoreSystem : MonoBehaviour
                     if (i != index)
                         PlayerPrefs.SetInt($"ItemEquipped_{i}", 0);
                 }
+
+                // ?? Salva qual checkpoint está equipado
+                PlayerPrefs.SetInt("EquippedCheckpointIndex", index);
+            }
+            else
+            {
+                // ?? Remove checkpoint equipado se for dessequipado
+                PlayerPrefs.DeleteKey("EquippedCheckpointIndex");
             }
 
             PlayerPrefs.Save();
             UpdateUI();
         }
     }
+
 
     // Caso queira atualizar ao abrir a loja (ex: quando a cena da loja é carregada)
     private void OnEnable()
