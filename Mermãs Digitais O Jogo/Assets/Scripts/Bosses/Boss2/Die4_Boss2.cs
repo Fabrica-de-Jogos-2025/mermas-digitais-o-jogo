@@ -12,6 +12,7 @@ public class Die4_Boss2 : MonoBehaviour
 
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip finalizationSound;
+    private bool isFinalizedSound = false;
     
     void Update()
     {
@@ -21,9 +22,10 @@ public class Die4_Boss2 : MonoBehaviour
             signalObjectYellow.SetActive(true);
         }
         
-        if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced())
+        if (Dest.IsCorrectlyPlaced() && Dest2.IsCorrectlyPlaced() && !isFinalizedSound)
         {
             StartCoroutine(DestroyAfterDelay());
+            isFinalizedSound = true;
         }
     }
 
