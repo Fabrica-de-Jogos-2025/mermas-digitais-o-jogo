@@ -17,6 +17,7 @@ public class OptionScreen : MonoBehaviour
     [SerializeField] private GameplayAudio sfxClick;
 
     [SerializeField] private BrightnessLight2D brightnessController;
+    [SerializeField] private MusicController musicVolumeController;
     public int Brightness { get => brightness; set => brightness = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +54,15 @@ public class OptionScreen : MonoBehaviour
 
             if (updateBrightness && brightnessController != null)
                 brightnessController.ApplyBrightness();
+
+            //if (text == musicText && musicVolumeController != null)
+            //  musicVolumeController.ApplyMusicVolume();
+            if (text == musicText && AudioController.Instance != null)
+                AudioController.Instance.SetMusicVolume(music);
+
+            if (text == soundEffectText && AudioController.Instance != null)
+                AudioController.Instance.SetSFXVolume(soundEffects);
+
         }
     }
 
@@ -67,6 +77,16 @@ public class OptionScreen : MonoBehaviour
 
             if (updateBrightness && brightnessController != null)
                 brightnessController.ApplyBrightness();
+
+            // if (text == musicText && musicVolumeController != null)
+            // musicVolumeController.ApplyMusicVolume();
+
+            if (text == musicText && AudioController.Instance != null)
+                AudioController.Instance.SetMusicVolume(music);
+
+            if (text == soundEffectText && AudioController.Instance != null)
+                AudioController.Instance.SetSFXVolume(soundEffects);
+
         }
     }
 

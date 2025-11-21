@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - Eu sou o Creeper, me pegue se for capaz.
-  spriteCharacter: {fileID: 8793639957104055765, guid: c17518cc8588a294da933cca3eb9b63c, type: 3}
+  spriteCharacter: {fileID: 4494795099815138289, guid: 6225fd6757624144c8823a11f2165170, type: 3}
   nameofCharacter: Creeper
   permissionDialogueFigure: 1
   bossAttack: {fileID: 0}
@@ -9285,6 +9285,7 @@ GameObject:
   - component: {fileID: 1577489245}
   - component: {fileID: 1577489247}
   - component: {fileID: 1577489246}
+  - component: {fileID: 1577489248}
   m_Layer: 5
   m_Name: CoinsNumber
   m_TagString: Untagged
@@ -9410,6 +9411,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577489244}
   m_CullTransparentMesh: 1
+--- !u!114 &1577489248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577489244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf917b953753d14c86722f449188ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCount: 0
+  sfxAcess: {fileID: 0}
+  coin: {fileID: 0}
 --- !u!1 &1579760393
 GameObject:
   m_ObjectHideFlags: 0

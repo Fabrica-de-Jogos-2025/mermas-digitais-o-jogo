@@ -1579,6 +1579,7 @@ GameObject:
   - component: {fileID: 417617875}
   - component: {fileID: 417617877}
   - component: {fileID: 417617876}
+  - component: {fileID: 417617878}
   m_Layer: 5
   m_Name: CoinsNumber
   m_TagString: Untagged
@@ -1704,6 +1705,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417617874}
   m_CullTransparentMesh: 1
+--- !u!114 &417617878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417617874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf917b953753d14c86722f449188ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCount: 0
+  sfxAcess: {fileID: 0}
+  coin: {fileID: 0}
 --- !u!1 &420591433
 GameObject:
   m_ObjectHideFlags: 0
@@ -9767,7 +9783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueMessages:
   - "Fa\xE7a o favor de checar o anexo CARTA DE AMOR enviado por mim. Eu te amo."
-  spriteCharacter: {fileID: 8503034467486250504, guid: 38b4696d5c78eeb4998a4bd613dfdaea, type: 3}
+  spriteCharacter: {fileID: -1655476266694013219, guid: 2cbb2bef0b341d64599b6529204912ad, type: 3}
   nameofCharacter: ILoveYou
   permissionDialogueFigure: 1
   bossAttack: {fileID: 0}

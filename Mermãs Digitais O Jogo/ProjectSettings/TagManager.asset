@@ -18,6 +18,7 @@ TagManager:
   - Ground
   - LevelImage
   - Hability4
+  - Music
   layers:
   - Default
   - TransparentFX

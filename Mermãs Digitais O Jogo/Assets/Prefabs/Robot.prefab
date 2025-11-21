@@ -212,7 +212,7 @@ MonoBehaviour:
   - palavra: "Declarador de vari\xE1veis"
     cor: {r: 0.108982086, g: 0, b: 1, a: 0}
   - palavra: "set de grava\xE7\xF5es"
-    cor: {r: 0.21533193, g: 0.20977567, b: 0.2603773, a: 0}
+    cor: {r: 0, g: 0.97765493, b: 1, a: 0}
   - palavra: Hedy Lamarr
     cor: {r: 0.68973064, g: 0, b: 1, a: 0}
   - palavra: dispositivos sem fio
@@ -234,7 +234,7 @@ MonoBehaviour:
   - palavra: "Instru\xE7\xE3o de repeti\xE7\xE3o"
     cor: {r: 0.82400036, g: 0, b: 1, a: 0}
   - palavra: River Raid
-    cor: {r: 0.26565742, g: 0.21985759, b: 0.2754717, a: 0}
+    cor: {r: 1, g: 0.38590717, b: 0, a: 0}
   - palavra: mulher interessada em desenvolvimento de jogos
     cor: {r: 1, g: 0, b: 0.9079342, a: 0}
   - palavra: Carol Shaw
@@ -252,6 +252,7 @@ MonoBehaviour:
   dialogueIndex: 0
   permissionToProceed: 0
   permission: 0
+  dialogoExecutadoNoBoss: 0
 --- !u!95 &5710123083810710065
 Animator:
   serializedVersion: 7

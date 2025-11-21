@@ -1675,7 +1675,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 21, y: 0, z: 0}
@@ -1851,7 +1851,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 45, y: 0, z: 0}
@@ -1979,7 +1979,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 22, y: 1, z: 0}
@@ -2123,7 +2123,7 @@ Tilemap:
       - {fileID: -8242791207110609669, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: -1973050402004777202, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
       - {fileID: 4361069920973706747, guid: 70fe0843bfdbb9e46bceadb5868d73ef, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 35, y: 1, z: 0}
@@ -2777,7 +2777,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 0eee131b6d7f0184bb6703fd8c33b304, type: 3}
   m_Resource: {fileID: 8300000, guid: 0eee131b6d7f0184bb6703fd8c33b304, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6659,6 +6659,7 @@ GameObject:
   - component: {fileID: 1598504169}
   - component: {fileID: 1598504174}
   - component: {fileID: 1598504173}
+  - component: {fileID: 1598504175}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -6678,9 +6679,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e0cdd2d28404d439a4fdc2297da375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpointSprites:
+  - {fileID: 1152356169552002576, guid: 2c5e0b7b77072c4439d4b61907fd0ae3, type: 3}
+  - {fileID: 1152356169552002576, guid: 874b51bccaf86c24c970e0cb1fe9bb80, type: 3}
+  - {fileID: 4566108225964131613, guid: 376e61710d299bd47bdc3796a7eff2e7, type: 3}
+  - {fileID: 5907094308001886815, guid: 982fb81f2aad93d41861c7052970d937, type: 3}
+  - {fileID: 6007221975413079304, guid: 95c87a98c24970843a0fa1e07be3c2e7, type: 3}
+  - {fileID: 396576214713134581, guid: 47c9f7c09f3018044844e3ad9eb51084, type: 3}
+  - {fileID: 1152356169552002576, guid: 1c55ad3cb0cada7458c1c997f0061b62, type: 3}
   activatedCheckpoint: {fileID: -1167194628847494758, guid: ed6db0cd891b51a4d891f44c4d10fb21, type: 3}
   sfxAcess: {fileID: 1598504173}
   checkpoint: {fileID: 8300000, guid: 56962e817c00b324fb87ceec9554de6a, type: 3}
+  equippedIndex: 0
 --- !u!61 &1598504170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6791,7 +6801,7 @@ Transform:
   m_GameObject: {fileID: 1598504168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.98, y: 0.763, z: 0}
+  m_LocalPosition: {x: 51.98, y: 0.96, z: 0}
   m_LocalScale: {x: 0.059831537, y: 0.06302001, z: 0.12387518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6908,6 +6918,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1598504175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598504168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ce054415def6439da5f6a25720043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSize: 0.1238752
+  alignToGround: 1
 --- !u!1 &1600229198
 GameObject:
   m_ObjectHideFlags: 0

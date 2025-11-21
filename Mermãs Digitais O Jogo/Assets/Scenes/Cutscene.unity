@@ -285,7 +285,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1274,7 +1274,7 @@ SceneRoots:
   - {fileID: 1262023404}
   - {fileID: 690497824}
   - {fileID: 1187734272}
+  - {fileID: 379864974}
   - {fileID: 1968937845}
   - {fileID: 708188552}
   - {fileID: 2120035245}
-  - {fileID: 379864974}

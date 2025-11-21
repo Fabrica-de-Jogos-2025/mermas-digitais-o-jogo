@@ -13,22 +13,6 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    /*public void PlayAnimation()
-    {
-        if (!hasPlayed && anim != null)
-        {
-            anim.SetInteger("transition", 0); // Ativa a animação da porta
-            hasPlayed = true; // Marca que a animação já foi executada
-        }
-
-        yield return new WaitForSeconds(0.8f);
-        if (anim.GetInteger("transition") == 0)
-        {
-            anim.SetInteger("transition", 1);
-        }
-    }*/
-
-
     public void PlayAnimation()
     {
         if (!hasPlayed && anim != null && i)
@@ -55,9 +39,4 @@ public class Door : MonoBehaviour
         anim.SetInteger("transition", 1);
         return exitPoint != null ? exitPoint.position : transform.position;
     }
-
-    /*public void ResetAnimation()
-    {
-        hasPlayed = false;
-    }*/
 }

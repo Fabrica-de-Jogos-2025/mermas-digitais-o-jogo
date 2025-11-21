@@ -94,6 +94,7 @@ public class Hability2OpenAndClose_2 : MonoBehaviour
         else if (CLOSE_1.close_1 && CLOSE_2.close_1 && CLOSE_3.close_1 && CLOSE_4.close_1 && !feedbackPlayed)
         {
             StartCoroutine(HandlePuzzleSolved());
+            feedbackPlayed = true;
             //pausarJogador = false;
         }
     }

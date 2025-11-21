@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class RobotMovement : MonoBehaviour
 {
-    // [SerializeField] private GameObject robotPrefab;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private float Speed;
     [SerializeField] private float StoppingDistance;
@@ -13,8 +12,6 @@ public class RobotMovement : MonoBehaviour
 
     [SerializeField] private PlayerStatus playerStatus;
     private Transform Target;
-    //private RobotPowerUp robotPowered;
-    //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
     public bool HasPowerUp;
     private static Vector3 respawnpoint;
     private bool isUsingPowerUp = false;
@@ -64,6 +61,11 @@ public class RobotMovement : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
 
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
+        if (FindAnyObjectByType<RobotDialogue>()?.DialogueActive == true)
+            sfxAcess.StopAudio();
+        else
+            sfxAcess.LoopAudio(fly);
     }
 
     // Update is called once per frame

@@ -46,6 +46,8 @@ public class RobotDialogue : MonoBehaviour
     private InputAction dialogSkip;
     public bool dialogoExecutadoNoBoss = false;
 
+    public bool DialogueActive { get => dialogueActive; set => dialogueActive = value; }
+
     private void Awake()
     {
         controls = new InputController();
@@ -70,20 +72,6 @@ public class RobotDialogue : MonoBehaviour
     {
         uiPlayer = GameObject.Find("CanvasHUD");
         robo = FindAnyObjectByType<RobotMovement>();
-        /*GameObject dialogueParent = GameObject.Find("Dialogue");
-
-        if (dialogueParent != null)
-        {
-            Transform[] allChildren = dialogueParent.GetComponentsInChildren<Transform>(true);
-
-            foreach (Transform child in allChildren)
-            {
-                if (child != dialogueParent.transform) // ignora o próprio pai
-                {
-                    Debug.Log("Filho encontrado: " + child.gameObject.name);
-                }
-            }
-        }*/
 
         GameObject dialogueParent = GameObject.Find("Dialogue");
 
@@ -111,14 +99,6 @@ public class RobotDialogue : MonoBehaviour
             }
         }
 
-        /*dialoguePanel = GameObject.Find("DialoguePanel");
-        //if (SceneManager.GetActiveScene().name == "Tutorial")
-        //{
-        dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
-        characterNameText = GameObject.Find("CharacterName").GetComponent<Text>();
-        imageRobot = GameObject.Find("ImageRobot").GetComponent<Image>();
-        //}*/
-
         uiPlayer.SetActive(true);
         if (dialoguePanel != null)
         {
@@ -142,6 +122,9 @@ public class RobotDialogue : MonoBehaviour
 
     void Update()
     {
+        if (!dialogueActive)
+            return;
+
         bool skipPressed = Input.GetKeyDown(KeyCode.Y) || dialogSkip.WasPerformedThisFrame();
         if (skipPressed && permission)
         {
@@ -155,13 +138,6 @@ public class RobotDialogue : MonoBehaviour
             if (isTyping)
             {
                 StopTypingInstantly();
-                /*if (currentTypingCoroutine != null)
-                {
-                    StopCoroutine(currentTypingCoroutine);
-                    currentTypingCoroutine = null;
-                }
-                dialogueText.text = currentProcessedMessage ?? currentDialogue[dialogueIndex];
-                isTyping = false;*/
             }
             else if (dialogoExecutadoNoBoss)
             {
@@ -241,7 +217,7 @@ public class RobotDialogue : MonoBehaviour
         isTyping = true;
         dialogueText.text = "";
 
-        if (dialogueSFX != null && sfxAcess != null)
+        if (dialogueActive && dialogueSFX != null && sfxAcess != null)
         {
             // Garante que não toque várias vezes
             sfxAcess.StopAudio();

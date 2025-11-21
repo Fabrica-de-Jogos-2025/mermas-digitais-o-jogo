@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 2c5e0b7b77072c4439d4b61907fd0ae3
+guid: bbcdc1366c808884b9ff72a2d3b576e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1152356169552002576
-    second: computer_0
+      213: 2227753619514621671
+    second: boss 1 mirrorred_0
   - first:
-      213: -8796642946680004667
-    second: computer_1
+      213: -2513873020326853453
+    second: boss 1 mirrorred_1
+  - first:
+      213: 9046232519018230054
+    second: boss 1 mirrorred_2
+  - first:
+      213: 7188676469717345235
+    second: boss 1 mirrorred_3
+  - first:
+      213: -5612810978947066479
+    second: boss 1 mirrorred_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,7 +113,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,45 +125,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: computer_0
+      name: boss 1 mirrorred_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 119
-        width: 262
-        height: 142
+        x: 6
+        y: 19
+        width: 120
+        height: 89
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01e70eca4ddfdff00800000000000000
-      internalID: 1152356169552002576
+      spriteID: 7ee72422d129aee10800000000000000
+      internalID: 2227753619514621671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: computer_1
+      name: boss 1 mirrorred_1
       rect:
         serializedVersion: 2
-        x: 199
-        y: 119
-        width: 102
-        height: 142
+        x: 160
+        y: 17
+        width: 124
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cf513bb8db0ce580800000000000000
-      internalID: -8796642946680004667
+      spriteID: 3b4cafc9ecdec1dd0800000000000000
+      internalID: -2513873020326853453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss 1 mirrorred_2
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 15
+        width: 121
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6213bab0c8caa8d70800000000000000
+      internalID: 9046232519018230054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss 1 mirrorred_3
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 16
+        width: 117
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d326b6792f43c360800000000000000
+      internalID: 7188676469717345235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss 1 mirrorred_4
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 17
+        width: 114
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1959270172a4b12b0800000000000000
+      internalID: -5612810978947066479
       vertices: []
       indices: 
       edges: []
@@ -163,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c83c7d9a376eb014e8a90a96c7b67b3b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      computer_0: 1152356169552002576
-      computer_1: -8796642946680004667
+      boss 1 mirrorred_0: 2227753619514621671
+      boss 1 mirrorred_1: -2513873020326853453
+      boss 1 mirrorred_2: 9046232519018230054
+      boss 1 mirrorred_3: 7188676469717345235
+      boss 1 mirrorred_4: -5612810978947066479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
