@@ -95,7 +95,7 @@ public class DialogueBoss2 : MonoBehaviour
                 if (spriteCharacter != null && robot.imageRobot != null)
                 { 
                     robot.imageRobot.sprite = spriteCharacter;
-                    robot.imageRobot.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                    robot.imageRobot.transform.localScale = new Vector3(0.8f, 1f, 1f);
                 }
 
                 if (!string.IsNullOrEmpty(nameofCharacter) && robot.characterNameText != null)

@@ -705,7 +705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.79, y: -31.589}
+  m_AnchoredPosition: {x: -127.3, y: -31.589}
   m_SizeDelta: {x: 192.8996, y: 19.9375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84844376
@@ -11455,8 +11455,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -262.6, y: -31.589}
-  m_SizeDelta: {x: 44.711, y: 19.9375}
+  m_AnchoredPosition: {x: -265.7, y: -31.589}
+  m_SizeDelta: {x: 76.306, y: 19.9375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711804356
 MonoBehaviour:
@@ -11485,7 +11485,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -16813,7 +16813,7 @@ MonoBehaviour:
   dialogueMessages:
   - "N\xE3o se preocupa comigo, eu sou t\xE3o leg\xEDtimo que irei roubar seus dados!!"
   spriteCharacter: {fileID: 2227753619514621671, guid: bbcdc1366c808884b9ff72a2d3b576e2, type: 3}
-  nameofCharacter: Trojan Horse
+  nameofCharacter: Cavalo de Troia
   permissionDialogueFigure: 1
   bossAttack: {fileID: 0}
   Dialogo: {fileID: 1590568219}

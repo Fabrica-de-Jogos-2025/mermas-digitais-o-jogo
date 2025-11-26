@@ -4300,7 +4300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -262.6, y: -31.589}
+  m_AnchoredPosition: {x: -266.1, y: -31.589}
   m_SizeDelta: {x: 44.711, y: 19.9375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548650787
@@ -4330,7 +4330,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -6474,7 +6474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265.7, y: 7.6}
+  m_AnchoredPosition: {x: -266.1, y: 7.6}
   m_SizeDelta: {x: 95.4775, y: 61.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847625291
@@ -7718,7 +7718,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00000023841858, y: -0.031466007}
+  m_Offset: {x: 0.037776947, y: -0.1983192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7728,7 +7728,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1398692, y: 2.2956867}
+  m_Size: {x: 1.8754196, y: 1.9619803}
   m_EdgeRadius: 0
 --- !u!212 &1051531991
 SpriteRenderer:
@@ -9434,7 +9434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.79, y: -31.589}
+  m_AnchoredPosition: {x: -127.5, y: -31.589}
   m_SizeDelta: {x: 192.8996, y: 19.9375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330815847

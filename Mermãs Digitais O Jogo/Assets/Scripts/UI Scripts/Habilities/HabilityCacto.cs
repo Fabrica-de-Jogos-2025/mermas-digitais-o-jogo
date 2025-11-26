@@ -82,7 +82,20 @@ public class HabilityCacto : MonoBehaviour
             if (robot != null && player != null && !player.IsJumping)
             {
                 if (spriteCharacter != null)
+                {
                     robot.imageRobot.sprite = spriteCharacter;
+
+                    if (nameofCharacter == "Robo" || nameofCharacter == "Robô")
+                    {
+                        // Mantém a escala normal
+                        robot.imageRobot.transform.localScale = Vector3.one;
+                    }
+                    else
+                    {
+                        // Ajuste de escala para outros personagens
+                        robot.imageRobot.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(nameofCharacter))
                     robot.characterNameText.text = nameofCharacter;
