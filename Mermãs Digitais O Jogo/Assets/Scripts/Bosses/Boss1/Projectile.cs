@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -15,8 +15,12 @@ public class Projectile : MonoBehaviour
     public BossAttack H;
     [SerializeField] private PlayerStatus life;
     [SerializeField] private RobotMovement robot;
+    [SerializeField] private GameObject powerUpIcon;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip damagePlayer;
     public bool p = false;
 
+    private bool damagePlayerHasPlayed = false;
     private Animator anim;
     private float speedFactor;
     public GameObject DeathProjectile;
@@ -59,7 +63,7 @@ public class Projectile : MonoBehaviour
                 i++;
                 H.h = true;
                 p = false;
-                gameObject.SetActive(false);
+                StartCoroutine(DisableAfterSound());
             }
         }
 
@@ -72,6 +76,12 @@ public class Projectile : MonoBehaviour
             p = true;
             temp0.position = transform.position;
 
+            if (!damagePlayerHasPlayed)
+            {
+                damagePlayerHasPlayed = true;
+                powerUpIcon.SetActive(false);
+            }
+            sfxAcess.Audio(damagePlayer);
             life.PlayerLife--;
             life.Hearts[life.PlayerLife].enabled = false;
             if (life.PlayerLife <= 0)
@@ -82,4 +92,9 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private IEnumerator DisableAfterSound()
+    {
+        yield return new WaitForSeconds(0.1f); // pequeno atraso para o áudio iniciar
+        gameObject.SetActive(false);
+    }
 }

@@ -46,29 +46,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (PlayerLife <= 0)
         {
-            /*SceneManager.LoadScene("Morte_Falha");
-            Destroy(this.gameObject);
-            if (yesButton.YesClicked) { 
-            SceneManager.LoadScene(cenaAtual);
-                robot.IsDead = false;
-            }*/
-
-            // Congela o player
-            /*GetComponent<PlayerMovement>().FreezePlayer(true);
-
-            // Chama a tela de morte
-            SceneManager.LoadScene("Morte_Falha");
-            canvas.SetActive(false);
-            */
-            // congela o player
             GetComponent<PlayerMovement>().FreezePlayer(true);
-          
-            // guarda a info do checkpoint
-            /*bool checkpointAtivo = FindFirstObjectByType<Checkpoint>()?.IsActivated ?? false;
-            PlayerPrefs.SetInt("CheckpointAtivo", checkpointAtivo ? 1 : 0);
-
-            // guarda cena atual
-            PlayerPrefs.SetString("LastScene", cenaAtual);*/
 
             // salva estado do checkpoint (se tiver)
             if (GetComponent<PlayerMovement>().LastCheckpointPosition != Vector3.zero)

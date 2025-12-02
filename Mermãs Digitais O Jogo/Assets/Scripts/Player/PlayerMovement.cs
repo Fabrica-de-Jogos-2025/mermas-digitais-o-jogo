@@ -55,12 +55,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip walkSand;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip door;
+    [SerializeField] private AudioClip pauseEffect;
 
     private CoinManager coinManager;
     private Tilemap coinTilemap;
     public bool i = false;
     public bool TutoJumpAtiv = false;
     private bool hasPlayedJumpSound = false;
+    private bool hasPausedPlayed = false;
 
     public InputController controls;
     private InputAction move;
@@ -140,11 +142,16 @@ public class PlayerMovement : MonoBehaviour
         CheckForCoin();
         //PauseGame();
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !hasPausedPlayed)
         {
+            hasPausedPlayed = true;
+            sfxAcess.Audio(pauseEffect);
             isPaused = !isPaused;
             Time.timeScale = isPaused ? 0 : 1;
             pauseScreen.SetActive(isPaused);
+            hasPausedPlayed = false;
+            //if (!isPaused)
+              //  hasPausedPlayed = false;
         }
 
         bool keyboardDoor = Input.GetKeyDown(KeyCode.RightShift);
@@ -394,14 +401,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void PauseGame()
-    {
-        bool keyboardPause = Input.GetKeyDown(KeyCode.KeypadEnter);
+    //public void PauseGame()
+    //{
+        /*bool keyboardPause = Input.GetKeyDown(KeyCode.KeypadEnter);
 
         float controllerValue = pause.ReadValue<float>();
         bool controllerPressed = controllerValue >= 0.5f;
         bool pausePressed = keyboardPause || (controllerPressed && !pauseButtonHeld);
-        pauseButtonHeld = controllerPressed;
+        pauseButtonHeld = controllerPressed;*/
 
         /*if (pausePressed && !isPaused)
         {
@@ -416,14 +423,14 @@ public class PlayerMovement : MonoBehaviour
             pauseScreen.SetActive(false);
         }*/
 
-        if (pausePressed)
+        /*if (pausePressed)
         {
             isPaused = !isPaused;
 
             Time.timeScale = isPaused ? 0 : 1;
             pauseScreen.SetActive(isPaused);
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -25,6 +25,8 @@ public class Boss3_Attack : MonoBehaviour
 
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip hit;
+    [SerializeField] private GameObject powerUpIcon;
+    [SerializeField] private AudioClip damagePlayer;
 
     public bool iniciarBossFight = false;
     private bool q = true;
@@ -196,6 +198,8 @@ public class Boss3_Attack : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            powerUpIcon.SetActive(false);
+            sfxAcess.Audio(damagePlayer);
             life.PlayerLife--;
             life.Hearts[life.PlayerLife].enabled = false;
             if (life.PlayerLife <= 0)

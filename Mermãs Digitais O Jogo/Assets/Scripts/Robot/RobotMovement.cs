@@ -9,6 +9,7 @@ public class RobotMovement : MonoBehaviour
     [SerializeField] private float StoppingDistance;
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip fly;
+    [SerializeField] private AudioClip damageEnemy;
 
     [SerializeField] private PlayerStatus playerStatus;
     private Transform Target;
@@ -17,6 +18,7 @@ public class RobotMovement : MonoBehaviour
     private bool isUsingPowerUp = false;
     private bool isFreeze = false;
     private bool isDead = false;
+    private bool damageEnemyPlayed = false;
     public static Vector3 Respawnpoint 
     { 
       get { return respawnpoint; } 
@@ -165,8 +167,10 @@ public class RobotMovement : MonoBehaviour
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
                 foreach (Collider2D enemy in enemies)
                 {
-                    if (enemy.CompareTag("Enemy"))
+                    if (enemy.CompareTag("Enemy") && !damageEnemyPlayed)
                     {
+                        damageEnemyPlayed = true;
+                        sfxAcess.Audio(damageEnemy);
                         Destroy(enemy.gameObject);
                     }
                 }
@@ -194,8 +198,10 @@ public class RobotMovement : MonoBehaviour
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
                 foreach (Collider2D enemy in enemies)
                 {
-                    if (enemy.CompareTag("Enemy"))
+                    if (enemy.CompareTag("Enemy") && !damageEnemyPlayed)
                     {
+                        damageEnemyPlayed = true;
+                        sfxAcess.Audio(damageEnemy);
                         Destroy(enemy.gameObject);
                     }
                 }

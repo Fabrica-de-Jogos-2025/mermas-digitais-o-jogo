@@ -4,6 +4,7 @@ public class RobotPowerUp : MonoBehaviour
 {
     //[SerializeField] private bool hasPowerUp = false;
     private PlayerMovement player;
+    [SerializeField] private GameObject powerUpIcon;
     //private RobotMovement robot;
 
     //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
@@ -30,6 +31,7 @@ public class RobotPowerUp : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collected = true;
+            powerUpIcon.SetActive(true);
             sfxAcess.Audio(powerupClip); // toca o som primeiro
             robotPowered.HasPowerUp = true;
 
@@ -39,21 +41,5 @@ public class RobotPowerUp : MonoBehaviour
                 Destroy(gameObject, powerupClip.length);
             }
         }
-        /*if (collision.CompareTag("Player"))
-        {
-
-            //Destroy(gameObject);
-            if (!isTutorialPowerUp)
-            {
-                Destroy(gameObject);
-                sfxAcess.Audio(powerupClíp);
-                robotPowered.HasPowerUp = true;
-            }
-            else
-            {
-                sfxAcess.Audio(powerupClíp);
-                robotPowered.HasPowerUp = true;
-            }
-        }*/
     }
 }

@@ -9,9 +9,13 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private GameplayAudio sfxAcess;
+    [SerializeField] private AudioClip damagePlayer;
+    [SerializeField] private GameObject powerUpIcon;
     private Checkpoint checkpoint;
 
     private bool isRight;
+    private bool playerIsDamaged = false;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float collisionRadius;
 
@@ -79,8 +83,10 @@ public class EnemyType1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !playerIsDamaged)
         {
+            powerUpIcon.SetActive(false);
+            sfxAcess.Audio(damagePlayer);
             robot.HasPowerUp = false;
             life.PlayerLife--;
             life.Hearts[life.PlayerLife].enabled = false;

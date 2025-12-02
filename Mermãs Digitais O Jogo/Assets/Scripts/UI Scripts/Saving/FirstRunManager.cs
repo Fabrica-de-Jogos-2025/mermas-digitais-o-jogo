@@ -7,7 +7,7 @@ public class FirstRunManager : MonoBehaviour
         // Verifica se é a primeira execução do jogo
         if (!PlayerPrefs.HasKey("firstRun"))
         {
-            Debug.Log("Primeira execução detectada. Limpando PlayerPrefs...");
+            // Debug.Log("Primeira execução detectada. Limpando PlayerPrefs...");
 
             // Apaga todos os dados salvos anteriormente
             PlayerPrefs.DeleteAll();

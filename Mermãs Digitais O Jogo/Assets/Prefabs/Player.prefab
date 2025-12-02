@@ -758,6 +758,7 @@ MonoBehaviour:
   walkSand: {fileID: 8300000, guid: 8fc5f75d59567cd44a46484c54223a4f, type: 3}
   jump: {fileID: 8300000, guid: 48cb3a4393031c547afc93bb952f9c15, type: 3}
   door: {fileID: 8300000, guid: e38c8f0a3bb06d64f850dca247dd5774, type: 3}
+  pauseEffect: {fileID: 8300000, guid: 1dc71e7edf091f4428f04d862670e0de, type: 3}
   i: 0
   TutoJumpAtiv: 0
 --- !u!61 &4826420713741696645
