@@ -37,6 +37,7 @@ public class Boss2_Attack : MonoBehaviour
     public int x = 0;
     private bool x_1 = false;
 
+    [SerializeField] private PlayerDamageFeedback damageFeedback;
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip hit;
     [SerializeField] private GameObject powerUpIcon;
@@ -49,6 +50,7 @@ public class Boss2_Attack : MonoBehaviour
         life = FindFirstObjectByType<PlayerStatus>();
         robot = FindFirstObjectByType<RobotMovement>();
         anim = GetComponent<Animator>();
+        damageFeedback = life.GetComponent<PlayerDamageFeedback>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -299,7 +301,7 @@ public class Boss2_Attack : MonoBehaviour
         }*/
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
@@ -312,6 +314,32 @@ public class Boss2_Attack : MonoBehaviour
                 life.Die();
                 robot.Die();
             }
+        }
+    }*/
+
+    private void OnCollisionEnter2D(Collision2D collision) => TryDamagePlayer(collision);
+    private void OnCollisionStay2D(Collision2D collision) => TryDamagePlayer(collision);
+
+    private void TryDamagePlayer(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("Player")) return;
+        if (damageFeedback.IsInvincible) return;
+        if (life.PlayerLife <= 0) return; // evita Hearts[-1] enquanto a morte é processada
+
+        powerUpIcon.SetActive(false);
+        sfxAcess.Audio(damagePlayer);
+        robot.HasPowerUp = false;
+        life.PlayerLife--;
+        life.Hearts[life.PlayerLife].enabled = false;
+
+        if (life.PlayerLife <= 0)
+        {
+            life.Die();
+            robot.Die();
+        }
+        else
+        {
+            damageFeedback.StartDamageFeedback(transform.position);
         }
     }
 }

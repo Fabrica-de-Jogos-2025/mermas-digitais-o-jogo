@@ -7725,6 +7725,7 @@ GameObject:
   - component: {fileID: 1051531994}
   - component: {fileID: 1051531995}
   - component: {fileID: 1051531996}
+  - component: {fileID: 1051531997}
   m_Layer: 0
   m_Name: ILoveYou
   m_TagString: Untagged
@@ -8047,6 +8048,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1051531997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051531988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5455e167d521e347848d746faab4684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageFeedback: {fileID: 0}
+  life: {fileID: 0}
+  powerUpIcon: {fileID: 431421147}
+  sfxAcess: {fileID: 1051531995}
+  damagePlayer: {fileID: 8300000, guid: 50e117c955390b84cbbebd2be4683a11, type: 3}
+  robot: {fileID: 0}
 --- !u!1 &1072980270
 GameObject:
   m_ObjectHideFlags: 0

@@ -3149,6 +3149,7 @@ GameObject:
   - component: {fileID: 869133412}
   - component: {fileID: 869133414}
   - component: {fileID: 869133413}
+  - component: {fileID: 869133415}
   m_Layer: 0
   m_Name: Creeper
   m_TagString: Untagged
@@ -3356,6 +3357,7 @@ MonoBehaviour:
   life: {fileID: 0}
   robot: {fileID: 0}
   x: 0
+  damageFeedback: {fileID: 0}
   sfxAcess: {fileID: 869133414}
   hit: {fileID: 8300000, guid: eb77533ba627bda4c947517fc90dd28b, type: 3}
   powerUpIcon: {fileID: 2062130278}
@@ -3472,6 +3474,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopSource: {fileID: 0}
   sfxSource: {fileID: 869133413}
+--- !u!114 &869133415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869133406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5455e167d521e347848d746faab4684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageFeedback: {fileID: 0}
+  life: {fileID: 0}
+  powerUpIcon: {fileID: 2062130278}
+  sfxAcess: {fileID: 869133414}
+  damagePlayer: {fileID: 8300000, guid: 50e117c955390b84cbbebd2be4683a11, type: 3}
+  robot: {fileID: 0}
 --- !u!1 &878217992
 GameObject:
   m_ObjectHideFlags: 0

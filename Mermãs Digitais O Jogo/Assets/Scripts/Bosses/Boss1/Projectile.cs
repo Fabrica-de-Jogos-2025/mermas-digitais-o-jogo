@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
     public float i = 0;
     public BossAttack H;
     [SerializeField] private PlayerStatus life;
+    [SerializeField] private PlayerDamageFeedback damageFeedback;
     [SerializeField] private RobotMovement robot;
     [SerializeField] private GameObject powerUpIcon;
     [SerializeField] private GameplayAudio sfxAcess;
@@ -30,6 +31,7 @@ public class Projectile : MonoBehaviour
         life = FindFirstObjectByType<PlayerStatus>();
         robot = FindFirstObjectByType<RobotMovement>();
         anim = GetComponent<Animator>();
+        damageFeedback = life.GetComponent<PlayerDamageFeedback>();
     }
 
 
@@ -69,7 +71,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
@@ -89,6 +91,39 @@ public class Projectile : MonoBehaviour
                 life.Die();
                 robot.Die();
             }
+        }
+    }*/
+
+    private void OnCollisionEnter2D(Collision2D collision) => TryDamagePlayer(collision);
+    private void OnCollisionStay2D(Collision2D collision) => TryDamagePlayer(collision);
+
+    private void TryDamagePlayer(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("Player")) return;
+        if (damageFeedback.IsInvincible) return;
+        if (life.PlayerLife <= 0) return; // evita Hearts[-1] enquanto a morte é processada
+
+        p = true;
+        temp0.position = transform.position;
+
+        if (!damagePlayerHasPlayed)
+        {
+            damagePlayerHasPlayed = true;
+            powerUpIcon.SetActive(false);
+        }
+        sfxAcess.Audio(damagePlayer);
+        robot.HasPowerUp = false;
+        life.PlayerLife--;
+        life.Hearts[life.PlayerLife].enabled = false;
+
+        if (life.PlayerLife <= 0)
+        { 
+            life.Die();
+            robot.Die();
+        }
+        else
+        {
+            damageFeedback.StartDamageFeedback(transform.position);
         }
     }
 

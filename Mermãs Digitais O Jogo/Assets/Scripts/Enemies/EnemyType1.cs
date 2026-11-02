@@ -4,6 +4,7 @@ public class EnemyType1 : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
     [SerializeField] private PlayerStatus life;
+    [SerializeField] private PlayerDamageFeedback damageFeedback;
     [SerializeField] private RobotMovement robot;
     //[SerializeField] private RobotPowerUp powerUp;
     [SerializeField] private float speed;
@@ -32,6 +33,7 @@ public class EnemyType1 : MonoBehaviour
         life = FindFirstObjectByType<PlayerStatus>();
         robot = FindFirstObjectByType<RobotMovement>();
         checkpoint = FindFirstObjectByType<Checkpoint>();
+        damageFeedback = life.GetComponent<PlayerDamageFeedback>();
     }
     // Update is called once per frame
     void Update()
@@ -81,7 +83,7 @@ public class EnemyType1 : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, collisionRadius);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player") && !playerIsDamaged)
         {
@@ -90,6 +92,8 @@ public class EnemyType1 : MonoBehaviour
             robot.HasPowerUp = false;
             life.PlayerLife--;
             life.Hearts[life.PlayerLife].enabled = false;
+
+
             if (life.PlayerLife <= 0)
             {
                 if (!checkpoint.IsActivated)
@@ -104,6 +108,43 @@ public class EnemyType1 : MonoBehaviour
                     player.Respawn(checkpoint.IsActivated);
                 }
             }
+            else
+            {
+                damageFeedback.StartDamageFeedback(transform.position);
+            }
+        }
+    }*/
+
+    private void OnCollisionEnter2D(Collision2D collision) => TryDamagePlayer(collision);
+    private void OnCollisionStay2D(Collision2D collision) => TryDamagePlayer(collision);
+
+    private void TryDamagePlayer(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("Player")) return;
+        if (damageFeedback.IsInvincible) return;
+        if (life.PlayerLife <= 0) return; // evita Hearts[-1] enquanto a morte é processada
+
+        powerUpIcon.SetActive(false);
+        sfxAcess.Audio(damagePlayer);
+        robot.HasPowerUp = false;
+        life.PlayerLife--;
+        life.Hearts[life.PlayerLife].enabled = false;
+
+        if (life.PlayerLife <= 0)
+        {
+            if (!checkpoint.IsActivated)
+            {
+                life.Die();
+                robot.Die();
+            }
+            else
+            {
+                player.Respawn(checkpoint.IsActivated);
+            }
+        }
+        else
+        {
+            damageFeedback.StartDamageFeedback(transform.position);
         }
     }
 }

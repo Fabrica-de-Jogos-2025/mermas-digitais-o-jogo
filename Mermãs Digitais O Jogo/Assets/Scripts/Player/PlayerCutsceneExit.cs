@@ -37,21 +37,24 @@ public class PlayerCutsceneExit : MonoBehaviour
         anim.SetInteger("transition", 1);
         // Faz o Player olhar para a direita
         transform.eulerAngles = Vector2.zero;
+        StartCoroutine(SkipCutscene());
     }
 
     void Update()
     {
         if (!exiting) return;
+        StartCoroutine(SkipCutscene());
 
-        // Move para a direita até atingir o ponto de saída (ou infinito, se não definir exitPoint)
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            // Move para a direita até atingir o ponto de saída (ou infinito, se não definir exitPoint)
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
 
-        // Quando atingir o ponto de saída (se houver) e ainda não tiver pulado, dá o salto
-        if (exitPoint != null && !jumped)
-        {
-            if (transform.position.x >= exitPoint.position.x)
-                JumpAndExit();
-        }
+            // Quando atingir o ponto de saída (se houver) e ainda não tiver pulado, dá o salto
+            if (exitPoint != null && !jumped)
+            {
+                if (transform.position.x >= exitPoint.position.x)
+                    JumpAndExit();
+            }
+        
     }
 
     private void JumpAndExit()
@@ -68,5 +71,13 @@ public class PlayerCutsceneExit : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         loader.CarregarFase("Level Selector");
+    }
+
+    private IEnumerator SkipCutscene()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            yield return new WaitForSeconds(0.01f);
+            loader.CarregarFase("Level Selector");
+        }
     }
 }

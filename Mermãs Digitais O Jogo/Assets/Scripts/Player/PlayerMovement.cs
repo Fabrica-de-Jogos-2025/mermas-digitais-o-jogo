@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public bool permissionDoor_a = false;
     private GameObject pauseScreen;
     [SerializeField] private PlayerStatus playerStatus;
-//    [SerializeField] private TutorialTrigger trigger;
+    [SerializeField] private PlayerDamageFeedback damageFeedback;
+    //    [SerializeField] private TutorialTrigger trigger;
     public bool IsJumping
     {
         get { return isJumping; }
@@ -99,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
         rig = GetComponent<Rigidbody2D>();
         groundChecked = GetComponentInChildren<GroundCheck>();
+        damageFeedback = GetComponent<PlayerDamageFeedback>();
         lastCheckpointPosition = transform.position;
 
         checkpoint = FindFirstObjectByType<Checkpoint>();
@@ -183,6 +185,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isFrozen) return;
 
+        if (damageFeedback != null && damageFeedback.IsKnockedBack)
+        {
+            sfxAcess.StopAudio();
+            return;
+        }
+
         float keyboardInput = Input.GetAxis("Horizontal");
         float controllerInput = move.ReadValue<Vector2>().x;
 
@@ -227,6 +235,7 @@ public class PlayerMovement : MonoBehaviour
     void Jumping()
     {
         if (isFrozen) return;
+        if (damageFeedback != null && damageFeedback.IsKnockedBack) return;
 
         bool keyboardJump = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
 
@@ -382,6 +391,12 @@ public class PlayerMovement : MonoBehaviour
             playerStatus.Robot.gameObject.SetActive(true);
             playerStatus.gameObject.SetActive(true);
             playerStatus.Robot.IsDead = false;
+        }
+
+        if (damageFeedback != null)
+        {
+            damageFeedback.ResetState();
+            damageFeedback.StartInvincibility();
         }
     }
 

@@ -680,6 +680,7 @@ GameObject:
   - component: {fileID: 8403184774566607507}
   - component: {fileID: 2319743446989185241}
   - component: {fileID: -4759750687985961737}
+  - component: {fileID: 6290809249474080485}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -752,6 +753,7 @@ MonoBehaviour:
   currentPadlock: {fileID: 0}
   permissionDoor_a: 0
   playerStatus: {fileID: 2673734274331479848}
+  damageFeedback: {fileID: 6290809249474080485}
   sfxAcess: {fileID: -1771113370128977805}
   sfxDoorAcess: {fileID: 2319743446989185241}
   walk: {fileID: 8300000, guid: 309cf8e7265670b4f8a32be392984cc5, type: 3}
@@ -1158,3 +1160,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6290809249474080485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541702138076515429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6314e4438fad2344c8bc23959b7a335c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8402168557009684699}
+  spriteRenderers: []
+  invincibilityDuration: 2
+  blinkInterval: 0.1
+  blinkAlpha: 0.25
+  knockbackVelocity: {x: 5, y: 6}
+  knockbackDuration: 0.3
+  enemyLayerName: Enemy

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerCutscene : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerCutscene : MonoBehaviour
     public float speed = 5f; // Velocidade do movimento
     [SerializeField] private Animator anim;
     private bool reachedTarget = false;
+    [SerializeField] private Loader loader;
 
     void Start()
     {
@@ -19,6 +21,15 @@ public class PlayerCutscene : MonoBehaviour
             return; 
         }
 
+        StartCutscene();
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            StartCoroutine(SkipCutscene());
+        }
+    }
+
+    void StartCutscene()
+    {
         // Move o player para a esquerda até a posição do computador
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
@@ -34,5 +45,11 @@ public class PlayerCutscene : MonoBehaviour
             anim.SetInteger("transition", 0);
             reachedTarget = true;
         }
+    }
+
+    private IEnumerator SkipCutscene()
+    {
+        yield return new WaitForSeconds(0.01f);
+        loader.CarregarFase("Level Selector");
     }
 }
