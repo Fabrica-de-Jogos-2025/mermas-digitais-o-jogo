@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ClickButtonEffect : MonoBehaviour
 {
     public Button blinkButton; // Arraste o botão no Inspector
+    public GameObject playerUI;
     public GameObject uiTitle;
     public GameObject MainMenuUI; // Nome da cena para carregar
     public GameObject[] grounds;
@@ -47,8 +48,11 @@ public class ClickButtonEffect : MonoBehaviour
         {
             sfxClick.Audio(clip);
             uiTitle.SetActive(false);
+            playerUI.SetActive(false);
             grounds[0].SetActive(false);
             grounds[1].SetActive(false);
+            grounds[2].SetActive(false);
+            grounds[3].SetActive(false);
             MainMenuUI.SetActive(true);
         }
     }
@@ -57,7 +61,10 @@ public class ClickButtonEffect : MonoBehaviour
     {
         sfxClick.Audio(clip);
         uiTitle.SetActive(true);
+        playerUI.SetActive(true);
         grounds[0].SetActive(true);
         grounds[1].SetActive(true);
+        grounds[2].SetActive(false);
+        grounds[3].SetActive(false);
     }
 }
