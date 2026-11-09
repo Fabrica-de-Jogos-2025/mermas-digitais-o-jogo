@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class RobotMovement : MonoBehaviour
 {
+    [SerializeField] private float hitRadius = 1f;
+    private const float PlatformYOffset = 0.479862f;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private float Speed;
     [SerializeField] private float StoppingDistance;
@@ -139,6 +141,7 @@ public class RobotMovement : MonoBehaviour
     IEnumerator UsePowerUp()
     {
         isUsingPowerUp = true;
+        damageEnemyPlayed = false;
         //float direction = player.transform.localScale.x;
         direction = player.transform.position.x - transform.position.x;
         float maxDistance;
@@ -155,7 +158,7 @@ public class RobotMovement : MonoBehaviour
             {
                 //transform.position += Vector3.right * Mathf.Sign(direction) * Speed * Time.deltaTime; // Move o robo para a direita
 
-                float platformY = player.transform.position.y + 0.479862f; // Acompanha a altura da plataforma via personagem
+                float platformY = player.transform.position.y + PlatformYOffset; // Acompanha a altura da plataforma via personagem
 
                 transform.position = new Vector3(
                     transform.position.x + Mathf.Sign(direction) * Speed * Time.deltaTime,
@@ -164,14 +167,19 @@ public class RobotMovement : MonoBehaviour
                 );
 
 
-                Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, hitRadius);
                 foreach (Collider2D enemy in enemies)
                 {
                     if (enemy.CompareTag("Enemy") && !damageEnemyPlayed)
                     {
                         damageEnemyPlayed = true;
                         sfxAcess.Audio(damageEnemy);
-                        Destroy(enemy.gameObject);
+
+                        EnemyType1 enemyScript = enemy.GetComponentInParent<EnemyType1>();
+                        if (enemyScript != null)
+                            enemyScript.Die();
+                        else
+                            Destroy(enemy.gameObject); // fallback para inimigos sem o script
                     }
                 }
 
@@ -186,7 +194,7 @@ public class RobotMovement : MonoBehaviour
             {
                 //transform.position += Vector3.left * Mathf.Sign(-direction) * Speed * Time.deltaTime; // Move o robo para a esquerda
 
-                float platformY = player.transform.position.y + 0.479862f; // Acompanha a altura da plataforma via personagem
+                float platformY = player.transform.position.y + PlatformYOffset; // Acompanha a altura da plataforma via personagem
 
                 transform.position = new Vector3(
                     transform.position.x + Mathf.Sign(direction) * Speed * Time.deltaTime,
@@ -195,14 +203,19 @@ public class RobotMovement : MonoBehaviour
                 );
 
 
-                Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, 1f);
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, hitRadius);
                 foreach (Collider2D enemy in enemies)
                 {
                     if (enemy.CompareTag("Enemy") && !damageEnemyPlayed)
                     {
                         damageEnemyPlayed = true;
                         sfxAcess.Audio(damageEnemy);
-                        Destroy(enemy.gameObject);
+
+                        EnemyType1 enemyScript = enemy.GetComponentInParent<EnemyType1>();
+                        if (enemyScript != null)
+                            enemyScript.Die();
+                        else
+                            Destroy(enemy.gameObject);
                     }
                 }
 
@@ -224,5 +237,35 @@ public class RobotMovement : MonoBehaviour
         {
             sfxAcess.LoopAudio(fly); // retoma o som ao fim do diálogo
         }
+    }
+
+    public bool CanReachEnemy(Vector3 enemyPosition)
+    {
+        if (!HasPowerUp || isUsingPowerUp || isDead || player == null) return false;
+        if (moviment.x == 0) return false;
+
+        Camera cam = Camera.main;
+        if (cam == null) return false;
+
+        // O dash acontece na altura da plataforma, com raio de hitRadius
+        float dashY = player.transform.position.y + PlatformYOffset;
+        if (Mathf.Abs(enemyPosition.y - dashY) > hitRadius) return false;
+
+        float dir = player.transform.position.x - transform.position.x;
+
+        if (moviment.x < 0 && dir > 0) // dash para a direita
+        {
+            float maxX = cam.ViewportToWorldPoint(new Vector3(0.75f, 0.5f, 0)).x;
+            return enemyPosition.x >= transform.position.x - hitRadius
+                && enemyPosition.x <= maxX + hitRadius;
+        }
+        else if (moviment.x > 0 && dir <= 0) // dash para a esquerda
+        {
+            float minX = cam.ViewportToWorldPoint(new Vector3(0.25f, 0.5f, 0)).x;
+            return enemyPosition.x <= transform.position.x + hitRadius
+                && enemyPosition.x >= minX - hitRadius;
+        }
+
+        return false;
     }
 }
