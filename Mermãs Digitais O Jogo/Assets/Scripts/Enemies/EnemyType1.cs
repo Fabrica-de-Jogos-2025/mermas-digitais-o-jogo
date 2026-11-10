@@ -1,4 +1,5 @@
 using TMPro;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyType1 : MonoBehaviour
@@ -18,7 +19,9 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private TextMeshPro textExpression;
     [SerializeField] private float explosionDuration = 1f; // duração da animação de explosão
-    [SerializeField] private float expressionDuration = 15f; // tempo que a expressão fica na tela
+    [SerializeField] private float expressionDuration = 1f; // tempo que a expressão fica na tela
+    [SerializeField] private float expressionRiseSpeed = 0.5f;   // unidades por segundo
+    [SerializeField][Range(0f, 1f)] private float fadeStart = 0.5f; // fração do tempo em que começa a sumir
     private bool isDead = false;
     private Checkpoint checkpoint;
 
@@ -27,7 +30,8 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float collisionRadius;
     private string[] expressions = new string[]{"Muito bem", "Ótimo", "Excelente", "WOW", "É isso aí", "Arrasou"};
-
+    private Vector3 expressionLocalOffset;
+    // [SerializeField] private Vector3 expressionOffset = new Vector3(0f, 1f, 0f); // distância acima do pivô do inimigo
     public LayerMask EnemyLayer { get => enemyLayer; set => enemyLayer = value; }
     public Transform GroundCheck { get => groundCheck; set => groundCheck = value; }
     public float Speed { get => speed; set => speed = value; }
@@ -42,6 +46,9 @@ public class EnemyType1 : MonoBehaviour
         robot = FindFirstObjectByType<RobotMovement>();
         checkpoint = FindFirstObjectByType<Checkpoint>();
         damageFeedback = life.GetComponent<PlayerDamageFeedback>();
+
+        if (textExpression != null)
+            expressionLocalOffset = textExpression.transform.localPosition;
     }
     // Update is called once per frame
     void Update()
@@ -132,12 +139,11 @@ public class EnemyType1 : MonoBehaviour
 
     private void ShowExpression()
     {
-        if (textExpression == null) { return; }
+        if (textExpression == null) { Debug.LogError($"{name}: campo Text Expression está vazio", this); return; }
 
         textExpression.text = expressions[Random.Range(0, expressions.Length)];
         textExpression.transform.rotation = Quaternion.identity;
 
-        // Usa a mesma Sorting Layer do sprite do inimigo, com ordem acima dele
         var enemySprite = GetComponentInChildren<SpriteRenderer>();
         if (enemySprite != null)
         {
@@ -145,12 +151,47 @@ public class EnemyType1 : MonoBehaviour
             textExpression.sortingOrder = enemySprite.sortingOrder + 100;
         }
 
-        // Garante que o texto fique na frente (a câmera normalmente está em Z negativo)
-        Vector3 p = textExpression.transform.position;
+        /*Vector3 p = textExpression.transform.position;
+        p.z = transform.position.z - 0.1f;
+        textExpression.transform.position = p;*/
+
+        // Reproduz a posição de quando o inimigo está virado para a esquerda (X espelhado),
+        // independente do lado para o qual ele está virado agora
+        Vector3 p = transform.position + new Vector3(-expressionLocalOffset.x, expressionLocalOffset.y, 0f);
         p.z = transform.position.z - 0.1f;
         textExpression.transform.position = p;
 
         textExpression.gameObject.SetActive(true);
+        StartCoroutine(AnimateExpression());
+    }
+
+    private IEnumerator AnimateExpression()
+    {
+        Color baseColor = textExpression.color;
+        baseColor.a = 1f;
+        textExpression.color = baseColor;
+
+        float elapsed = 0f;
+
+        while (elapsed < expressionDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            // Sobe sempre para cima no mundo, independente da rotação do inimigo
+            textExpression.transform.position += Vector3.up * expressionRiseSpeed * Time.deltaTime;
+
+            // Fica opaco até fadeStart e depois some gradualmente
+            float t = elapsed / expressionDuration;
+            float alpha = t < fadeStart ? 1f : 1f - Mathf.InverseLerp(fadeStart, 1f, t);
+
+            Color c = textExpression.color;
+            c.a = alpha;
+            textExpression.color = c;
+
+            yield return null;
+        }
+
+        textExpression.gameObject.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()

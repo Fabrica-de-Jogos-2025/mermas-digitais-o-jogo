@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326c4a75c379f874fb3d38f29582671d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitRadius: 1
   player: {fileID: 4258623746148510536, guid: e0a1e68b75ac5da439a9a8417c17a9c4, type: 3}
   Speed: 5
   StoppingDistance: -1.3
