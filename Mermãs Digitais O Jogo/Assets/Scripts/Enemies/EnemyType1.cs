@@ -15,6 +15,7 @@ public class EnemyType1 : MonoBehaviour
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip damagePlayer;
     [SerializeField] private GameObject powerUpIcon;
+    [SerializeField] private GameObject powerUpEffect;
     [SerializeField] private GameObject aimIcon;
     [SerializeField] private GameObject explosion;
     [SerializeField] private TextMeshPro textExpression;
@@ -46,6 +47,9 @@ public class EnemyType1 : MonoBehaviour
         robot = FindFirstObjectByType<RobotMovement>();
         checkpoint = FindFirstObjectByType<Checkpoint>();
         damageFeedback = life.GetComponent<PlayerDamageFeedback>();
+
+        if (powerUpEffect == null)
+            powerUpEffect = SceneUtils.FindIncludingInactive("PowerUpEffect");
 
         if (textExpression != null)
             expressionLocalOffset = textExpression.transform.localPosition;
@@ -210,7 +214,8 @@ public class EnemyType1 : MonoBehaviour
         if (damageFeedback.IsInvincible) return;
         if (life.PlayerLife <= 0) return; // evita Hearts[-1] enquanto a morte é processada
 
-        powerUpIcon.SetActive(false);
+        if (powerUpIcon != null) powerUpIcon.SetActive(false);
+        if (powerUpEffect != null) powerUpEffect.SetActive(false);
         sfxAcess.Audio(damagePlayer);
         robot.HasPowerUp = false;
         life.PlayerLife--;

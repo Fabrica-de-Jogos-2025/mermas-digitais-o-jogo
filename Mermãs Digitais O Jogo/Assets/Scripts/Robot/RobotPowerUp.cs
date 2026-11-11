@@ -5,6 +5,7 @@ public class RobotPowerUp : MonoBehaviour
     //[SerializeField] private bool hasPowerUp = false;
     private PlayerMovement player;
     [SerializeField] private GameObject powerUpIcon;
+    [SerializeField] private GameObject powerUpEffect;
     //private RobotMovement robot;
 
     //public bool HasPowerUp { get => hasPowerUp; set => hasPowerUp = value; }
@@ -22,6 +23,9 @@ public class RobotPowerUp : MonoBehaviour
         player = GetComponent<PlayerMovement>();
         //robot = FindObjectOfType<RobotMovement>();
         robotPowered = FindAnyObjectByType<RobotMovement>();
+
+        if (powerUpEffect == null)
+            powerUpEffect = SceneUtils.FindIncludingInactive("PowerUpEffect");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,7 +35,8 @@ public class RobotPowerUp : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collected = true;
-            powerUpIcon.SetActive(true);
+            if (powerUpIcon != null) powerUpIcon.SetActive(true);
+            if (powerUpEffect != null) powerUpEffect.SetActive(true);
             sfxAcess.Audio(powerupClip); // toca o som primeiro
             robotPowered.HasPowerUp = true;
 

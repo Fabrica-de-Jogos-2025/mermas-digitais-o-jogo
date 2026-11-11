@@ -12,7 +12,6 @@ public class RobotMovement : MonoBehaviour
     [SerializeField] private GameplayAudio sfxAcess;
     [SerializeField] private AudioClip fly;
     [SerializeField] private AudioClip damageEnemy;
-
     [SerializeField] private PlayerStatus playerStatus;
     private Transform Target;
     public bool HasPowerUp;
